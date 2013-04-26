@@ -5,7 +5,7 @@ title: Assignment Requirements
 
 ## Overview
 
-This page describes the expectations for how you will prepare you coding assignments and submit them for grading.
+This page describes the expectations for how you will prepare your coding assignments and submit them for grading.
 
 
 

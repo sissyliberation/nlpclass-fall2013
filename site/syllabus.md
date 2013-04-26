@@ -43,7 +43,7 @@ Manning and Schuetze will be useful as an extra resource:
 
 There will be one mid-term exam and one final exam. The midterm will consist of the material covered in the first half of the class, and the final will consist of material from the entire course.
 
-Assignments will be updated on the assignments page. A tentative schedule for the entire semester is posted on the schedule page. Readings and exercises may change up one week in advance of their due dates. Programming assignments must be completed in either Python or Java.
+Assignments will be updated on the assignments page. A tentative schedule for the entire semester is posted on the schedule page. Readings and exercises may change up one week in advance of their due dates. Programming assignments must be completed in Scala.
 
 Attendance is not required. However, given that homeworks and the exams address the material covered in class, good attendance is essential for doing well in this class.
 
@@ -100,7 +100,7 @@ With respect to content, the goal of this course is to give the student an appre
 
 ## Course Requirements
 
-* Assignments (60%): A series of six assessed, equally-weighted assignments will be given out during the semester. Most of these assignments will have a programming component---these must be completed using the Python programming language.
+* Assignments (60%): A series of six assessed, equally-weighted assignments will be given out during the semester. Most of these assignments will have a programming component---these must be completed using the Scala programming language.
 * Mid-term Exam (15%): There will be a mid-term exam over the material covered during the first half of the semester.
 * Final Exam (25%): There will be a final exam covering all course material.
 
@@ -123,11 +123,13 @@ Attendance is not required, and it is not used as part of determining the grade.
 
 ## Extension Policy
 
-Homework must be turned in on the due date in order to receive credit. Penalty-free extensions will be considered on a case-by-case basis and only if the student asks for the extension before the deadline. In most cases they will not be granted.
+Homework must be turned in by the date and time specified in order to receive full credit. Penalty-free extensions will be considered on a case-by-case basis and only if the student asks for the extension before the deadline. In most cases they will not be granted.
 
-Points will be deducted for lateness. By default, 10 points (out of 100) will be deducted for lateness, plus an additional 5 points for every 24-hour period beyond 2 that the assignment is late. For example, an assignment due at 11am on Tuesday will have 10 points deducted if it is turned in late but before 11am on Thursday. It will have 15 points deducted if it is turned in by 11am Friday, etc.
+Credit will be deducted for lateness: 10% for every 24-hour period past the deadline. For example, an assignment due at 11am on Tuesday will have 10% deducted if it is turned in late but before 11am on Wednesday. It will have 20% deducted if it is turned in by 11am Thursday, etc.
 
-**Late submissions will not be accepted if they are more than one week past the deadline. No points will be received in this case.**
+Late submissions will not be accepted if they are more than 5 days past the deadline. No points will be received in this case.
+
+Programming takes time.  You are highly encouraged to start working on assignments as soon as they are announced to make sure you have enough time to complete them.
 
 The greater the advance notice of a need for an extension, the greater the likelihood of leniency.
 
