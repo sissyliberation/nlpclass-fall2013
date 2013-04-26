@@ -14,6 +14,8 @@ I've written up some notes on Scala that might be useful
 
 ## Links
 
+[Scala on Stack Overlow](http://stackoverflow.com/tags/scala/info): A great Scala community and a weath of Scala programming knowledge in question-and-answer format.
+
 
 
 ## Jason Baldridge's Notes
