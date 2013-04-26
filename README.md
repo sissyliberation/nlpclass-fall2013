@@ -3,7 +3,9 @@
 
 ## Updating site
 
-in the repository root:
+FIRST, commit changes to the website source in `master`.
+
+THEN, in the repository root:
 
     git checkout master
     cd site
