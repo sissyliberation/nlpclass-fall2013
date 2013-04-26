@@ -36,7 +36,7 @@ res1: List[String] = List(the, the, the)
 {% endhighlight %}
 
 
-** Q. Why doesn’t the method “split” work on args? Example: val arg = args.split(” “). Args are strings right, so split should work?**
+**Q. Why doesn’t the method “split” work on args? Example: val arg = args.split(” “). Args are strings right, so split should work?**
 
 The `args` variable is an Array, so split doesn’t work on them. Arrays are, in effect, already split.
 
@@ -128,8 +128,8 @@ Use `toVector` and `toList`.
 scala> val foo = List(1,2,3,4)
 foo: List[Int] = List(1, 2, 3, 4)
  
-scala> val bar = foo.toIndexedSeq
-bar: scala.collection.immutable.IndexedSeq[Int] = Vector(1, 2, 3, 4)
+scala> val bar = foo.toVector
+bar: scala.collection.immutable.Vector[Int] = Vector(1, 2, 3, 4)
  
 scala> val baz = bar.toList
 baz: List[Int] = List(1, 2, 3, 4)
