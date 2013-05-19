@@ -7,7 +7,10 @@ title: Syllabus
 
 **Course Name:** Natural Language Processing   
 **Course Number:** CS 378 / LIN 353N  
-**Semester:** Fall 2013
+**Semester:** Fall 2013  
+  
+**Time:** Tues/Thurs 2:00-3:30  
+**Room:** WEL 3.402  
 
 
 ## Instructor Contact Information
