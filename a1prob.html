@@ -1,0 +1,131 @@
+<html>
+  <head>
+    <meta content='text/html;charset=UTF-8' http-equiv='Content-Type'/>
+    <title>NLP &mdash; Assignment 1 - Probability</title>
+    <style type='text/css'>
+      @import 'css/default.css';
+      @import 'css/syntax.css';
+    </style>
+    <meta content='Natural Language Processing Class' name='subject'/>
+    <!--<link href='images/favicon.png' rel='shortcut icon'>-->
+  </head>
+  <body>
+    <div id='wrap'>
+      <div id='header'>
+        <img height="100" alt='NLP Class' src='images/utexas.png'/>
+        <div class='tagline'>Natural Language Processing: Fall 2013</div>
+      </div>
+      <div id='pages'>
+        <ol class='toc'>
+          <li>NLP Class
+            <ol class="toc">
+              <li><a href='index.html'>Home</a></li>
+              <li><a href='syllabus.html'>Syllabus</a></li>
+              <li><a href='schedule.html'>Schedule</a></li>
+              <li><a href='assignments.html'>Assignment Requirements</a></li>
+              <li><a href='links.html'>Links</a></li>
+            </ol>
+          </li>
+          <li>Useful Information
+            <ol class="toc">
+              <li><a href='scala'>Scala</a></li>
+            </ol>
+          </li>
+          <li>Assignments
+            <ol class="toc">
+              <li><a href='a1prob.html'>#1 - Probability</a></li>
+            </ol>
+          </li>
+          <li>External Links
+            <ol class="toc">
+              <li><a href='http://www.utcompling.com'>UTCL Main site</a></li>
+              <li><a href='https://courses.utexas.edu/webapps/portal/frameset.jsp?tab_tab_group_id=_11_1&url=%2Fwebapps%2Fblackboard%2Fexecute%2Flauncher%3Ftype%3DCourse%26id%3D_159651_1%26url%3D'>Blackboard</a></li>
+            </ol>
+          </li>
+        </ol>
+      </div>
+      <div id='content'>
+        <h1>Assignment 1 - Probability</h1>
+        <ol class="toc"></ol>
+        <p><strong>Due: Monday, February 7, 12pm</strong></p>
+
+<p>This assignment is based on problems 1-5 of <a href='http://www.cs.jhu.edu/~jason/'>Jason Eisner</a>&#8217;s language modeling homework plus a small programming problem (problem 6). The first thing to do is to <a href='https://18d120ec-a-e22e9223-s-sites.googlegroups.com/a/utcompling.com/nlp-s11/assignments/homework-1/eisner_lm_homework.pdf?attachauth=ANoY7crnvOj8DTMuEPniMbpaM6TsNW7G1t807GXUnn8-rZO14f7G_L8KTzU4c0c5E5rhcL0WVmS_yyfTN5B045b9SyrXABL8vTbH9ydSWRFcO8PbwlgbDqSbmYKa6VQk4evqMOfM12ArQ9VzhWd-SeHA6xkhiMFxULD7bAUkY5_bb3yIMj10NSm5lnUo_xIpoJy9kv8v6C2lh3sztweVkqhRJy0XfT0rCNbU8lJfp5RayzYAx0yLMDKeLfTrVQBYRoEnBaFwzr_P&amp;attredirects=0'>download the PDF of the homework</a>. Many thanks to Jason E for making this and other materials for teaching NLP available!</p>
+
+<p>Work through problems 1-5 and hand in your written solutions for this homework in class. Problem 6 asks you to write a small program, which you will submit on Blackboard.</p>
+
+<p>A few notes:</p>
+
+<ul>
+<li>You will not do the entire homework &#8211; only problems 1-5 on pages 1-8. (You&#8217;ll be seeing some of the other problems later.)</li>
+
+<li>The Eisner homework states you may use any programming language. For this class, you must use Scala.</li>
+
+<li>The Eisner homework states you should put your answers in a README file. You should not do this &#8211; you should write down or print out your answers to 1-5 and hand in a physical copy on the due date. IMPORTANT: Be sure to write legibly so that we can read it!</li>
+
+<li>If you have any questions about any of this, don&#8217;t hesitate to ask.</li>
+</ul>
+
+<p>You are welcome to consult books that cover probability theory, such as DeGroot and Schervish or the appendices of <a href='http://www.amazon.com/Introduction-Algorithms-Thomas-H-Cormen/dp/0262032937'>Cormen et al</a>, as well as the slides on probability from Dickinson, Eisner and Martin. Also, usage of Wikipedia in conjunction with the course readings, notes and assignments is acceptable (especially if you learn something from it). For this assignment, it may be helpful to consult the following: <a href='http://en.wikipedia.org/wiki/Algebra_of_sets'>Algebra of sets</a> (especially if you&#8217;re rusty on set theory) and <a href='http://en.wikipedia.org/wiki/Bayes%27_theorem'>Bayes&#8217; theorem</a> which is not extensively discussed in Jurafsy &amp; Martin.</p>
+
+<p>There are 100 points total in this assignment. Point values for each problem/sub-problem are given below.</p>
+
+<p><strong>Problem 1</strong>: 33 points total (3 points per subproblem)</p>
+
+<p><strong>Problem 2</strong>: 15 points</p>
+
+<p>a. 1 b. 1 c. 4 d. 4 e. 4 f. 1</p>
+
+<p><strong>Problem 3</strong>: 15 points</p>
+
+<p>a. 1 b. 4 c. 10 (2 pts per subproblem)</p>
+
+<p><strong>Problem 4</strong>: 7 points</p>
+
+<p><strong>Problem 5</strong>: 15 points</p>
+
+<p>a. 4 b. 5 c. 3 d. 3</p>
+
+<p><strong>Problem 6</strong>: 15 points This problem is very small programming exercise intended to give you a small amount of practice counting things in text and to make sure you are comfortable running a program on the Unix command line.</p>
+
+<p>First, download the text of Jane Austen&#8217;s book <a href='http://www.gutenberg.org/files/105/105.txt'>Persuasion</a> from Project Gutenberg. Then, use the tr command as follows in order to create word-per-line version containing only alphabetic characters:</p>
+
+<pre><code>$ cat 105.txt | tr -cs &#39;[:alpha:]&#39; &#39;\n&#39; &gt;  105_wpl.txt</code></pre>
+
+<p>Now, write a Java or Python program that reads in 105_wpl.txt and counts bigrams and unigrams in an associative array (dictionary/hashmap) and prints out the conditional probabilities:</p>
+
+<ul>
+<li>p(the | of)</li>
+
+<li>p(the | and)</li>
+</ul>
+
+<p>Call your program <strong>compute_bigram.scala</strong>. It should take the file <strong>105_wpl.txt</strong> as its first command-line argument, and produce the following output</p>
+
+<p>$ python compute_bigram.py 105_wpl.txt p(the|of) = 0.16878742515 p(the|and) = 0.0399002493766 We will of course test these values on another text, so you should make sure to actually compute the values and not just print them out…</p>
+
+<p>Here&#8217;s a stub Python script which deals with the command line args to get you going:</p>
+
+<pre><code>#!/usr/bin/python
+
+import sys
+
+## Take file from stdin or as first arg on command line depending on
+## how count_words.py is called.
+in_file = sys.stdin
+if len(sys.argv) &gt; 1:
+    in_file = file(sys.argv[1])
+
+unigram_counts = {}
+bigram_counts = {}
+
+# Do your counting in a loop here.
+
+print &quot;p(the|of) =&quot;, # use the counts to compute the conditional probability 
+print &quot;p(the|and) =&quot;, # use the counts to compute the conditional probability </code></pre>
+
+<p>Submit your file <strong>compute_bigram.scala</strong> on Blackboard in the submission area for HW1. Remember that your solutions for Problems 1-5 must be handed in as hard copy in class.</p>
+      </div>
+      <div id='footer'></div>
+    </div>
+  </body>
+</html>
