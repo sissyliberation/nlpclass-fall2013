@@ -278,7 +278,7 @@ The terminology is somewhat confusing since an "object" can also mean an instant
 
 ### Case Classes
 
-Case classes are syntactic sugar for classes with a few methods pre-specified for convenience.  These include `equals` and `hashCode`, as well as static methods `apply` (so that the `new` keyword is not needed for construction) and `unapply` (for pattern matching).  Case class constructor args are also public by default.  Case classes are not allowed to be extended.  Otherwise, they are just like normal classes.
+Case classes are syntactic sugar for classes with a few methods pre-specified for convenience.  These include `toString`, `equals`, and `hashCode`, as well as static methods `apply` (so that the `new` keyword is not needed for construction) and `unapply` (for pattern matching).  Case class constructor args are also public by default.  Case classes are not allowed to be extended.  Otherwise, they are just like normal classes.
 
 {% highlight scala %}
 case class G(i: Int, j: Int) {
@@ -377,7 +377,7 @@ res1: (Int, Int) = (1,2)
 
 ## Collections
 
-The Scala collections framework is pretty [extensive](http://www.scala-lang.org/docu/files/collections-api/collections.html).  But for now, I'll just introduce the three most basic collections:
+The Scala collections framework is pretty [extensive](http://www.scala-lang.org/docu/files/collections-api/collections.html).  But for now, I'll just introduce the three most important collections:
 
 ### Vector
 
@@ -407,7 +407,7 @@ res1: Boolean = true
 
 ### Map
 
-A `Map[K,V]` is a associative array or dictionary type mapping elements of type `K` to elements of type `V`.  Values can be accessed through their keys.
+A `Map[K,V]` is an associative array or dictionary type mapping elements of type `K` to elements of type `V`.  Values can be accessed through their keys.
 
 {% highlight scala %}
 scala> val a = Map(1 -> "one", 2 -> "two", 3 -> "three")
@@ -577,7 +577,7 @@ You should (pretty much) always use immutable collections.  You code will theref
 
 ### First-class functions
 
-One of the most important characteristics of function programming is that functions are first-class members of the language.  This means that they can be stored in variables and, more importantly, passed as arguments to other functions.
+One of the most important characteristics of functional programming is that functions are first-class members of the language.  This means that they can be stored in variables and, more importantly, passed as arguments to other functions.
 
 To facilitate these kinds of uses, Scala has nice syntax for defining anonymous functions.  In Scala, the symbol `=>` is used to write lambda functions:
 

@@ -14,13 +14,14 @@ I've written up some notes on Scala that might be useful
 
 ## Links
 
+[Scala](http://www.scala-lang.org): Homepage  
 [Scala on Stack Overflow](http://stackoverflow.com/tags/scala/info): A great Scala community and a weath of Scala programming knowledge in question-and-answer format.
 
 
 
 ## Jason Baldridge's Notes
 
-[Jason Baldridge](http://www.jasonbaldridge.com) has written some [blog](http://bcomposes.wordpress.com/) posts about Scala and NLP.
+[Jason Baldridge](http://www.jasonbaldridge.com) has written some [blog](http://bcomposes.wordpress.com/) posts about Scala and NLP.  I have updated/improved/corrected some of them.
 
 [Function Composition in Scala]({{ page.root }}scala/jb/funcomp.html)  [\[original\]](http://bcomposes.wordpress.com/2011/08/20/fun-with-function-composition-in-scala/)  
 [Part 1]({{ page.root }}scala/jb/jb1.html)  [\[original\]](http://bcomposes.wordpress.com/2011/08/22/first-steps-in-scala-for-first-time-programmers-part-1/)  

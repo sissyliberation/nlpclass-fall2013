@@ -165,7 +165,7 @@ println("This will break\s.")
 So, you are supplying a String argument to split, and it uses that to construct a regular expression. Given that \s is not a string character, but is a regex metacharacter, you need to escape it. You can of course use `split(“”"\s”"”)`, though that isn’t exactly better in this case.
 
 
-**I have long been programming in C++ and Java. Therefore, I put semicolon at the end of the line unconsciously. It seems that the standard coding style of Scala doesn’t recommend to use semicolons. However, I saw that there are some cases that require semicolons as you showed last class. Is there any specific reason why semicolon loses its role in Scala?**
+**Q. I have long been programming in C++ and Java. Therefore, I put semicolon at the end of the line unconsciously. It seems that the standard coding style of Scala doesn’t recommend to use semicolons. However, I saw that there are some cases that require semicolons as you showed last class. Is there any specific reason why semicolon loses its role in Scala?**
 
 The main reason is to improve readability since the semicolon is rarely needed when writing standard code in editors (as opposed to one liners in the REPL). However, when you want to do something in a single line, like handling multiple cases, you need the semicolons.
 

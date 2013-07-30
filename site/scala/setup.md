@@ -14,9 +14,9 @@ This page explains how to set up your environment for using Scala.
 Scala has both a compiler (`scalac`) and an interactive environment called the REPL ("read-evaluate-print loop") (`scala`).
 
 1. Go here: [scala-lang.org/downloads](http://www.scala-lang.org/downloads)
-2. Download the current stable release (2.10.1 as of this writing).  
+2. Download the current stable release (2.10.2 as of this writing).  
 3. Extract it somewhere in your home directory.
-4. Add the `bin` directory to your path, or at least `bin/scala`.
+4. Add the `bin` directory to your path, or at least add `bin/scala`.
 
 Now you should be able to run `scala` from the command line to get into the REPL.
 {% highlight text %}
@@ -65,7 +65,7 @@ version := "0.0.1"
 
 organization := "<something>"
 
-scalaVersion := "2.10.1"
+scalaVersion := "2.10.2"
 
 libraryDependencies ++= Seq(
    "com.typesafe" % "scalalogging-log4j_2.10" % "1.0.1",

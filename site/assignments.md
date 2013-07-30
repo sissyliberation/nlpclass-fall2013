@@ -12,7 +12,7 @@ This page describes the expectations for how you will prepare your coding assign
 
 ## GitHub
 
-Your code should be hosted in a *private* GitHub repository.  Follow these instructionsL
+Your code should be hosted in a *private* GitHub repository.  Follow these instructions:
 
 1. If you do not have an account on GitHub, you need to create one here: [github.com](https://github.com/).
 2. Register as a student here: [github.com/edu](https://github.com/edu).  This will give you five free private repositories, one of which will be used for this class.
