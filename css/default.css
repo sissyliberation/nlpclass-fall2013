@@ -21,6 +21,7 @@ body {
   font-family: "Helvetica Neue", "DejaVu Sans", "Verdana";
   text-align: center;
   line-height: 150%;
+  font-size: 12pt;
 }
 
 a:link, a:visited{
@@ -36,9 +37,17 @@ img {
   border: none;
 }
 
-pre, code {
+pre {
   font-family: "Monaco", "DejaVu Sans Mono", "Courier New", "Courier";
-  font-size: 9pt;
+  font-size: 10pt;
+}
+code {
+  font-family: "Monaco", "DejaVu Sans Mono", "Courier New", "Courier";
+  font-size: 11pt;
+}
+pre code {
+  font-family: "Monaco", "DejaVu Sans Mono", "Courier New", "Courier";
+  font-size: 10pt;
 }
 pre {
   margin: 0.3em 0 0.3em 0.9em;

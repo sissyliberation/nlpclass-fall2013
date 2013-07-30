@@ -6,6 +6,7 @@
       @import '../../css/default.css';
       @import '../../css/syntax.css';
     </style>
+    <link rel="shortcut icon" href="../../favicon.ico" />
     <meta content='Natural Language Processing Class' name='subject'/>
     <!--<link href='images/favicon.png' rel='shortcut icon'>-->
   </head>
@@ -172,7 +173,7 @@
 </code></pre></div>
 <p>So, you are supplying a String argument to split, and it uses that to construct a regular expression. Given that \s is not a string character, but is a regex metacharacter, you need to escape it. You can of course use <code>split(“”&quot;\s”&quot;”)</code>, though that isn’t exactly better in this case.</p>
 
-<p><strong>I have long been programming in C++ and Java. Therefore, I put semicolon at the end of the line unconsciously. It seems that the standard coding style of Scala doesn’t recommend to use semicolons. However, I saw that there are some cases that require semicolons as you showed last class. Is there any specific reason why semicolon loses its role in Scala?</strong></p>
+<p><strong>Q. I have long been programming in C++ and Java. Therefore, I put semicolon at the end of the line unconsciously. It seems that the standard coding style of Scala doesn’t recommend to use semicolons. However, I saw that there are some cases that require semicolons as you showed last class. Is there any specific reason why semicolon loses its role in Scala?</strong></p>
 
 <p>The main reason is to improve readability since the semicolon is rarely needed when writing standard code in editors (as opposed to one liners in the REPL). However, when you want to do something in a single line, like handling multiple cases, you need the semicolons.</p>
 <div class='highlight'><pre><code class='scala'><span class='n'>scala</span><span class='o'>&gt;</span> <span class='k'>val</span> <span class='n'>foo</span> <span class='k'>=</span> <span class='nc'>List</span><span class='o'>(</span><span class='s'>&quot;a&quot;</span><span class='o'>,</span><span class='mi'>1</span><span class='o'>,</span><span class='s'>&quot;b&quot;</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>)</span>

@@ -6,6 +6,7 @@
       @import '../css/default.css';
       @import '../css/syntax.css';
     </style>
+    <link rel="shortcut icon" href="../favicon.ico" />
     <meta content='Natural Language Processing Class' name='subject'/>
     <!--<link href='images/favicon.png' rel='shortcut icon'>-->
   </head>
@@ -269,7 +270,7 @@
 
 <h3 id='case_classes'>Case Classes</h3>
 
-<p>Case classes are syntactic sugar for classes with a few methods pre-specified for convenience. These include <code>equals</code> and <code>hashCode</code>, as well as static methods <code>apply</code> (so that the <code>new</code> keyword is not needed for construction) and <code>unapply</code> (for pattern matching). Case class constructor args are also public by default. Case classes are not allowed to be extended. Otherwise, they are just like normal classes.</p>
+<p>Case classes are syntactic sugar for classes with a few methods pre-specified for convenience. These include <code>toString</code>, <code>equals</code>, and <code>hashCode</code>, as well as static methods <code>apply</code> (so that the <code>new</code> keyword is not needed for construction) and <code>unapply</code> (for pattern matching). Case class constructor args are also public by default. Case classes are not allowed to be extended. Otherwise, they are just like normal classes.</p>
 <div class='highlight'><pre><code class='scala'><span class='k'>case</span> <span class='k'>class</span> <span class='nc'>G</span><span class='o'>(</span><span class='n'>i</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>,</span> <span class='n'>j</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span> <span class='o'>{</span>
   <span class='k'>def</span> <span class='n'>sum</span> <span class='k'>=</span> <span class='n'>i</span> <span class='o'>+</span> <span class='n'>j</span>
 <span class='o'>}</span>
@@ -336,7 +337,7 @@
 </code></pre></div>
 <h2 id='collections'>Collections</h2>
 
-<p>The Scala collections framework is pretty <a href='http://www.scala-lang.org/docu/files/collections-api/collections.html'>extensive</a>. But for now, I&#8217;ll just introduce the three most basic collections:</p>
+<p>The Scala collections framework is pretty <a href='http://www.scala-lang.org/docu/files/collections-api/collections.html'>extensive</a>. But for now, I&#8217;ll just introduce the three most important collections:</p>
 
 <h3 id='vector'>Vector</h3>
 
@@ -358,7 +359,7 @@
 </code></pre></div>
 <h3 id='map'>Map</h3>
 
-<p>A <code>Map[K,V]</code> is a associative array or dictionary type mapping elements of type <code>K</code> to elements of type <code>V</code>. Values can be accessed through their keys.</p>
+<p>A <code>Map[K,V]</code> is an associative array or dictionary type mapping elements of type <code>K</code> to elements of type <code>V</code>. Values can be accessed through their keys.</p>
 <div class='highlight'><pre><code class='scala'><span class='n'>scala</span><span class='o'>&gt;</span> <span class='k'>val</span> <span class='n'>a</span> <span class='k'>=</span> <span class='nc'>Map</span><span class='o'>(</span><span class='mi'>1</span> <span class='o'>-&gt;</span> <span class='s'>&quot;one&quot;</span><span class='o'>,</span> <span class='mi'>2</span> <span class='o'>-&gt;</span> <span class='s'>&quot;two&quot;</span><span class='o'>,</span> <span class='mi'>3</span> <span class='o'>-&gt;</span> <span class='s'>&quot;three&quot;</span><span class='o'>)</span>
 <span class='n'>a</span><span class='k'>:</span> <span class='kt'>Map</span><span class='o'>[</span><span class='kt'>Int</span>,<span class='kt'>String</span><span class='o'>]</span> <span class='k'>=</span> <span class='nc'>Map</span><span class='o'>(</span><span class='mi'>1</span> <span class='o'>-&gt;</span> <span class='n'>one</span><span class='o'>,</span> <span class='mi'>2</span> <span class='o'>-&gt;</span> <span class='n'>two</span><span class='o'>,</span> <span class='mi'>3</span> <span class='o'>-&gt;</span> <span class='n'>three</span><span class='o'>)</span>
 
@@ -480,7 +481,7 @@
 
 <h3 id='firstclass_functions'>First-class functions</h3>
 
-<p>One of the most important characteristics of function programming is that functions are first-class members of the language. This means that they can be stored in variables and, more importantly, passed as arguments to other functions.</p>
+<p>One of the most important characteristics of functional programming is that functions are first-class members of the language. This means that they can be stored in variables and, more importantly, passed as arguments to other functions.</p>
 
 <p>To facilitate these kinds of uses, Scala has nice syntax for defining anonymous functions. In Scala, the symbol <code>=&gt;</code> is used to write lambda functions:</p>
 <div class='highlight'><pre><code class='scala'><span class='k'>val</span> <span class='n'>add1a</span> <span class='k'>=</span> <span class='o'>(</span><span class='n'>x</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span> <span class='k'>=&gt;</span> <span class='n'>x</span> <span class='o'>+</span> <span class='mi'>1</span>                 <span class='c1'>// arg type declared</span>
