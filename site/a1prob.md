@@ -281,15 +281,15 @@ By manipulating the notation, show that the two models are identical (i.e., `\( 
 
     The expression  
 
-    (A) `\( p(Do) \cdot p(you \mid Do) \cdot p(think \mid Do, you) \)`  
-    (B) `\( p(Do \mid <s>) \cdot p(you \mid <s>; Do) \cdot p(think \mid Do; you) \cdot p(</s> \mid you, think) \)`  
-    (C) `\( p(Do \mid <s>) \cdot p(you \mid <s>; Do) \cdot p(think \mid o; you) \)`  
+    (A)&nbsp; `\( p(\text{Do}) \cdot p(\text{you} \mid \text{Do}) \cdot p(\text{think} \mid \text{Do}, \text{you}) \)`  
+    (B)&nbsp; `\( p(\text{Do} \mid \text{<s>}) \cdot p(\text{you} \mid \text{<s>}, \text{Do}) \cdot p(\text{think} \mid \text{Do}, \text{you}) \cdot p(\text{</s>} \mid \text{you}, \text{think}) \)`  
+    (C)&nbsp; `\( p(\text{Do} \mid \text{<s>}) \cdot p(\text{you} \mid \text{<s>}, \text{Do}) \cdot p(\text{think} \mid \text{Do}, \text{you}) \)`  
 
     represents the probability that
 
-    (1) the first complete sentence you hear is `Do you think` (as in, "D'ya think?")  
-    (2) the first 3 words you hear are `Do you think`  
-    (3) the first complete sentence you hear starts with `Do you think`  
+    (1)&nbsp; the first complete sentence you hear is `Do you think` (as in, "D'ya think?")  
+    (2)&nbsp; the first 3 words you hear are `Do you think`  
+    (3)&nbsp; the first complete sentence you hear starts with `Do you think`  
 
     Explain your answers briefly. Which quantity is `\( p(\vec{w}) \)`? 
 
