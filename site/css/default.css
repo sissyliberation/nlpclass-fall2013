@@ -14,6 +14,7 @@
  * under the License.
  */
 
+code.has-jax {font: inherit; font-size: 100%; background: inherit; border: inherit;}
 
 body {
   background-color: #fff;
@@ -118,6 +119,19 @@ th, thead td {
   background-color: #669966;
   color: #ffffff;
   text-align: left;
+}
+
+table.simple {
+  border: 1px solid #D8D8D8;
+}
+
+table.simple th {
+  font-weight: bold;
+  border: 1px solid #D8D8D8;
+}
+
+table.simple td {
+  border: 1px solid #D8D8D8;
 }
 
 
