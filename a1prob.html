@@ -9,6 +9,23 @@
     <link rel="shortcut icon" href="favicon.ico" />
     <meta content='Natural Language Processing Class' name='subject'/>
     <!--<link href='images/favicon.png' rel='shortcut icon'>-->
+
+    <!-- MathJax Section -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+      MathJax.Hub.Config({
+        tex2jax: {
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+      });
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+
   </head>
   <body>
     <div id='wrap'>
@@ -34,6 +51,7 @@
           </li>
           <li>Assignments
             <ol class="toc">
+              <li><a href='a0programming.html'>#0 - Programming</a></li>
               <li><a href='a1prob.html'>#1 - Probability</a></li>
               <li><a href='a2classification.html'>#2 - Classification</a></li>
             </ol>
@@ -48,46 +66,321 @@
       </div>
       <div id='content'>
         <h1>Assignment 1 - Probability</h1>
-        <ol class="toc"></ol>
+        <ol class="toc"><li><a href="#problem_1_33_points_total_3_points_per_subproblem">Problem 1: 33 points total (3 points per subproblem)</a></li><li><a href="#problem_2_15_points">Problem 2: 15 points</a></li><li><a href="#problem_3_15_points">Problem 3: 15 points</a></li><li><a href="#problem_4_7_points">Problem 4: 7 points</a></li><li><a href="#problem_5_15_points">Problem 5: 15 points</a></li><li><a href="#problem_6_15_points">Problem 6: 15 points</a></li></ol>
         <p><strong>Due: Monday, February 7, 12pm</strong></p>
 
-<p>This assignment is based on problems 1-5 of <a href='http://www.cs.jhu.edu/~jason/'>Jason Eisner</a>&#8217;s language modeling homework plus a small programming problem (problem 6). The first thing to do is to <a href='https://18d120ec-a-e22e9223-s-sites.googlegroups.com/a/utcompling.com/nlp-s11/assignments/homework-1/eisner_lm_homework.pdf?attachauth=ANoY7crnvOj8DTMuEPniMbpaM6TsNW7G1t807GXUnn8-rZO14f7G_L8KTzU4c0c5E5rhcL0WVmS_yyfTN5B045b9SyrXABL8vTbH9ydSWRFcO8PbwlgbDqSbmYKa6VQk4evqMOfM12ArQ9VzhWd-SeHA6xkhiMFxULD7bAUkY5_bb3yIMj10NSm5lnUo_xIpoJy9kv8v6C2lh3sztweVkqhRJy0XfT0rCNbU8lJfp5RayzYAx0yLMDKeLfTrVQBYRoEnBaFwzr_P&amp;attredirects=0'>download the PDF of the homework</a>. Many thanks to Jason E for making this and other materials for teaching NLP available!</p>
-
-<p>Work through problems 1-5 and hand in your written solutions for this homework in class. Problem 6 asks you to write a small program, which you will submit on Blackboard.</p>
-
-<p>A few notes:</p>
+<p>This assignment is based on problems 1-5 of <a href='http://www.cs.jhu.edu/~jason/'>Jason Eisner</a>&#8217;s <a href='https://18d120ec-a-e22e9223-s-sites.googlegroups.com/a/utcompling.com/nlp-s11/assignments/homework-1/eisner_lm_homework.pdf?attachauth=ANoY7crnvOj8DTMuEPniMbpaM6TsNW7G1t807GXUnn8-rZO14f7G_L8KTzU4c0c5E5rhcL0WVmS_yyfTN5B045b9SyrXABL8vTbH9ydSWRFcO8PbwlgbDqSbmYKa6VQk4evqMOfM12ArQ9VzhWd-SeHA6xkhiMFxULD7bAUkY5_bb3yIMj10NSm5lnUo_xIpoJy9kv8v6C2lh3sztweVkqhRJy0XfT0rCNbU8lJfp5RayzYAx0yLMDKeLfTrVQBYRoEnBaFwzr_P&amp;attredirects=0'>language modeling homework</a> plus a small programming problem (problem 6). Many thanks to Jason E. for making this and other materials for teaching NLP available!</p>
 
 <ul>
-<li>You will not do the entire homework &#8211; only problems 1-5 on pages 1-8. (You&#8217;ll be seeing some of the other problems later.)</li>
+<li>Answers to problems 1-5 should be hand-written or printed and handed in before class.</li>
 
-<li>The Eisner homework states you may use any programming language. For this class, you must use Scala.</li>
-
-<li>The Eisner homework states you should put your answers in a README file. You should not do this &#8211; you should write down or print out your answers to 1-5 and hand in a physical copy on the due date. IMPORTANT: Be sure to write legibly so that we can read it!</li>
-
-<li>If you have any questions about any of this, don&#8217;t hesitate to ask.</li>
+<li>Problem 6 asks you to write a small program in Scala, which you will submit through GitHub.</li>
 </ul>
 
 <p>You are welcome to consult books that cover probability theory, such as DeGroot and Schervish or the appendices of <a href='http://www.amazon.com/Introduction-Algorithms-Thomas-H-Cormen/dp/0262032937'>Cormen et al</a>, as well as the slides on probability from Dickinson, Eisner and Martin. Also, usage of Wikipedia in conjunction with the course readings, notes and assignments is acceptable (especially if you learn something from it). For this assignment, it may be helpful to consult the following: <a href='http://en.wikipedia.org/wiki/Algebra_of_sets'>Algebra of sets</a> (especially if you&#8217;re rusty on set theory) and <a href='http://en.wikipedia.org/wiki/Bayes%27_theorem'>Bayes&#8217; theorem</a> which is not extensively discussed in Jurafsy &amp; Martin.</p>
 
 <p>There are 100 points total in this assignment. Point values for each problem/sub-problem are given below.</p>
 
-<p><strong>Problem 1</strong>: 33 points total (3 points per subproblem)</p>
+<h2 id='problem_1_33_points_total_3_points_per_subproblem'>Problem 1: 33 points total (3 points per subproblem)</h2>
 
-<p><strong>Problem 2</strong>: 15 points</p>
+<p>These short problems will help you get the hang of manipulating probabilities. Let <code>\( \mathcal{E} \neq \emptyset \)</code> denote the event space (it&#8217;s just a set, also known as the sample space), and <code>\( p \)</code> be a function that assigns a real number in <code>\( [0,1] \)</code> to any subset of <code>\( \mathcal{E} \)</code>. This number is called the probability of the subset.</p>
 
-<p>a. 1 b. 1 c. 4 d. 4 e. 4 f. 1</p>
+<p>You are told that <code>\( p \)</code> satisfies the following two axioms:&#160; <code>\( p(\mathcal{E})=1 \)</code>.&#160;&#160; <code>\( p(X \cup Y) = p(X) + p(Y) \)</code> provided that <code>\( X \cap Y = \emptyset \)</code>.</p>
 
-<p><strong>Problem 3</strong>: 15 points</p>
+<p>As a matter of notation, remember that the <strong>conditional probability</strong>&#160; <code>\( p(X \mid Y) \stackrel{\tiny{\mbox{def}}}{=} \frac{p(X \cap Z)}{p(Z)} \)</code>. For example, singing in the rain is one of my favorite rainy-day activities: so my ratio <code>\( p(\text{singing} \mid \text{rainy}) = \frac{p(\text{singing}~AND~\text{rainy})}{p(\text{rainy})} \)</code> is high. Here the predicate &#8220;singing&#8221; picks out the set of singing events in <code>\( \mathcal{E} \)</code>, &#8220;rainy&#8221; picks out the set of rainy events, and the conjoined predicate &#8220;singing AND rainy&#8221; picks out the interesction of these two sets&#8212;that is, all the vents that are both singing AND rainy.</p>
 
-<p>a. 1 b. 4 c. 10 (2 pts per subproblem)</p>
+<ol>
+<li>
+<p>Prove from the axioms that if <code>\( Y \subseteq Z \)</code>, then <code>\( p(Y) \leq p(Z) \)</code>.</p>
 
-<p><strong>Problem 4</strong>: 7 points</p>
+<p>You may use any and all set manipulations you like. Remember that <code>\( p(A) = 0 \)</code> does not imply that <code>\( A = \emptyset \)</code> (why not?), and similarly, that <code>\( p(B) = p(C) \)</code> does not imply that <code>\( B = C \)</code> (even if <code>\( B \subseteq C \)</code>).</p>
+</li>
 
-<p><strong>Problem 5</strong>: 15 points</p>
+<li>
+<p>Use the above fact to prove that conditional probabilities <code>\( p(X \mid Z) \)</code>, just like ordinary probabilities, always fall in the range <code>\( [0,1]] \)</code>.</p>
+</li>
 
-<p>a. 4 b. 5 c. 3 d. 3</p>
+<li>
+<p>Prove from the axioms that <code>\( p(\emptyset) = 0 \)</code>.</p>
+</li>
 
-<p><strong>Problem 6</strong>: 15 points This problem is very small programming exercise intended to give you a small amount of practice counting things in text and to make sure you are comfortable running a program on the Unix command line.</p>
+<li>
+<p>Let <code>\( \bar{X} \)</code> denote <code>\( \mathcal{E} - X \)</code>. Prove from the axioms that <code>\( p(X) = 1-p(\bar{X}) \)</code>. For example, <code>\( p(\text{singing} = 1 - p(\text{NOT singing} \)</code>.</p>
+</li>
+
+<li>
+<p>Prove from the axioms that <code>\( p(\text{singing AND rainy} \mid \text{rainy} = p(\text{singing} \mid \text{rainy} \)</code>.</p>
+</li>
+
+<li>
+<p>Prove from the axioms that <code>\( p(X \mid Y) = 1 - p(\bar{X} \mid Y \)</code>. For example, <code>\( p(\text{singing} \mid \text{rainy}) = 1 - p(\text{NOT singing} \mid \text{rainy}\)</code>. This is a generalization of (1.4).</p>
+</li>
+
+<li>
+<p>Simplify: <code>\( (p(X \mid Y) \cdot p(Y) + p(X \mid \bar{Y}) \cdot p(\bar{Y})) \cdot p(\bar{Z} \mid X) / p(\bar{Z}) \)</code></p>
+</li>
+
+<li>
+<p>Under what conditions is it true that <code>\( p(\text{singing OR rainy} = p(\text{singing}) + p(\text{rainy}) \)</code>?</p>
+</li>
+
+<li>
+<p>Under what conditions is it true that <code>\( p(\text{singing AND rainy} = p(\text{singing}) \cdot p(\text{rainy}) \)</code>?</p>
+</li>
+
+<li>
+<p>Suppose you know that <code>\( p(X \mid Y) = 0 \)</code>. Prove that <code>\( p(X \mid Y,Z) = 0 \)</code>.</p>
+</li>
+
+<li>
+<p>Suppose you know that <code>\( p(W \mid Y) = 1 \)</code>. Prove that <code>\( p(W \mid Y,Z) = 1 \)</code>.</p>
+</li>
+</ol>
+
+<h2 id='problem_2_15_points'>Problem 2: 15 points</h2>
+
+<p>All cars are either red or blue. The witness claimed the car that hit the pedestrian was blue. Witnesses are bleieved to be about 80% reliable in reporting car color (regardless of the actual car color). But only 10% of all cars are blue.</p>
+
+<ol>
+<li>
+<p>(1 point) Write an equation relating the following quantities and perhaps other quantities.</p>
+
+<p><code>\[
+     \begin{align}
+     &amp; p(true = \text{blue})  \\
+     &amp; p(true = \text{blue} \mid claimed = \text{blue})  \\
+     &amp; p(claimed = \text{blue} \mid true = \text{blue})  
+     \end{align}
+ \]</code></p>
+
+<p>Reminder: Here, <em>claimed</em> and <em>true</em> are <em>random variables</em>, which means that they are functions over some outcome space. For example, the probability that <em>claimed</em> = blue really means the probability of getting an outcome <em>x</em> such that <em>claimed</em>(x) = blue. We are implicitly assumping that the space of outcomes <em>x</em> is something like the set of witnessed car accidents.</p>
+</li>
+
+<li>
+<p>(1 point) Match the three probabilites above with the following terms: <em>prior probablity</em>, <em>likelihood of the evidence</em>, <em>posterior probability</em>.</p>
+</li>
+
+<li>
+<p>(4 points) Give the values of all three probabilities. (Hint: Use Bayes&#8217; Theorem.) Which probability should the judge care about?</p>
+</li>
+
+<li>
+<p>(4 points) Let&#8217;s suppose the numbers 80% and 10% are specific to Baltimore. So in the previous problem, you were implicitly using the following more general version of Bayes&#8217; Theorem:</p>
+
+<p><code>\[
+ p(A \mid B,Y) = \frac{
+     p(B \mid A,Y) \cdot p(A \mid Y)
+ }{
+     p(B \mid Y)
+ }
+ \]</code></p>
+
+<p>where <em>Y</em> is <em>city</em> = Baltimore. Just as (1.6) generalized (1.4), by adding a &#8220;background&#8221; condition <em>Y</em>, this version generalizes Bayes&#8217; Theorem. Carefully prove it.</p>
+</li>
+
+<li>
+<p>(4 points) Now prove the more detailed version</p>
+
+<p><code>\[
+ p(A \mid B,Y) = \frac{
+     p(B \mid A,Y) \cdot p(A \mid Y)
+ }{
+     p(B \mid A,Y) \cdot p(A \mid Y) + p(B \mid \bar{A},Y) \cdot p(\bar{A} \mid Y)
+ }
+ \]</code></p>
+</li>
+
+<li>
+<p>(1 point) Write out the equation given in question (2.5) with <em>A</em>, <em>B</em>, and <em>Y</em> replaced by specific propositions from the red-and-blue car problem. For example, <em>Y</em> is &#8221;<em>city</em> = Baltimore&#8221; (or just &#8220;Baltimore&#8221; for short). Now replace the probabilities with actual numbers from the problem, such as 0.8.</p>
+
+<p>Yeah, it&#8217;s a mickeymouse problem, but I promise that writing out a real case of this important formula won&#8217;t kill you, and may even be good for you (like, on an exam).</p>
+</li>
+</ol>
+
+<h2 id='problem_3_15_points'>Problem 3: 15 points</h2>
+
+<p>Beavers can make three cries, which they use to communicate. <code>bwa</code> and <code>bwee</code> usually mean something like &#8220;come&#8221; and &#8220;go&#8221; respectively, and are used during dam maintenance. <code>kiki</code> means &#8220;watch out!&#8221; The following <strong>conditional probability table</strong> shows the probability of the various cries in different situations.</p>
+<table style='width: 60%;' class='simple'>
+    <tr>
+        <td><i>p</i>( <i>cry</i> | <i>situation</i> )</td>
+        <td>Preditor!</td>
+        <td>Timber!</td>
+        <td>I need help!</td>
+    </tr>
+    <tr>
+        <td style='text-align: right'><i>bwa</i></td>
+        <td>0</td>
+        <td>0.1</td>
+        <td>0.8</td>
+    </tr>
+    <tr>
+        <td style='text-align: right'><i>bwee</i></td>
+        <td>0</td>
+        <td>0.6</td>
+        <td>0.1</td>
+    </tr>
+    <tr>
+        <td style='text-align: right'><i>kiki</i></td>
+        <td>1.0</td>
+        <td>0.3</td>
+        <td>0.1</td>
+    </tr>
+</table>
+<ol>
+<li>
+<p>(1 point) Notice that each column of the above table sums to 1. Write an equation stating this, in the form <code>\( \sum_{variable} p(\cdots) = 1 \)</code></p>
+</li>
+
+<li>
+<p>(4 point) A certain colony of beavers has already cut down all the trees around their dam. As there are no more to chew, <em>p(timber)</em> = 0. Getting rid of the trees has also reduced <em>p(predator)</em> to 0.2. These facts are shown in the following <strong>joint probability table</strong>. Fill in the rest of the table, using the previous table and the laws of probability. (Note that the meaning of each table is given in its top left cell.)</p>
+<table style='width: 70%;' class='simple'>
+     <tr>
+         <td><i>p</i>( <i>cry</i> | <i>situation</i> )</td>
+         <td>Preditor!</td>
+         <td>Timber!</td>
+         <td>I need help!</td>
+         <td>TOTAL</td>
+     </tr>
+     <tr>
+         <td style='text-align: right'><i>bwa</i></td>
+         <td />
+         <td />
+         <td />
+         <td />
+     </tr>
+     <tr>
+         <td style='text-align: right'><i>bwee</i></td>
+         <td />
+         <td />
+         <td />
+         <td />
+     </tr>
+     <tr>
+         <td style='text-align: right'><i>kiki</i></td>
+         <td />
+         <td />
+         <td />
+         <td />
+     </tr>
+     <tr>
+         <td style='text-align: '>TOTAL</td>
+         <td>0.2</td>
+         <td>0</td>
+         <td />
+         <td />
+     </tr>
+ </table></li>
+
+<li>
+<p>(10 point, 2 pts per subproblem) A beaver in this colony cries <code>kiki</code>. Given this cry, other beavers try to figure out the probability that there is a predator</p>
+
+<p>i. This probability is written as: <em>p</em>(_________)<br /> ii. It can be rewritten without the | symbol as: _________<br /> iii. Using the above tables, its value is: _________<br /> iv. Alternatively, Bayes&#8217; Theorem allows you to express this probability as: <code>\[ \frac{
+         p(\_\_\_\_) \cdot p(\_\_\_\_)
+     }{
+         p(\_\_\_\_) \cdot p(\_\_\_\_) + p(\_\_\_\_) \cdot p(\_\_\_\_) + p(\_\_\_\_) \cdot p(\_\_\_\_)
+     }
+ \]</code><br /> v. Using the above tables, the value of this is:<br /> <code>\[ \frac{
+         p(\_\_\_\_) \cdot p(\_\_\_\_)
+     }{
+         p(\_\_\_\_) \cdot p(\_\_\_\_) + p(\_\_\_\_) \cdot p(\_\_\_\_) + p(\_\_\_\_) \cdot p(\_\_\_\_)
+     }
+ \]</code><br /> This should give the same result as in part iii., and it should be clear that they are really the same computation&#8212;by constructing table (b) and doing part iii., you were <em>implicitly</em> using Bayes&#8217; Theorem. (I told you it was a trivial theorem!)</p>
+</li>
+</ol>
+
+<h2 id='problem_4_7_points'>Problem 4: 7 points</h2>
+
+<p><img alt='Rube Goldbergs pencil sharpener' src='images/rube_goldberg_pencil_sharpener.jpg' /></p>
+
+<p>Rube Goldberg gets his think-tank working and evolves the simplified pencil-sharpener. Open window (A) and y kite (B). String (C) lifts small door (D) allowing moths (E) to escape and eat red flannel shirt (F). As weight of shirt becomes less, shoe (G) steps on switch (H) which heats electric iron (I) and burns hole in pants (J). Smoke (K) enters hole in tree (L), smoking out opossum (M) which jumps into basket (N), pulling rope (O) and lifting cage (P), allowing woodpecker (Q) to chew wood from pencil (R), exposing lead. Emergency knife (S) is always handy in case opossum or the woodpecker gets sick and can&#8217;t work.</p>
+
+<p>1. <code>\( p(\neg \text{shoe} \mid \neg \text{nail}) = 1 \)</code>&#160;&#160; <em>For want of a nail the shoe was lost</em>,<br />2. <code>\( p(\neg \text{horse} \mid \neg \text{shoe}) = 1 \)</code>&#160;&#160; <em>For want of a shoe the horse was lost</em>,<br />3. <code>\( p(\neg \text{race} \mid \neg \text{horse}) = 1 \)</code>&#160;&#160; <em>For want of a horse the race was lost</em>,<br />4. <code>\( p(\neg \text{fortune} \mid \neg \text{race}) = 1 \)</code>&#160;&#160; <em>For want of a race the fortune was lost</em>,</p>
+<hr />
+<p>5. <code>\( p(\neg \text{fortune} \mid \neg \text{nail}) = 1 \)</code> And all for the want of a horseshoe nail.</p>
+
+<p>Show carefully that (e) follows from (a)&#8211;(d). Hint: Consider <code>\[
+    p(\neg \text{fortune}, \neg \text{race}, \neg \text{horse}, \neg \text{shoe} \mid \neg \text{nail}),
+\]</code> as well as the &#8220;chain rule&#8221; and problems (1.1), (1.2), and (1.11).</p>
+
+<p><em>Note:</em> The <code>\( \neg \)</code> symbol denotes the boolean operator NOT.</p>
+
+<p><em>Note:</em> This problem is supposed to convince you that logic is just a special case of probability theory.</p>
+
+<p><em>Note:</em> Be glad I didn&#8217;t ask you to prove the correct operation of the pencil sharpener!</p>
+
+<h2 id='problem_5_15_points'>Problem 5: 15 points</h2>
+
+<p>A <strong>language model</strong> is a probability function <em>p</em> that assigns probabilities to word sequences such as <code>\( \vec{w} = \)</code> (<code>i</code>, <code>love</code>, <code>new york</code>). Think of <code>\( p(\vec{w}) \)</code> as the probability that if you turned on a radio at an arbitrary moment, its next four words would be &#8220;i love new york&#8221;&#8212;perhaps in the middle of a longer sentence such as &#8220;the latest bumper sticker says, i love new york more than ever.&#8221; We often want to consider <code>\( p(\vec{w}) \)</code> to decide whether we like <code>\( p(\vec{w}) \)</code> better than an alternative sequence.</p>
+
+<p>Formally, each element <code>\( W \in \mathcal{E} \)</code> of the underlying event space is a possible value of the <em>infinite</em> sequence of words that will come out of the radio after you turn it on. <code>\( p(\vec{w}) \)</code> is really an abbreviation for <code>\( p(\text{prefix}(W,|\vec{w}|) = \vec{w} \)</code>, where <code>\( |\vec{w}|) \)</code> denotes the length of the sequence <code>\( p(\vec{w}) \)</code>. Thus, <em>p</em>(<code>i</code>,<code>love</code>,<code>new</code>,<code>york</code>) is the total probability of all infinite word sequences <em>W</em> that begin &#8220;i love new york &#8230;.&#8221;</p>
+
+<p>Suppose <code>\( p(\vec{w}) = w_1 w_2 \dots w_n \)</code> (a sequence of <em>n</em> words). A <strong>trigram language model</strong> defines <code>\[ 
+  p(\vec{w}) \stackrel{\tiny{\mbox{def}}}{=} p(w_1) \cdot 
+                                             p(w_2 \mid w_1) \cdot 
+                                             p(w_3 \mid w_1, w_2) \cdot 
+                                             p(w_4 \mid w_2, w_3) \cdots
+                                             p(w_n \mid w_{n-2}, w_{n-1})
+\]</code> on the assumption that the sequence was generated in the order <code>\( w_1, w_2, w_3, \dots \)</code> (&#8220;from left to right&#8221;) with each word chosen in a way dependent on the previous two words. (But the first word <code>\( w_1 \)</code> is not dependent on anything, since we turned on the radio at a arbitrary moment.)</p>
+
+<ol>
+<li>
+<p>(4 points) Expand the above definition of <code>\( p(\vec{w}) \)</code> using naive estimates of the parameters, such as <code>\[
+   \begin{align}
+       p(w_4 \mid w_2, w_3) \stackrel{\tiny{\mbox{def}}}{=} &amp; \frac{c(w_2 w_3 w_4)}{c(w_2 w_3)}
+   \end{align}
+ \]</code> where <code>\( c(w_2 w_3 w_4) \)</code> denotes the count of times the trigram <code>\( w_2 w_3 w_4 \)</code> was observed in a training corpus.</p>
+
+<p><em>Remark:</em> Naive parameter estimates of this sort are called &#8220;maximum-likelihood estimates&#8221; (MLE). They have the advantage that they maximize the probability (equivalently, minimize the perplexity) of the training data. But they will generally perform badly on test data, unless the training data were so abundant as to include all possible trigrams many times. This is why we must smooth these estimates in practice.</p>
+</li>
+
+<li>
+<p>(5 points) One could also define a kind of reversed trigram language model <code>\( p_{reversed} \)</code> that instead assumed the words were generated in reverse order (&#8220;from right to left&#8221;): <code>\[ 
+\begin{align}
+p_{reversed}(\vec{w}) \stackrel{\tiny{\mbox{def}}}{=}&amp;p(w_n) \cdot
+                                                     p(w_{n-1} | w_n) \cdot
+                                                     p(w_{n-2} | w_{n-1} w_n) \cdot
+                                                     p(w_{n-3} | w_{n-2} w_{n-1}) \\
+                                                    &amp;\cdots
+                                                     p(w_2 | w_3 w_4) \cdot
+                                                     p(w_1 | w_2 w_3)
+\end{align}
+\]</code> By manipulating the notation, show that the two models are identical (i.e., <code>\( p(\vec{w}) = p_{reversed}(\vec{w}) \)</code> for any <code>\( \vec{w} \)</code> provided that both models use MLE parameters estimated from the same training data (see problem (5.1))).</p>
+</li>
+
+<li>
+<p>(3 points) In the data you will use in questions 6 and 14, sentences are delimited by <code>&lt;s&gt;</code> at the start and <code>&lt;/s&gt;</code> at the end. For example, the following data set consists of a sequence of 3 sentences:</p>
+
+<pre><code> &lt;s&gt; do you think so &lt;/s&gt; &lt;s&gt; yes &lt;/s&gt; &lt;s&gt; at least i thought so &lt;/s&gt;</code></pre>
+
+<p>Given English training data, the probability of</p>
+
+<pre><code> &lt;s&gt; do you think the &lt;/s&gt;</code></pre>
+
+<p>should be extremely low under any good language model. Why? In the case of the trigram model, which parameter or parameters are responsible for making this probability low?</p>
+</li>
+
+<li>
+<p>(3 points)</p>
+
+<p>You turn on the radio as it is broadcasting an interview. Assuming a trigram model, match up expressions (A), (B), (C) with descriptions (1), (2), (3):</p>
+
+<p>The expression</p>
+
+<p>(A)&#160; <code>\( p(\text{Do}) \cdot p(\text{you} \mid \text{Do}) \cdot p(\text{think} \mid \text{Do}, \text{you}) \)</code><br /> (B)&#160; <code>\( p(\text{Do} \mid \text{&lt;s&gt;}) \cdot p(\text{you} \mid \text{&lt;s&gt;}, \text{Do}) \cdot p(\text{think} \mid \text{Do}, \text{you}) \cdot p(\text{&lt;/s&gt;} \mid \text{you}, \text{think}) \)</code><br /> (C)&#160; <code>\( p(\text{Do} \mid \text{&lt;s&gt;}) \cdot p(\text{you} \mid \text{&lt;s&gt;}, \text{Do}) \cdot p(\text{think} \mid \text{Do}, \text{you}) \)</code></p>
+
+<p>represents the probability that</p>
+
+<p>(1)&#160; the first complete sentence you hear is <code>Do you think</code> (as in, &#8221;D&#8217;ya think?&#8221;)<br /> (2)&#160; the first 3 words you hear are <code>Do you think</code><br /> (3)&#160; the first complete sentence you hear starts with <code>Do you think</code></p>
+
+<p>Explain your answers briefly. Which quantity is <code>\( p(\vec{w}) \)</code>?</p>
+
+<p><em>Remark:</em> The distinctions matter because &#8220;Do&#8221; is more probable at the start of an English sentence than in the middle, and because (3) describes a larger event set than (1) does.</p>
+</li>
+</ol>
+
+<h2 id='problem_6_15_points'>Problem 6: 15 points</h2>
+
+<p>This problem is very small programming exercise intended to give you a small amount of practice counting things in text and to make sure you are comfortable running a program on the Unix command line.</p>
 
 <p>First, download the text of Jane Austen&#8217;s book <a href='http://www.gutenberg.org/files/105/105.txt'>Persuasion</a> from Project Gutenberg. Then, use the tr command as follows in order to create word-per-line version containing only alphabetic characters:</p>
 
@@ -103,7 +396,11 @@
 
 <p>Call your program <strong>compute_bigram.scala</strong>. It should take the file <strong>105_wpl.txt</strong> as its first command-line argument, and produce the following output</p>
 
-<p>$ python compute_bigram.py 105_wpl.txt p(the|of) = 0.16878742515 p(the|and) = 0.0399002493766 We will of course test these values on another text, so you should make sure to actually compute the values and not just print them out…</p>
+<pre><code>$ python compute_bigram.py 105_wpl.txt
+p(the|of) = 0.16878742515
+p(the|and) = 0.0399002493766</code></pre>
+
+<p>We will of course test these values on another text, so you should make sure to actually compute the values and not just print them out…</p>
 
 <p>Here&#8217;s a stub Python script which deals with the command line args to get you going:</p>
 
