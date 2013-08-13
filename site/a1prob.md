@@ -5,22 +5,18 @@ title: Assignment 1 - Probability
 
 **Due: Monday, February 7, 12pm**
 
-This assignment is based on problems 1-5 of [Jason Eisner](http://www.cs.jhu.edu/~jason/)'s language modeling homework plus a small programming problem (problem 6). The first thing to do is to [download the PDF of the homework](https://18d120ec-a-e22e9223-s-sites.googlegroups.com/a/utcompling.com/nlp-s11/assignments/homework-1/eisner_lm_homework.pdf?attachauth=ANoY7crnvOj8DTMuEPniMbpaM6TsNW7G1t807GXUnn8-rZO14f7G_L8KTzU4c0c5E5rhcL0WVmS_yyfTN5B045b9SyrXABL8vTbH9ydSWRFcO8PbwlgbDqSbmYKa6VQk4evqMOfM12ArQ9VzhWd-SeHA6xkhiMFxULD7bAUkY5_bb3yIMj10NSm5lnUo_xIpoJy9kv8v6C2lh3sztweVkqhRJy0XfT0rCNbU8lJfp5RayzYAx0yLMDKeLfTrVQBYRoEnBaFwzr_P&attredirects=0). Many thanks to Jason E for making this and other materials for teaching NLP available!
+This assignment is based on problems 1-5 of [Jason Eisner](http://www.cs.jhu.edu/~jason/)'s [language modeling homework](https://18d120ec-a-e22e9223-s-sites.googlegroups.com/a/utcompling.com/nlp-s11/assignments/homework-1/eisner_lm_homework.pdf?attachauth=ANoY7crnvOj8DTMuEPniMbpaM6TsNW7G1t807GXUnn8-rZO14f7G_L8KTzU4c0c5E5rhcL0WVmS_yyfTN5B045b9SyrXABL8vTbH9ydSWRFcO8PbwlgbDqSbmYKa6VQk4evqMOfM12ArQ9VzhWd-SeHA6xkhiMFxULD7bAUkY5_bb3yIMj10NSm5lnUo_xIpoJy9kv8v6C2lh3sztweVkqhRJy0XfT0rCNbU8lJfp5RayzYAx0yLMDKeLfTrVQBYRoEnBaFwzr_P&attredirects=0) plus a small programming problem (problem 6). Many thanks to Jason E. for making this and other materials for teaching NLP available!
 
-Work through problems 1-5 and hand in your written solutions for this homework in class. Problem 6 asks you to write a small program, which you will submit on Blackboard. 
-
-A few notes:
-
-* You will not do the entire homework -- only problems 1-5 on pages 1-8. (You'll be seeing some of the other problems later.)
-* The Eisner homework states you may use any programming language. For this class, you must use Scala.
-* The Eisner homework states you should put your answers in a README file. You should not do this -- you should write down or print out your answers to 1-5 and hand in a physical copy on the due date. IMPORTANT: Be sure to write legibly so that we can read it!
-* If you have any questions about any of this, don't hesitate to ask.
+* Answers to problems 1-5 should be hand-written or printed and handed in before class. 
+* Problem 6 asks you to write a small program in Scala, which you will submit through GitHub. 
 
 You are welcome to consult books that cover probability theory, such as DeGroot and Schervish or the appendices of [Cormen et al](http://www.amazon.com/Introduction-Algorithms-Thomas-H-Cormen/dp/0262032937), as well as the slides on probability from Dickinson, Eisner and Martin. Also, usage of Wikipedia in conjunction with the course readings, notes and assignments is acceptable (especially if you learn something from it). For this assignment, it may be helpful to consult the following: [Algebra of sets](http://en.wikipedia.org/wiki/Algebra_of_sets) (especially if you're rusty on set theory) and [Bayes' theorem](http://en.wikipedia.org/wiki/Bayes%27_theorem) which is not extensively discussed in Jurafsy & Martin.
 
 There are 100 points total in this assignment. Point values for each problem/sub-problem are given below.
 
-**Problem 1**: 33 points total (3 points per subproblem)
+
+
+## Problem 1: 33 points total (3 points per subproblem)
 
 These short problems will help you get the hang of manipulating probabilities. Let `\( \mathcal{E} \neq \emptyset \)` denote the event space (it's just a set, also known as the sample space), and `\( p \)` be a function that assigns a real number in `\( [0,1] \)` to any subset of `\( \mathcal{E} \)`. This number is called the probability of the subset.
 
@@ -53,7 +49,7 @@ As a matter of notation, remember that the **conditional probability**&nbsp; `\(
 11.  Suppose you know that `\( p(W \mid Y) = 1 \)`.  Prove that `\( p(W \mid Y,Z) = 1 \)`.
 
 
-**Problem 2**: 15 points
+## Problem 2: 15 points
 
 All cars are either red or blue.  The witness claimed the car that hit the pedestrian was blue.  Witnesses are bleieved to be about 80% reliable in reporting car color (regardless of the actual car color).  But only 10% of all cars are blue.
 
@@ -100,10 +96,9 @@ All cars are either red or blue.  The witness claimed the car that hit the pedes
     Yeah, it's a mickeymouse problem, but I promise that writing out a real case of this important formula won't kill you, and may even be good for you (like, on an exam).
 
 
-**Problem 3**: 15 points
+## Problem 3: 15 points
 
 Beavers can make three cries, which they use to communicate. `bwa` and `bwee` usually mean something like "come" and "go" respectively, and are used during dam maintenance. `kiki` means "watch out!" The following **conditional probability table** shows the probability of the various cries in different situations.
-
 
 <table class="simple" style="width: 60%;">
     <tr>
@@ -200,7 +195,11 @@ this, in the form `\( \sum_{variable} p(\cdots) = 1 \)`
         part iii., you were *implicitly* using Bayes' Theorem. (I told you it was a
         trivial theorem!)
 
-**Problem 4**: 7 points
+## Problem 4: 7 points
+
+![Rube Goldberg's pencil sharpener](images/rube_goldberg_pencil_sharpener.jpg)
+
+Rube Goldberg gets his think-tank working and evolves the simplified pencil-sharpener. Open window (A) and  y kite (B). String (C) lifts small door (D) allowing moths (E) to escape and eat red flannel shirt (F). As weight of shirt becomes less, shoe (G) steps on switch (H) which heats electric iron (I) and burns hole in pants (J). Smoke (K) enters hole in tree (L), smoking out opossum (M) which jumps into basket (N), pulling rope (O) and lifting cage (P), allowing woodpecker (Q) to chew wood from pencil (R), exposing lead. Emergency knife (S) is always handy in case opossum or the woodpecker gets sick and can't work.
 
 1\. `\( p(\neg \text{shoe} \mid \neg \text{nail}) = 1 \)`&nbsp;&nbsp; *For want of a nail the shoe was lost*,  
 2\. `\( p(\neg \text{horse} \mid \neg \text{shoe}) = 1 \)`&nbsp;&nbsp; *For want of a shoe the horse was lost*,  
@@ -210,24 +209,20 @@ this, in the form `\( \sum_{variable} p(\cdots) = 1 \)`
 ----
 5\. `\( p(\neg \text{fortune} \mid \neg \text{nail}) = 1 \)` And all for the want of a horseshoe nail.  
 
-![Rube Goldberg's pencil sharpener](images/rube_goldberg_pencil_sharpener.jpg)
-
-Rube Goldberg gets his think-tank working and evolves the simplified pencil-sharpener. Open window (A) and  y kite (B). String (C) lifts small door (D) allowing moths (E) to escape and eat red flannel shirt (F). As weight of shirt becomes less, shoe (G) steps on switch (H) which heats electric iron (I) and burns hole in pants (J). Smoke (K) enters hole in tree (L), smoking out opossum (M) which jumps into basket (N), pulling rope (O) and lifting cage (P), allowing woodpecker (Q) to chew wood from pencil (R), exposing lead. Emergency knife (S) is always handy in case opossum or the woodpecker gets sick and can't work.
-
 Show carefully that (e) follows from (a)--(d). Hint: Consider
 `\[
     p(\neg \text{fortune}, \neg \text{race}, \neg \text{horse}, \neg \text{shoe} \mid \neg \text{nail}),
 \]`
-as well as the \chain rule" and problems (1.1), (1.2), and (1.11).
+as well as the "chain rule" and problems (1.1), (1.2), and (1.11).
 
-*Note:* The : symbol denotes the boolean operator NOT.
+*Note:* The `\( \neg \)` symbol denotes the boolean operator NOT.
 
 *Note:* This problem is supposed to convince you that logic is just a special case of probability theory.
 
 *Note:* Be glad I didn't ask you to prove the correct operation of the pencil sharpener!
 
 
-**Problem 5**: 15 points
+## Problem 5: 15 points
 
 A **language model** is a probability function *p* that assigns probabilities to word sequences such as `\( \vec{w} = \)` (`i`, `love`, `new york`). Think of `\( p(\vec{w}) \)` as the probability that if you turned on a radio at an arbitrary moment, its next four words would be "i love new york"---perhaps in the middle of a longer sentence such as "the latest bumper sticker says, i love new york more than ever." We often want to consider `\( p(\vec{w}) \)` to decide whether we like `\( p(\vec{w}) \)` better than an alternative sequence.
 
@@ -245,7 +240,9 @@ on the assumption that the sequence was generated in the order `\( w_1, w_2, w_3
 
 1. (4 points) Expand the above definition of `\( p(\vec{w}) \)` using naive estimates of the parameters, such as
     `\[
-      p(w_4 \mid w_2, w_3) \stackrel{\tiny{\mbox{def}}}{=} \frac{c(w_2 w_3 w_4)}{c(w_2 w_3)}
+      \begin{align}
+          p(w_4 \mid w_2, w_3) \stackrel{\tiny{\mbox{def}}}{=} & \frac{c(w_2 w_3 w_4)}{c(w_2 w_3)}
+      \end{align}
     \]`
     where `\( c(w_2 w_3 w_4) \)` denotes the count of times the trigram `\( w_2 w_3 w_4 \)` was observed in a training corpus.
 
@@ -299,8 +296,7 @@ By manipulating the notation, show that the two models are identical (i.e., `\( 
 
 
 
-
-**Problem 6**: 15 points
+## Problem 6: 15 points
 
 This problem is very small programming exercise intended to give you a small amount of practice counting things in text and to make sure you are comfortable running a program on the Unix command line.
 
