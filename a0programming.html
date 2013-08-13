@@ -66,7 +66,7 @@
       </div>
       <div id='content'>
         <h1>Assignment 0 - Programming in Scala</h1>
-        <ol class="toc"><li><a href="#overview">Overview</a></li><li><a href="#part_1_getting_set_up">Part 1: Getting set up</a></li><li><a href="#part_2_reading_from_files">Part 2: Reading from files</a></li><li><a href="#part_3_removing_stopwords">Part 3: Removing stopwords</a></li></ol>
+        <ol class="toc"><li><a href="#overview">Overview</a></li><li><a href="#part_1_getting_set_up">Part 1: Getting set up</a></li><li><a href="#part_2_reading_from_files">Part 2: Reading from files</a></li><li><a href="#part_3_removing_stopwords">Part 3: Removing stopwords</a></li><li><a href="#part_4_word_count_distribution">Part 4: Word count distribution</a></li></ol>
         <p><strong>Due: Thursday, September 5, 2pm</strong></p>
 
 <p>This course will require you to complete several non-trivial programming assignments. As such, to be successful in this class you must be comfortable programming. The primary purpose of this assignment is for you to ensure that you have at least a minimum level programming competence.</p>
@@ -84,8 +84,10 @@
 
 <li>A list of files relevant to this assignment</li>
 
-<li>Any commands needed to demonstrate</li>
+<li>Any commands needed to demonstrate your programs</li>
 </ul>
+
+<p>You are highly encouraged to make your code as modular as possible, to facilitate reuse. Functions like reading a file, cleaning it up, and counting things are going to be used all the time in this course. Having easy-to-call functions for these operations in your code will serve you well.</p>
 
 <h2 id='part_1_getting_set_up'>Part 1: Getting set up</h2>
 
@@ -110,19 +112,22 @@
 <p>Write an application that does the following:</p>
 
 <ul>
-<li>Takes a file path of as a command-line argument</li>
+<li>Takes a file path of as a command-line argument.</li>
 
-<li>Removes all punctuation and numbers and lowercases all words</li>
+<li>Removes all punctuation and numbers and lowercases all words.</li>
 
-<li>Prints the total number of words in the book</li>
+<li>Prints the total number of words in the book.</li>
 
-<li>Prints each of the top 10 most frequent words along with its count and its percentage of the total</li>
+<li>Prints the number of <em>distinct</em> words in the book.</li>
+
+<li>Prints each of the top 10 most frequent words along with its count and its percentage of the total.</li>
 </ul>
 
 <p>I should be able to run your program with something like</p>
 
 <pre><code>$ sbt &quot;run-main dhg.WordCount /Users/dhg/texts/alice.txt&quot;
 Total number of words: 29353
+Number of distinct words: 3203
 Top 10 words:
 the     1804    6.15
 and     912     3.11
@@ -140,17 +145,18 @@ in      428     1.46</code></pre>
 <p>Stopwords are extremely frequent non-content words such as determiners, pronouns, and prepositions. You&#8217;ll notice that the top 10 words in the book are all stopwords. Because they are so frequent, stopwords don&#8217;t generally tell us much about the content of a document. Here, you will extend your program to allow for word counting that ignore stopwords. Update your program to:</p>
 
 <ul>
-<li>Take a file of stopwords as a command-line parameter with the option <code>--stopwords FILE</code>. (For example: <a href='ftp://ftp.cs.cornell.edu/pub/smart/english.stop'>this one</a>)</li>
+<li>Take a file of stopwords as a command-line parameter with the option <code>--stopwords FILE</code>. (For example: <a href='ftp://ftp.cs.cornell.edu/pub/smart/english.stop'>this one</a>).</li>
 
-<li>If the list of stopwords is present, then skip them in your top-10 display (but not from your total count).</li>
+<li>If the list of stopwords is present, then skip them in your top-10 display (but don&#8217;t exclude them from your total count).</li>
 
-<li>Ensure that if the stopwords option is not present, that the program will run as in Part 2</li>
+<li>Ensure that if the stopwords option is not present, that the program will run as in Part 2.</li>
 </ul>
 
 <p>I should be able to run your program with something like</p>
 
 <pre><code>$ sbt &quot;run-main dhg.WordCount /Users/dhg/texts/alice.txt --stopwords /Users/dhg/texts/english.stop&quot;
 Total number of words: 29353
+Number of distinct words: 3203
 Top 10 words:
 alice   385     1.31
 project 87      0.30
@@ -164,6 +170,38 @@ im      57      0.19
 mock    56      0.19</code></pre>
 
 <p>This list is a bit more interesting since it shows us words that are actually relevant to the book.</p>
+
+<h2 id='part_4_word_count_distribution'>Part 4: Word count distribution</h2>
+
+<p>The distributions of words in a document are always highly skewed: a few words appear with very high frequencies, but most words appear very few times. To get an idea of the shape of things, write a program that prints the ten most frequent frequencies and the five least frequent frequencies.</p>
+
+<p>Your output should be obviously be sorted by frequency frequency, but for frequencies with the same frequency frequency, you should sort by frequency. Confused yet? Your output should look like this:</p>
+
+<pre><code>$ sbt &quot;run-main dhg.WordFreqFreq /Users/dhg/texts/alice.txt&quot;
+Top 10 most frequent frequencies:
+1508 words appear 1 times
+493 words appear 2 times
+265 words appear 3 times
+175 words appear 4 times
+112 words appear 5 times
+70 words appear 7 times
+66 words appear 6 times
+66 words appear 8 times
+42 words appear 10 times
+35 words appear 9 times
+Bottom 5 most frequent frequencies:
+1 words appear 625 times
+1 words appear 685 times
+1 words appear 801 times
+1 words appear 912 times
+1 words appear 1804 times</code></pre>
+
+<p><em>Note:</em> your output is not required to be grammatical, but if you&#8217;d like it to be, then go for it!</p>
+
+<p>So more than half the words in the book appear only once (1508 out of 3203).</p>
+
+<p>I plotted a graph of the frequency distribution:</p>
+<a href='images/aliceFreqDist.png'><img alt='Word Frequency Distribution' border='0' style='border:none;max-width:100%;' src='images/aliceFreqDist.png' /></a>
       </div>
       <div id='footer'></div>
     </div>
