@@ -8,16 +8,17 @@ root: "../"
 
 This assignment is based on problems 1-5 of [Jason Eisner](http://www.cs.jhu.edu/~jason/)'s [language modeling homework](https://18d120ec-a-e22e9223-s-sites.googlegroups.com/a/utcompling.com/nlp-s11/assignments/homework-1/eisner_lm_homework.pdf?attachauth=ANoY7crnvOj8DTMuEPniMbpaM6TsNW7G1t807GXUnn8-rZO14f7G_L8KTzU4c0c5E5rhcL0WVmS_yyfTN5B045b9SyrXABL8vTbH9ydSWRFcO8PbwlgbDqSbmYKa6VQk4evqMOfM12ArQ9VzhWd-SeHA6xkhiMFxULD7bAUkY5_bb3yIMj10NSm5lnUo_xIpoJy9kv8v6C2lh3sztweVkqhRJy0XfT0rCNbU8lJfp5RayzYAx0yLMDKeLfTrVQBYRoEnBaFwzr_P&attredirects=0) plus a small programming problem (problem 6). Many thanks to Jason E. for making this and other materials for teaching NLP available!
 
-* Answers to problems 1-5 should be hand-written or printed and handed in before class. 
-* Problem 6 asks you to write a small program in Scala, which you will submit through GitHub. 
+* Answers to problems 1-4 should be hand-written or printed and handed in before class. 
 
 You are welcome to consult books that cover probability theory, such as DeGroot and Schervish or the appendices of [Cormen et al](http://www.amazon.com/Introduction-Algorithms-Thomas-H-Cormen/dp/0262032937), as well as the slides on probability from Dickinson, Eisner and Martin. Also, usage of Wikipedia in conjunction with the course readings, notes and assignments is acceptable (especially if you learn something from it). For this assignment, it may be helpful to consult the following: [Algebra of sets](http://en.wikipedia.org/wiki/Algebra_of_sets) (especially if you're rusty on set theory) and [Bayes' theorem](http://en.wikipedia.org/wiki/Bayes%27_theorem) which is not extensively discussed in Jurafsy & Martin.
 
-There are 100 points total in this assignment. Point values for each problem/sub-problem are given below.
+There are 70 points total in this assignment. Point values for each problem/sub-problem are given below.
 
 
 
-## Problem 1: 33 points total (3 points per subproblem)
+## Problem 1: 33 points 
+
+(3 points per subproblem)
 
 These short problems will help you get the hang of manipulating probabilities. Let `\( \mathcal{E} \neq \emptyset \)` denote the event space (it's just a set, also known as the sample space), and `\( p \)` be a function that assigns a real number in `\( [0,1] \)` to any subset of `\( \mathcal{E} \)`. This number is called the probability of the subset.
 
@@ -196,6 +197,7 @@ this, in the form `\( \sum_{variable} p(\cdots) = 1 \)`
         part iii., you were *implicitly* using Bayes' Theorem. (I told you it was a
         trivial theorem!)
 
+
 ## Problem 4: 7 points
 
 ![Rube Goldberg's pencil sharpener]({{ page.root }}images/rube_goldberg_pencil_sharpener.jpg)
@@ -222,167 +224,3 @@ as well as the "chain rule" and problems (1.1), (1.2), and (1.11).
 
 *Note:* Be glad I didn't ask you to prove the correct operation of the pencil sharpener!
 
-
-## Problem 5: 15 points
-
-A **language model** is a probability function *p* that assigns probabilities to word sequences such as `\( \vec{w} = \)` (`i`, `love`, `new york`). Think of `\( p(\vec{w}) \)` as the probability that if you turned on a radio at an arbitrary moment, its next four words would be "i love new york"---perhaps in the middle of a longer sentence such as "the latest bumper sticker says, i love new york more than ever." We often want to consider `\( p(\vec{w}) \)` to decide whether we like `\( p(\vec{w}) \)` better than an alternative sequence.
-
-Formally, each element `\( W \in \mathcal{E} \)` of the underlying event space is a possible value of the *infinite* sequence of words that will come out of the radio after you turn it on.  `\( p(\vec{w}) \)` is really an abbreviation for `\( p(\text{prefix}(W,|\vec{w}|) = \vec{w} \)`, where `\( |\vec{w}|) \)` denotes the length of the sequence `\( p(\vec{w}) \)`.  Thus, *p*(`i`,`love`,`new`,`york`) is the total probability of all infinite word sequences *W* that begin "i love new york ...."
-
-Suppose `\( p(\vec{w}) = w_1 w_2 \dots w_n \)` (a sequence of *n* words). A **trigram language model** defines
-`\[ 
-  p(\vec{w}) \stackrel{\tiny{\mbox{def}}}{=} p(w_1) \cdot 
-                                             p(w_2 \mid w_1) \cdot 
-                                             p(w_3 \mid w_1, w_2) \cdot 
-                                             p(w_4 \mid w_2, w_3) \cdots
-                                             p(w_n \mid w_{n-2}, w_{n-1})
-\]`
-on the assumption that the sequence was generated in the order `\( w_1, w_2, w_3, \dots \)` ("from left to right") with each word chosen in a way dependent on the previous two words. (But the first word `\( w_1 \)` is not dependent on anything, since we turned on the radio at a arbitrary moment.)
-
-1. (4 points) Expand the above definition of `\( p(\vec{w}) \)` using naive estimates of the parameters, such as
-    `\[
-      \begin{align}
-          p(w_4 \mid w_2, w_3) \stackrel{\tiny{\mbox{def}}}{=} & \frac{c(w_2 w_3 w_4)}{c(w_2 w_3)}
-      \end{align}
-    \]`
-    where `\( c(w_2 w_3 w_4) \)` denotes the count of times the trigram `\( w_2 w_3 w_4 \)` was observed in a training corpus.
-
-    *Remark:* Naive parameter estimates of this sort are called "maximum-likelihood estimates" (MLE). They have the advantage that they maximize the probability (equivalently, minimize the perplexity) of the training data. But they will generally perform badly on test data, unless the training data were so abundant as to include all possible trigrams many times. This is why we must smooth these estimates in practice.
-
-2. (5 points) One could also define a kind of reversed trigram language model `\( p_{reversed} \)` that instead assumed the words were generated in reverse order ("from right to left"):
-`\[ 
-  \begin{align}
-  p_{reversed}(\vec{w}) \stackrel{\tiny{\mbox{def}}}{=}&p(w_n) \cdot
-                                                        p(w_{n-1} | w_n) \cdot
-                                                        p(w_{n-2} | w_{n-1} w_n) \cdot
-                                                        p(w_{n-3} | w_{n-2} w_{n-1}) \\
-                                                       &\cdots
-                                                        p(w_2 | w_3 w_4) \cdot
-                                                        p(w_1 | w_2 w_3)
-  \end{align}
-\]`
-By manipulating the notation, show that the two models are identical (i.e., `\( p(\vec{w}) = p_{reversed}(\vec{w}) \)` for any `\( \vec{w} \)` provided that both models use MLE parameters estimated from the same training data (see problem (5.1))).
-
-3. (3 points) In the data you will use in questions 6 and 14, sentences are delimited by `<s>` at the start and `</s>` at the end. For example, the following data set consists of a sequence of 3 sentences:
-
-        <s> do you think so </s> <s> yes </s> <s> at least i thought so </s>
-
-    Given English training data, the probability of
-
-        <s> do you think the </s>
-
-    should be extremely low under any good language model. Why? In the case of the trigram model, which parameter or parameters are responsible for making this probability low?
-
-4. (3 points)
-
-    You turn on the radio as it is broadcasting an interview. Assuming a trigram model, match up expressions (A), (B), (C) with descriptions (1), (2), (3):
-
-    The expression  
-
-    (A)&nbsp; `\( p(\text{Do}) \cdot p(\text{you} \mid \text{Do}) \cdot p(\text{think} \mid \text{Do}, \text{you}) \)`  
-    (B)&nbsp; `\( p(\text{Do} \mid \text{<s>}) \cdot p(\text{you} \mid \text{<s>}, \text{Do}) \cdot p(\text{think} \mid \text{Do}, \text{you}) \cdot p(\text{</s>} \mid \text{you}, \text{think}) \)`  
-    (C)&nbsp; `\( p(\text{Do} \mid \text{<s>}) \cdot p(\text{you} \mid \text{<s>}, \text{Do}) \cdot p(\text{think} \mid \text{Do}, \text{you}) \)`  
-
-    represents the probability that
-
-    (1)&nbsp; the first complete sentence you hear is `Do you think` (as in, "D'ya think?")  
-    (2)&nbsp; the first 3 words you hear are `Do you think`  
-    (3)&nbsp; the first complete sentence you hear starts with `Do you think`  
-
-    Explain your answers briefly. Which quantity is `\( p(\vec{w}) \)`? 
-
-    *Remark:* The distinctions matter because "Do" is more probable at the start of an English sentence than in the middle, and because (3) describes a larger event set than (1) does.
-
-
-
-
-
-## Problem 6: 15 points
-
-This is a very small programming exercise intended to give you some practice computing word probabilities.  You should use your code from [Assignment 0](a0programming.html) as a starting point.
-
-First, we will continue to use the text of [Alice's Adventures in Wonderland](http://www.gutenberg.org/cache/epub/11/pg11.txt) from Project Gutenberg as our text. 
-
-An **ngram** is a sequences of *n* words.  Ngrams are useful for modeling the probabilities of sequences of words (i.e., modeling language).  With an ngram language model, we want to know the probability of the *nth* word in the ngram given that the *n-1* previous words.  Using the radio analogy from above, if we turn on the radio and hear only *n-1* words, then the ngram probability will tell us the probability of hearing a particular word next.
-
-We will be dealing with Maximum Likelihood Estimates (MLE) for this problem.  In a future assignment, we will introduce smoothing.
-
-Your task is to implement the trait provided in `src/main/scala/nlpclass/AssignmentTraits.scala`:
-
-{% highlight scala %}
-trait NGramLanguageModelAssignmentTrait {
-  
-  /** To be implemented as a class-level `val` */
-  def n: Int 
-
-  /**
-   * Determine the probability of a single ngram under the model:
-   *   p(word n | words 1 to n-1)  
-   *
-   *   NOTE: the length of `ngram` should always be `n`!
-   */
-  def probabilityOfNGram(ngram: Vector[String]): Double
-
-}
-{% endhighlight %}
-
-Your implementation should be something like:
-
-{% highlight scala %}
-trait NGramLanguageModel(n: Int) extends NGramLanguageModelAssignmentTrait {
-
-  def probabilityOfNGram(ngram: Vector[String]): Double = {
-    // Your code here
-    ???
-  }
-
-}
-{% endhighlight %}
-
-We are going to add more to this class in assignment 3, but we'll just implement the one method for now.
-
-
-### Unigram probabilities
-
-A **unigram** is an ngram of length 1.  The probabilty of a unigram *w* is the probability of turning on the radio listening to exactly *n-1* words, and then determining how likely it is that we will hear *w* next.  But, since *n*=1, *n-1*=0.  So the probably of an unigram is the word's probably based on 0 previous words.  Thus, we can calculate the probably of a unigram *w* simply as the fraction of words in the corpus that are *w*.
-
-(a)  Write a program that takes a computes unigram probabilities.  The program should:
-
-* Take a file path as an argument 
-
-
-
-Now, write a Java or Python program that reads in 105_wpl.txt and counts bigrams and unigrams in an associative array (dictionary/hashmap) and prints out the conditional probabilities:
-
-* *p*(the | of)
-* *p*(the | and)
-
-Call your program **compute_bigram.scala**. It should take the file **105_wpl.txt** as its first command-line argument, and produce the following output
-
-    $ python compute_bigram.py 105_wpl.txt
-    p(the|of) = 0.16878742515
-    p(the|and) = 0.0399002493766
-
-We will of course test these values on another text, so you should make sure to actually compute the values and not just print them out… 
-
-Here's a stub Python script which deals with the command line args to get you going:
-
-    #!/usr/bin/python
- 
-    import sys
- 
-    ## Take file from stdin or as first arg on command line depending on
-    ## how count_words.py is called.
-    in_file = sys.stdin
-    if len(sys.argv) > 1:
-        in_file = file(sys.argv[1])
- 
-    unigram_counts = {}
-    bigram_counts = {}
- 
-    # Do your counting in a loop here.
- 
-    print "p(the|of) =", # use the counts to compute the conditional probability 
-    print "p(the|and) =", # use the counts to compute the conditional probability 
-
-Submit your file **compute_bigram.scala** on Blackboard in the submission area for HW1. Remember that your solutions for Problems 1-5 must be handed in as hard copy in class.
