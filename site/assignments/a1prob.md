@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Assignment 1 - Probability
+root: "../"
 ---
 
 **Due: Monday, February 7, 12pm**
@@ -32,11 +33,11 @@ As a matter of notation, remember that the **conditional probability**&nbsp; `\(
 
 3. Prove from the axioms that `\( p(\emptyset) = 0 \)`.
 
-4. Let `\( \bar{X} \)` denote `\( \mathcal{E} - X \)`.  Prove from the axioms that `\( p(X) = 1-p(\bar{X}) \)`.  For example, `\( p(\text{singing} = 1 - p(\text{NOT singing} \)`.
+4. Let `\( \bar{X} \)` denote `\( \mathcal{E} - X \)`.  Prove from the axioms that `\( p(X) = 1-p(\bar{X}) \)`.  For example, `\( p(\text{singing}) = 1 - p(\text{NOT singing}) \)`.
 
-5. Prove from the axioms that `\( p(\text{singing AND rainy} \mid \text{rainy} = p(\text{singing} \mid \text{rainy} \)`.
+5. Prove from the axioms that `\( p(\text{singing AND rainy} \mid \text{rainy}) = p(\text{singing} \mid \text{rainy}) \)`.
 
-6. Prove from the axioms that `\( p(X \mid Y) = 1 - p(\bar{X} \mid Y \)`.  For example, `\( p(\text{singing} \mid \text{rainy}) = 1 - p(\text{NOT singing} \mid \text{rainy}\)`.  This is a generalization of (1.4).
+6. Prove from the axioms that `\( p(X \mid Y) = 1 - p(\bar{X} \mid Y) \)`.  For example, `\( p(\text{singing} \mid \text{rainy}) = 1 - p(\text{NOT singing} \mid \text{rainy}) \)`.  This is a generalization of (1.4).
 
 7. Simplify: `\( (p(X \mid Y) \cdot p(Y) + p(X \mid \bar{Y}) \cdot p(\bar{Y})) \cdot p(\bar{Z} \mid X) / p(\bar{Z}) \)`
 
@@ -132,7 +133,7 @@ this, in the form `\( \sum_{variable} p(\cdots) = 1 \)`
 
 2. (4 point) A certain colony of beavers has already cut down all the trees around their dam. As there are no more to chew, *p(timber)* = 0. Getting rid of the trees has also reduced *p(predator)* to 0.2. These facts are shown in the following **joint probability table**. Fill in the rest of the table, using the previous table and the laws of probability. (Note that the meaning of each table is given in its top left cell.)
 
-    <table class="simple" style="width: 70%;">
+    <table class="simple" style="width: 80%;">
         <tr>
             <td><i>p</i>( <i>cry</i> | <i>situation</i> )</td>
             <td>Preditor!</td>
@@ -197,7 +198,7 @@ this, in the form `\( \sum_{variable} p(\cdots) = 1 \)`
 
 ## Problem 4: 7 points
 
-![Rube Goldberg's pencil sharpener](images/rube_goldberg_pencil_sharpener.jpg)
+![Rube Goldberg's pencil sharpener]({{ page.root }}images/rube_goldberg_pencil_sharpener.jpg)
 
 Rube Goldberg gets his think-tank working and evolves the simplified pencil-sharpener. Open window (A) and  y kite (B). String (C) lifts small door (D) allowing moths (E) to escape and eat red flannel shirt (F). As weight of shirt becomes less, shoe (G) steps on switch (H) which heats electric iron (I) and burns hole in pants (J). Smoke (K) enters hole in tree (L), smoking out opossum (M) which jumps into basket (N), pulling rope (O) and lifting cage (P), allowing woodpecker (Q) to chew wood from pencil (R), exposing lead. Emergency knife (S) is always handy in case opossum or the woodpecker gets sick and can't work.
 
@@ -298,15 +299,63 @@ By manipulating the notation, show that the two models are identical (i.e., `\( 
 
 ## Problem 6: 15 points
 
-This problem is very small programming exercise intended to give you a small amount of practice counting things in text and to make sure you are comfortable running a program on the Unix command line.
+This is a very small programming exercise intended to give you some practice computing word probabilities.  You should use your code from [Assignment 0](a0programming.html) as a starting point.
 
-First, download the text of Jane Austen's book [Persuasion](http://www.gutenberg.org/files/105/105.txt) from Project Gutenberg. Then, use the tr command as follows in order to create word-per-line version containing only alphabetic characters:
+First, we will continue to use the text of [Alice's Adventures in Wonderland](http://www.gutenberg.org/cache/epub/11/pg11.txt) from Project Gutenberg as our text. 
 
-    $ cat 105.txt | tr -cs '[:alpha:]' '\n' >  105_wpl.txt
+An **ngram** is a sequences of *n* words.  Ngrams are useful for modeling the probabilities of sequences of words (i.e., modeling language).  With an ngram language model, we want to know the probability of the *nth* word in the ngram given that the *n-1* previous words.  Using the radio analogy from above, if we turn on the radio and hear only *n-1* words, then the ngram probability will tell us the probability of hearing a particular word next.
+
+We will be dealing with Maximum Likelihood Estimates (MLE) for this problem.  In a future assignment, we will introduce smoothing.
+
+Your task is to implement the trait provided in `src/main/scala/nlpclass/AssignmentTraits.scala`:
+
+{% highlight scala %}
+trait NGramLanguageModelAssignmentTrait {
+  
+  /** To be implemented as a class-level `val` */
+  def n: Int 
+
+  /**
+   * Determine the probability of a single ngram under the model:
+   *   p(word n | words 1 to n-1)  
+   *
+   *   NOTE: the length of `ngram` should always be `n`!
+   */
+  def probabilityOfNGram(ngram: Vector[String]): Double
+
+}
+{% endhighlight %}
+
+Your implementation should be something like:
+
+{% highlight scala %}
+trait NGramLanguageModel(n: Int) extends NGramLanguageModelAssignmentTrait {
+
+  def probabilityOfNGram(ngram: Vector[String]): Double = {
+    // Your code here
+    ???
+  }
+
+}
+{% endhighlight %}
+
+We are going to add more to this class in assignment 3, but we'll just implement the one method for now.
+
+
+### Unigram probabilities
+
+A **unigram** is an ngram of length 1.  The probabilty of a unigram *w* is the probability of turning on the radio listening to exactly *n-1* words, and then determining how likely it is that we will hear *w* next.  But, since *n*=1, *n-1*=0.  So the probably of an unigram is the word's probably based on 0 previous words.  Thus, we can calculate the probably of a unigram *w* simply as the fraction of words in the corpus that are *w*.
+
+(a)  Write a program that takes a computes unigram probabilities.  The program should:
+
+* Take a file path as an argument 
+
+
+
 Now, write a Java or Python program that reads in 105_wpl.txt and counts bigrams and unigrams in an associative array (dictionary/hashmap) and prints out the conditional probabilities:
 
-* p(the | of)
-* p(the | and)
+* *p*(the | of)
+* *p*(the | and)
 
 Call your program **compute_bigram.scala**. It should take the file **105_wpl.txt** as its first command-line argument, and produce the following output
 

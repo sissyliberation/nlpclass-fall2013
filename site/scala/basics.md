@@ -102,10 +102,10 @@ for(x <- xs)
 But the for-each loop can be used in more complex ways, allowing succinct syntax for looping over multiple collections and filtering:
 {% highlight scala %}
 for(
-   x <- Vector(1,2,3,4,5);   // outer loop over a vector
-   if x % 2 == 1;            // filter out even xs
-   y <- Set(1,2,3);          // inner loop over a list
-   if x + y == 6             // filter out entries that don't sum to 6
+   x <- Vector(1,2,3,4,5);  // outer loop over a vector
+   if x % 2 == 1;           // filter out even xs
+   y <- Set(1,2,3);         // inner loop over a list
+   if x + y == 6            // filter out entries that don't sum to 6
   ) println(s"x=$x, y=$y")
 // prints:
 //   x=3, y=3
@@ -132,7 +132,7 @@ Blocks are expressions that are evaluated and resolve to the value of the final 
 val x = {
   val intermediate1 = 2 + 3
   val intermediate2 = 4 + 5
-  intermediate1 * intermediate2       // this will be "returned" from the block
+  intermediate1 * intermediate2  // will be "returned" from the block
 }
 // x: Int = 45
 {% endhighlight %}
@@ -166,16 +166,16 @@ A few points:
 Some examples
 
 {% highlight scala %}
-def add(i: Int, j: Int) = i + j        // no braces needed
-def add2(i: Int)(j: Int) = i + j       // two parameter lists
-def mystring() = "something"           // parentheses option in caller
-def mystring2 = "something else"       // no parentheses allowed in caller
-def doubleSum(i: Int, j: Int) = {      // braces because multiple statements
+def add(i: Int, j: Int) = i + j    // no braces needed
+def add2(i: Int)(j: Int) = i + j   // two parameter lists
+def mystring() = "something"       // parentheses option in caller
+def mystring2 = "something else"   // no parentheses allowed in caller
+def doubleSum(i: Int, j: Int) = {  // braces for multiple statements
   val sum = i + j
-  sum * 2                              // "return value"
+  sum * 2                          // "return value"
 }
 def ceilHalf(n: Int) = {               
-  if(n % 2 == 0)                       // if-else expression is the final 
+  if(n % 2 == 0)                   // if-else expression is the final 
     n / 2
   else
     (n + 1) / 2
@@ -217,11 +217,11 @@ class A(i: Int, val j: Int) {
 
 {% highlight scala %}
 val a = new A(2,3)
-a.j                  // accessing a public constructor-arg field
-a.iPlus5             // accessing a public field
-a.addTo(6)           // calling a method with an argument
-a.sum                // calling a no-arg method, parentheses not permitted
-a.doSomeStuff        // calling a no-arg method, parentheses optional
+a.j              // accessing a public constructor-arg field
+a.iPlus5         // accessing a public field
+a.addTo(6)       // calling a method with an argument
+a.sum            // calling a no-arg method, parentheses not permitted
+a.doSomeStuff    // calling a no-arg method, parentheses optional
 {% endhighlight %}
 
 
@@ -420,6 +420,25 @@ res2: String = one
 Note: Remember that the syntax `a -> b` is nothing more than writing the pair `(a,b)`.
 
 
+### Iterator
+
+An `Iterator[T]` is a lazy sequence, meaning that it only evaluates its elements once they are accessed. Additionally, iterators can only be traversed one time.  This is very useful for things like conserving memory by handling one element at a time or saving time by only evaluating as many elements as you need.  
+
+Accidentally traversing the same iterator more than once is a common source of bugs.  If you want to be able to access the elements more than once, you can always call `.toVector` to load the entire thing into memory.
+
+{% highlight scala %}
+val a = Iterator(1,2,3)
+val b = a.map(x => x + 1) // stage an operation, but don't traverse yet
+val c = b.sum             // c: Int = 9
+val d = b.mkString(" ")   // d: String = ""
+
+val e = Iterator(1,2,3)
+val f = e.map(x => x + 1) // stage an operation, but don't traverse yet
+val g = f.toVector        // g: Vector[Int] = Vector(2, 3, 4)
+val h = g.sum             // h: Int = 9
+val i = g.mkString(" ")   // i: String = "2 3 4"
+{% endhighlight %}
+
 
 ## Pattern Matching
 
@@ -462,7 +481,7 @@ Anonymous (partial) functions.  More on this example later.  Note the use of cur
 
 {% highlight scala %}
 val a = Vector((1,2), (3,4), (5,6))
-a.map { case (x,y) => x + y }         // res0: Vector[Int] = Vector(3, 7, 11)
+a.map { case (x,y) => x + y }  // res0: Vector[Int] = Vector(3, 7, 11)
 {% endhighlight %}
 
 In all of these cases, the matching function works the same way.
@@ -495,7 +514,7 @@ Sequences can be matched without knowing exactly how many items there are:
 
 {% highlight scala %}
 Vector(1,2,3,4) match {
-  case Vector(x, y, _*) => "this will match with x=1, y=2, and ignore the rest"
+  case Vector(x, y, _*) => "matches with x=1, y=2, and ignores rest"
 }
 {% endhighlight %}
 
@@ -522,9 +541,9 @@ It is also possible to match a pattern and then bind the matched portion to a va
 
 {% highlight scala %}
 Vector((1,2), (3,4), (5,6)) match {
-  case a @ Vector((x, y), _*) => "will bind the entire Vector to `a` if matched"
-  case Vector(a @ (x, y), _*) => "will bind the first pair to `a` if matched"
-  case Vector((x, y), a @ _*) => "will bind the tail sequence to `a` if matched"
+  case a @ Vector((x, y), _*) => "binds entire Vector to `a`"
+  case Vector(a @ (x, y), _*) => "binds first pair to `a`"
+  case Vector((x, y), a @ _*) => "binds tail sequence to `a`"
 }
 {% endhighlight %}
 
@@ -550,9 +569,9 @@ Many Scala types come with pattern matching behavior defined, as does any class 
 object Half {
   def unapply(n: Int) = 
     if(n % 2 == 0) 
-      Some((n/2, n/2))     // indicates a match and specifies return behavior
+      Some((n/2, n/2)) // indicates a match, specifies return behavior
     else 
-      None                 // indicates no match
+      None             // indicates no match
 }
 
 Vector(1,2,3).map { 
@@ -618,20 +637,20 @@ Vector(1,2,3).map(_ + 2)     // res0: Vector[Int] = Vector(3, 4, 5)
 
 {% highlight scala %}
 val a = Vector(Vector(1,2,3), Vector(4,5,6), Vector(7,8,9))
-a.flatten        // res1: Vector[Int] = Vector(1, 2, 3, 4, 5, 6, 7, 8, 9)
+a.flatten   // res1: Vector[Int] = Vector(1, 2, 3, 4, 5, 6, 7, 8, 9)
 {% endhighlight %}
 
 **flatMap**: Map a function over the collection and flatten the result
 
 {% highlight scala %}
 Vector(1,2,3).flatMap(n => Vector.fill(n)(s"[$n]"))    
-          // res2: Vector[String] = Vector([1], [2], [2], [3], [3], [3])
+// res2: Vector[String] = Vector([1], [2], [2], [3], [3], [3])
 {% endhighlight %}
 
 **foldLeft**: Map a function over the collection, accumulating the results.  Takes two parameters: the base value and the function.
 
 {% highlight scala %}
-Vector(1,2,3).foldLeft(0)((accum, x) => accum + x)     // res3: Int = 6
+Vector(1,2,3).foldLeft(0)((accum, x) => accum + x)   // res3: Int = 6
 {% endhighlight %}
 
 **filter**: Remove items for which the given predicate is false
@@ -667,10 +686,10 @@ Scala also provides a mechanism for for-comprehensions, expressions with similar
 {% highlight scala %}
 val a = 
   for(
-     x <- Vector(1,2,3,4,5);   // outer loop over a vector
-     if x % 2 == 1;            // filter out even xs
-     y <- Set(1,2,3);          // inner loop over a list
-     if x + y == 6             // filter out entries that don't sum to 6
+     x <- Vector(1,2,3,4,5); // outer loop over a vector
+     if x % 2 == 1;          // filter out even xs
+     y <- Set(1,2,3);        // inner loop over a list
+     if x + y == 6           // filter out entries that don't sum to 6
     ) yield x * y
 // a: scala.collection.immutable.Vector[Int] = Vector(9, 5)
 {% endhighlight %}

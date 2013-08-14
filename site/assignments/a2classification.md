@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Assignment 2 - Classification
+root: "../"
 ---
 
 **Due: March 2 at 1pm**
