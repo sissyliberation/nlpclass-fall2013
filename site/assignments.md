@@ -16,7 +16,9 @@ Your code should be hosted in a *private* GitHub repository.  Follow these instr
 
 1. If you do not have an account on GitHub, you need to create one here: [github.com](https://github.com/).
 2. Register as a student here: [github.com/edu](https://github.com/edu).  This will give you five free private repositories, one of which will be used for this class.
-3. Create a new repository for your classwork by clicking on "New Repository" on the GitHub website.  Be sure to select ***PRIVATE*** repository.
+3. Create a new repository for your classwork called 
+    {% highlight text %}nlpclass-fall2013-<lastname>-<firstname>{% endhighlight %}
+    by clicking on "New Repository" on the GitHub website.  Be sure to select ***PRIVATE*** repository.
 4. Add me as a "collaborator".  Do this from the GitHub webpage for your repository: `Settings` `->` `Collaborators` `->` `Add a friend` and enter my username: `dhgarrette`.
 5. Clone your repositiory.
     {% highlight text %}$ git clone git@github.com:USERNAME/REPOSITORY-NAME.git{% endhighlight %}
@@ -39,9 +41,6 @@ libraryDependencies += "utcompling" % "nlpclass-fall2013_2.10" % "0001" changing
 
 The code for your assignments will be "turned in" via your GitHub repo.  You should probably develop it there too (and you should definitely not develop it in a *public* repository!).
 
-For each assignment, I will create a package in the main repository that contains starter code that you will use in your assignment.  You will pull these changes from the main repo into your fork, and then use this code in completing your assignments.
+For each assignment, I will give you instructions on what to call certain classes, but the rest of the structure of your up to you.  You will, however, have to document the files used in a README for each assignment to make grading easier.
 
-To pull changes from the upstream (main) class repo, do the following:
-{% highlight text %}
-git pull upstream master
-{% endhighlight %}
+The way that you will "turn in" you code is simply to check it into GitHub and "push" it so that it is visible to me.

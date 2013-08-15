@@ -11,6 +11,7 @@ I've written up some notes on Scala that might be useful
 [Scala Environment Setup]({{ page.root }}scala/setup.html)  
 [Scala Basics]({{ page.root }}scala/basics.html)  
 
+[My Scala Utilities Library]({{ page.root}}scala/scala-util.html)
 
 ## Links
 

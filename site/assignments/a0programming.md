@@ -34,9 +34,11 @@ Follow the instructions on the [Assignment Requirements]({{ page.root }}assignme
 * Download and install Scala
 * Download and install SBT
 * Create a Github Account and register as a student
-* Create a ***PRIVATE*** GitHub repository for your code and clone it to your computer
+* Create a ***PRIVATE*** GitHub repository for your code with the name
+    {% highlight text %}nlpclass-fall2013-<lastname>-<firstname>{% endhighlight %}
+    and clone it to your computer
 * Add me (GitHub username `dhgarrette`) as a "collaborator"
-* Create an Scala project in your repository with `nlpclass-fall2013` as a dependency
+* Create a Scala project in (the root of) your repository with `nlpclass-fall2013` as a dependency
 
 
 ## Part 2: Reading from files
@@ -79,7 +81,7 @@ Stopwords are extremely frequent non-content words such as determiners, pronouns
 
 I should be able to run your program with something like
 
-    $ sbt "run-main dhg.WordCount alice.txt --stopwords /Corpora/english.stop"
+    $ sbt "run-main dhg.WordCount alice.txt --stopwords english.stop"
     Total number of words: 29353
     Number of distinct words: 3203
     Top 10 words:
@@ -155,6 +157,8 @@ trait NGramCountingToImplement {
 Your task is to implement this trait.  You should create a file that looks like this:
 
 {% highlight scala %}
+import nlpclass.NGramCountingToImplement
+
 class NGramCounting(n: Int) extends NGramCountingToImplement {
 
   def countNGrams(ngrams: Vector[String]): Map[Vector[String], Int] = {
