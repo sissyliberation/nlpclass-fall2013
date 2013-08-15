@@ -41,7 +41,7 @@ Follow the instructions on the [Assignment Requirements]({{ page.root }}assignme
 * Create a Scala project in (the root of) your repository with `nlpclass-fall2013` as a dependency
 
 
-## Part 2: Reading from files
+## Part 2: Counting words
 
 Download [Alice's Adventures in Wonderland](http://www.gutenberg.org/cache/epub/11/pg11.txt) from Project Gutenberg.
 
@@ -53,9 +53,10 @@ Write an application that does the following:
 * Prints the number of *distinct* words in the book.
 * Prints each of the top 10 most frequent words along with its count and its percentage of the total.
 
-I should be able to run your program with something like
+The application should be in an `object` called `WordCount` in a package called `nlp`.  I should be able to run your program with something like this, and get this exact output:
 
-    $ sbt "run-main dhg.WordCount /Users/dhg/texts/alice.txt"
+    $ cd nlpclass-fall2013-<lastname>-<firstname>
+    $ sbt "run-main nlp.WordCount /Users/dhg/texts/alice.txt"
     Total number of words: 29353
     Number of distinct words: 3203
     Top 10 words:
@@ -73,15 +74,17 @@ I should be able to run your program with something like
 
 ## Part 3: Removing stopwords
 
-Stopwords are extremely frequent non-content words such as determiners, pronouns, and prepositions.  You'll notice that the top 10 words in the book are all stopwords.  Because they are so frequent, stopwords don't generally tell us much about the content of a document.  Here, you will extend your program to allow for word counting that ignore stopwords.  Update your program to:
+Stopwords are extremely frequent non-content words such as determiners, pronouns, and prepositions.  You'll notice that the top 10 words in the book are all stopwords.  Because they are so frequent, stopwords don't generally tell us much about the content of a document.  
+
+Here, you will extend your program to allow for word counting that ignore stopwords.  Update your program to:
 
 * Take a file of stopwords as a command-line parameter with the option `--stopwords FILE`.  (For example: [this one](ftp://ftp.cs.cornell.edu/pub/smart/english.stop)).
 * If the list of stopwords is present, then skip them in your top-10 display (but don't exclude them from your total count).
 * Ensure that if the stopwords option is not present, that the program will run as in Part 2.
 
-I should be able to run your program with something like
+I should be able to run your program with something like this, and get this exact output:
 
-    $ sbt "run-main dhg.WordCount alice.txt --stopwords english.stop"
+    $ sbt "run-main nlp.WordCount alice.txt --stopwords english.stop"
     Total number of words: 29353
     Number of distinct words: 3203
     Top 10 words:
@@ -101,13 +104,15 @@ This list is a bit more interesting since it shows us words that are actually re
 
 ## Part 4: Word count distribution
 
-The distributions of words in a document are always highly skewed: a few words appear with very high frequencies, but most words appear very few times.  To get an idea of the shape of things, write a program that prints the ten most frequent frequencies and the five least frequent frequencies.  
+The distributions of words in a document are always highly skewed: a few words appear with very high frequencies, but most words appear very few times.  To get an idea of the shape of things, write a program called `WordFreqFreq` that prints the ten most frequent frequencies and the five least frequent frequencies.  
 
-Your output should be obviously be sorted by frequency frequency, but for frequencies with the same frequency frequency, you should sort by frequency.  Confused yet?  Your output should look like this:
+Your output should be obviously be sorted by frequency frequency, but for frequencies with the same frequency frequency, you should sort by frequency.  Confused yet?  
 
-    $ sbt "run-main dhg.WordFreqFreq /Users/dhg/texts/alice.txt"
+I should be able to run your program with something like this, and get this exact output:
+
+    $ sbt "run-main nlp.WordFreqFreq /Users/dhg/texts/alice.txt"
     Top 10 most frequent frequencies:
-	1508 words appear 1 times
+	1508 words appear 1 time
 	493 words appear 2 times
 	265 words appear 3 times
 	175 words appear 4 times
@@ -119,13 +124,13 @@ Your output should be obviously be sorted by frequency frequency, but for freque
 	35 words appear 9 times
 
     Bottom 5 most frequent frequencies:
-	1 words appear 625 times
-	1 words appear 685 times
-	1 words appear 801 times
-	1 words appear 912 times
-	1 words appear 1804 times
+	1 word appears 625 times
+	1 word appears 685 times
+	1 word appears 801 times
+	1 word appears 912 times
+	1 word appears 1804 times
 
-*Note:* your output is not required to be grammatical, but if you'd like it to be, then go for it!
+*Note:* your output needs to be grammatical.
 
 So more than half the words in the book appear only once (1508 out of 3203).
 
@@ -157,6 +162,8 @@ trait NGramCountingToImplement {
 Your task is to implement this trait.  You should create a file that looks like this:
 
 {% highlight scala %}
+package nlp
+
 import nlpclass.NGramCountingToImplement
 
 class NGramCounting(n: Int) extends NGramCountingToImplement {
@@ -170,16 +177,16 @@ class NGramCounting(n: Int) extends NGramCountingToImplement {
 
 and implement the method `countNGrams`.&nbsp; *Hint:* See `Vector.sliding` in the [API](http://www.scala-lang.org/api/current/#scala.collection.immutable.Vector).
 
-
-I'm going to test your code like this:
+I'm going to test your class like this:
 
 {% highlight scala %}
 scala> new NGramCounting(3).countNGrams(aliceText)(Vector("the", "white", "rabbit"))
 res0: Int = 21
 {% endhighlight %}
 
-By the way, to check your work, here are the top 10 trigrams and their counts:
+Now write a program called `CountTrigrams` that prints the top 10 most frequent trigrams along with their counts. I should be able to run your program with something like this, and get this exact output:
 
+    $ sbt "run-main nlp.CountTrigrams /Users/dhg/texts/alice.txt"
 	the mock turtle                 51
 	the march hare                  30
 	said the king                   29
@@ -191,4 +198,4 @@ By the way, to check your work, here are the top 10 trigrams and their counts:
 	said the caterpillar            18
 	she said to                     17
 
-And of the 25,322 distinct trigrams, 23,093 (91%) appear only once, and 99.9% appear 11 times or fewer!
+Just for fun: of the 25,322 distinct trigrams, 23,093 (91%) appear only once, and 99.9% appear 11 times or fewer!
