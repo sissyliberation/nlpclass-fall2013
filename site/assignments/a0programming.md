@@ -40,6 +40,18 @@ Follow the instructions on the [Assignment Requirements]({{ page.root }}assignme
 * Add me (GitHub username `dhgarrette`) as a "collaborator"
 * Create a Scala project in (the root of) your repository with `nlpclass-fall2013` as a dependency
 
+All of your code will be located in a package called `nlp`.  The `nlp` folder should be located at:
+
+    nlpclass-fall2013-<lastname>-<firstname>/src/main/scala/nlp
+
+For an example of this setup, see the program [`Example`](https://github.com/utcompling/nlpclass-fall2013/blob/master/src/main/scala/nlpclass/Example.scala), which is set up in a similar way (though with a different package name).  It can be run as:
+
+    $ cd nlpclass-fall2013-<lastname>-<firstname>
+    $ sbt "run-main nlpclass.Example"
+    [...]
+    This is an example Scala program.
+    [...]
+
 
 ## Part 2: Counting words
 
@@ -53,7 +65,7 @@ Write an application that does the following:
 * Prints the number of *distinct* words in the book.
 * Prints each of the top 10 most frequent words along with its count and its percentage of the total.
 
-The application should be in an `object` called `WordCount` in a package called `nlp`.  I should be able to run your program with something like this, and get this exact output:
+The application should be in an `object` called `WordCount` in a package called `nlp`.  I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
 
     $ cd nlpclass-fall2013-<lastname>-<firstname>
     $ sbt "run-main nlp.WordCount /Users/dhg/texts/alice.txt"
@@ -82,7 +94,7 @@ Here, you will extend your program to allow for word counting that ignore stopwo
 * If the list of stopwords is present, then skip them in your top-10 display (but don't exclude them from your total count).
 * Ensure that if the stopwords option is not present, that the program will run as in Part 2.
 
-I should be able to run your program with something like this, and get this exact output:
+I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
 
     $ sbt "run-main nlp.WordCount alice.txt --stopwords english.stop"
     Total number of words: 29353
@@ -108,7 +120,7 @@ The distributions of words in a document are always highly skewed: a few words a
 
 Your output should be obviously be sorted by frequency frequency, but for frequencies with the same frequency frequency, you should sort by frequency.  Confused yet?  
 
-I should be able to run your program with something like this, and get this exact output:
+I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
 
     $ sbt "run-main nlp.WordFreqFreq /Users/dhg/texts/alice.txt"
     Top 10 most frequent frequencies:
@@ -184,7 +196,7 @@ scala> new NGramCounting(3).countNGrams(aliceText)(Vector("the", "white", "rabbi
 res0: Int = 21
 {% endhighlight %}
 
-Now write a program called `CountTrigrams` that prints the top 10 most frequent trigrams along with their counts. I should be able to run your program with something like this, and get this exact output:
+Now write a program called `CountTrigrams` that prints the top 10 most frequent trigrams along with their counts. I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
 
     $ sbt "run-main nlp.CountTrigrams /Users/dhg/texts/alice.txt"
 	the mock turtle                 51
