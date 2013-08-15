@@ -71,18 +71,17 @@ The application should be in an `object` called `WordCount` in a package called 
     $ sbt "run-main nlp.WordCount /Users/dhg/texts/alice.txt"
     Total number of words: 29353
     Number of distinct words: 3203
-    Top 10 words:
-	the     1804    6.15
-	and     912     3.11
-	to      801     2.73
-	a       685     2.33
-	of      625     2.13
-	it      541     1.84
-	she     538     1.83
-	said    462     1.57
-	you     429     1.46
-	in      428     1.46
-
+	Top 10 words:
+	the            1818    5.98
+	and            940     3.09
+	to             809     2.66
+	a              690     2.27
+	of             631     2.07
+	it             610     2.01
+	she            553     1.82
+	i              545     1.79
+	you            481     1.58
+	said           462     1.52
 
 ## Part 3: Removing stopwords
 
@@ -100,16 +99,16 @@ I should be able to run your program with something like this, and get this exac
     Total number of words: 29353
     Number of distinct words: 3203
     Top 10 words:
-	alice   385     1.31
-	project 87      0.30
-	thought 74      0.25
-	queen   68      0.23
-	time    68      0.23
-	king    61      0.21
-	dont    60      0.20
-	began   58      0.20
-	im      57      0.19
-	mock    56      0.19
+	alice          403     1.32
+	gutenberg      93      0.31
+	project        87      0.29
+	queen          75      0.25
+	thought        74      0.24
+	time           71      0.23
+	king           63      0.21
+	turtle         59      0.19
+	began          58      0.19
+	tm             57      0.19
 
 This list is a bit more interesting since it shows us words that are actually relevant to the book.
 
@@ -123,28 +122,28 @@ Your output should be obviously be sorted by frequency frequency, but for freque
 I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
 
     $ sbt "run-main nlp.WordFreqFreq /Users/dhg/texts/alice.txt"
-    Top 10 most frequent frequencies:
-	1508 words appear 1 time
-	493 words appear 2 times
-	265 words appear 3 times
-	175 words appear 4 times
-	112 words appear 5 times
-	70 words appear 7 times
-	66 words appear 6 times
-	66 words appear 8 times
-	42 words appear 10 times
-	35 words appear 9 times
+	Top 10 most frequent frequencies:
+	1331 words appear 1 time
+	467 words appear 2 times
+	264 words appear 3 times
+	176 words appear 4 times
+	101 words appear 5 times
+	74 words appear 8 times
+	72 words appear 6 times
+	66 words appear 7 times
+	38 words appear 9 times
+	36 words appear 10 times
 
-    Bottom 5 most frequent frequencies:
-	1 word appears 625 times
-	1 word appears 685 times
-	1 word appears 801 times
-	1 word appears 912 times
-	1 word appears 1804 times
+	Bottom 5 most frequent frequencies:
+	1 word appears 631 times
+	1 word appears 690 times
+	1 word appears 809 times
+	1 word appears 940 times
+	1 word appears 1818 times
 
 *Note:* your output needs to be grammatical.
 
-So more than half the words in the book appear only once (1508 out of 3203).
+So 42% of the words in the book appear only once (1331 out of 3203).
 
 I plotted a graph of the frequency distribution:
 
@@ -192,22 +191,24 @@ and implement the method `countNGrams`.&nbsp; *Hint:* See `Vector.sliding` in th
 I'm going to test your class like this:
 
 {% highlight scala %}
-scala> new NGramCounting(3).countNGrams(aliceText)(Vector("the", "white", "rabbit"))
+scala> sbt console
+scala> val aliceText = ...
+scala> new nlp.NGramCounting(3).countNGrams(aliceText)(Vector("the", "white", "rabbit"))
 res0: Int = 21
 {% endhighlight %}
 
 Now write a program called `CountTrigrams` that prints the top 10 most frequent trigrams along with their counts. I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
 
     $ sbt "run-main nlp.CountTrigrams /Users/dhg/texts/alice.txt"
-	the mock turtle                 51
+	project gutenberg tm            57
+	the mock turtle                 53
+	i don t                         31
 	the march hare                  30
+	the project gutenberg           29
 	said the king                   29
 	the white rabbit                21
 	said the hatter                 21
 	said to herself                 19
 	said the mock                   19
-	project gutenbergtm electronic  18
-	said the caterpillar            18
-	she said to                     17
 
-Just for fun: of the 25,322 distinct trigrams, 23,093 (91%) appear only once, and 99.9% appear 11 times or fewer!
+Just for fun: of the 25,774 distinct trigrams, 23,294 (90.4%) appear only once, and more than 99.9% appear 12 times or fewer!
