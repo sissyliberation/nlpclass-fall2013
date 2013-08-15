@@ -51,9 +51,10 @@
           </li>
           <li>Assignments
             <ol class="toc">
-              <li><a href='../a0programming.html'>#0 - Programming</a></li>
-              <li><a href='../a1prob.html'>#1 - Probability</a></li>
-              <li><a href='../a2classification.html'>#2 - Classification</a></li>
+              <li><a href='../assignments/a0programming.html'>#0 - Programming</a></li>
+              <li><a href='../assignments/a1prob.html'>#1 - Probability</a></li>
+              <li><a href='../assignments/a2classification.html'>#2 - Classification</a></li>
+              <li><a href='../assignments/a3ngrams.html'>#3 - N-Grams</a></li>
             </ol>
           </li>
           <li>External Links
@@ -66,12 +67,12 @@
       </div>
       <div id='content'>
         <h1>Scala Environment Setup</h1>
-        <ol class="toc"><li><a href="#overview">Overview</a></li><li><a href="#downloading_and_installing_scala">Downloading and &#8220;Installing&#8221; Scala</a></li><li><a href="#downloading_and_installing_sbt">Downloading and &#8220;Installing&#8221; SBT</a></li><li><a href="#creating_a_scala_project">Creating a Scala project</a></li><li><a href="#ides">IDEs</a></li></ol>
+        <ol class="toc"><li><a href="#overview">Overview</a></li><li><a href="#download_and_install_scala">Download and Install Scala</a></li><li><a href="#download_and_install_sbt">Download and Install SBT</a></li><li><a href="#creating_a_scala_project">Creating a Scala project</a></li><li><a href="#ides">IDEs</a></li></ol>
         <h2 id='overview'>Overview</h2>
 
 <p>This page explains how to set up your environment for using Scala.</p>
 
-<h2 id='downloading_and_installing_scala'>Downloading and &#8220;Installing&#8221; Scala</h2>
+<h2 id='download_and_install_scala'>Download and Install Scala</h2>
 
 <p>Scala has both a compiler (<code>scalac</code>) and an interactive environment called the REPL (&#8220;read-evaluate-print loop&#8221;) (<code>scala</code>).</p>
 
@@ -80,9 +81,7 @@
 
 <li>Download the current stable release (2.10.2 as of this writing).</li>
 
-<li>Extract it somewhere in your home directory.</li>
-
-<li>Add the <code>bin</code> directory to your path, or at least add <code>bin/scala</code>.</li>
+<li>Install it according to the instructions.</li>
 </ol>
 
 <p>Now you should be able to run <code>scala</code> from the command line to get into the REPL.</p>
@@ -99,67 +98,58 @@ res0: Int = 7
 </code></pre></div>
 <p>You will probably never call the compiler (<code>scalac</code>) directly. See below.</p>
 
-<h2 id='downloading_and_installing_sbt'>Downloading and &#8220;Installing&#8221; SBT</h2>
+<h2 id='download_and_install_sbt'>Download and Install SBT</h2>
 
 <p>SBT is a build tool, dependency manager, and more that makes a lot of tasks very easy. You should use it.</p>
 
-<ol>
-<li>Download the most current package from <a href='http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html#installing-sbt'>here</a> (the TGZ package probably).</li>
-
-<li>Extract it somewhere in your home directory.</li>
-
-<li>Create a script file called <code>sbt</code> that contains the following. (Adjust the <code>Xmx</code> value as appropriate for the amount of memory your computer has.)</li>
-</ol>
-<div class='highlight'><pre><code class='text'>java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar extracted-sbt-dir/sbt-launch.jar &quot;$@&quot;
-</code></pre></div>
-<ol>
-<li>Add this <code>sbt</code> file to your path. Make it executable (<code>chmod u+x sbt</code>).</li>
-</ol>
+<p>Download and install most current package from <a href='http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html#installing-sbt'>here</a> (the TGZ package probably).</p>
 
 <h2 id='creating_a_scala_project'>Creating a Scala project</h2>
 
 <h3 id='create_the_project_structure'>Create the project structure</h3>
 
 <ol>
-<li>Create a directory for your project (<code>mkdir project-name</code>) and <code>cd</code> into it.</li>
+<li>
+<p><code>cd</code> into the directory that should contain your project.</p>
+</li>
 
-<li>Create a <code>build.sbt</code> file:</li>
-</ol>
+<li>
+<p>Create a <code>build.sbt</code> file:</p>
 <div class='highlight'><pre><code class='text'>import com.typesafe.sbt.SbtStartScript
-
+ 
 name := &quot;&lt;project-name&gt;&quot;
-
+ 
 version := &quot;0.0.1&quot;
-
+ 
 organization := &quot;&lt;something&gt;&quot;
-
+ 
 scalaVersion := &quot;2.10.2&quot;
-
+ 
 libraryDependencies ++= Seq(
-   &quot;com.typesafe&quot; % &quot;scalalogging-log4j_2.10&quot; % &quot;1.0.1&quot;,
-   &quot;org.apache.logging.log4j&quot; % &quot;log4j-core&quot; % &quot;2.0-beta3&quot;,
-   &quot;junit&quot; % &quot;junit&quot; % &quot;4.10&quot; % &quot;test&quot;,
-   &quot;com.novocode&quot; % &quot;junit-interface&quot; % &quot;0.8&quot; % &quot;test-&gt;default&quot;
-  )
-
+&quot;com.typesafe&quot; % &quot;scalalogging-log4j_2.10&quot; % &quot;1.0.1&quot;,
+&quot;org.apache.logging.log4j&quot; % &quot;log4j-core&quot; % &quot;2.0-beta3&quot;,
+&quot;junit&quot; % &quot;junit&quot; % &quot;4.10&quot; % &quot;test&quot;,
+&quot;com.novocode&quot; % &quot;junit-interface&quot; % &quot;0.8&quot; % &quot;test-&gt;default&quot;
+)
+ 
 seq(SbtStartScript.startScriptForClassesSettings: _*)
-
+ 
 SbtStartScript.stage in Compile := Unit
-
+ 
 scalacOptions ++= Seq(&quot;-deprecation&quot;)
-</code></pre></div>
-<ol>
-<li>Create a <code>project/build.properties</code></li>
-</ol>
-<div class='highlight'><pre><code class='text'>sbt.version=0.12.+
-</code></pre></div>
-<ol>
-<li>Create a <code>project/build.sbt</code></li>
-</ol>
-<div class='highlight'><pre><code class='text'>resolvers += Classpaths.typesafeResolver
+</code></pre></div></li>
 
-addSbtPlugin(&quot;com.typesafe.sbt&quot; % &quot;sbt-start-script&quot; % &quot;0.7.0&quot;)
-</code></pre></div>
+<li>
+<p>Create a <code>project/build.properties</code>:</p>
+<div class='highlight'><pre><code class='text'>sbt.version=0.12.+
+</code></pre></div></li>
+
+<li>
+<p>Create a <code>project/build.sbt</code>:</p>
+<div class='highlight'><pre><code class='text'>addSbtPlugin(&quot;com.typesafe.sbt&quot; % &quot;sbt-start-script&quot; % &quot;0.9.0&quot;)
+</code></pre></div></li>
+</ol>
+
 <h3 id='add_some_code'>Add some code</h3>
 
 <p>Create a file <code>project-name/src/main/scala/mypkg/First.scala</code>.</p>
@@ -244,42 +234,52 @@ Running the First application.
 </code></pre></div>
 <h2 id='ides'>IDEs</h2>
 
-<p>Clearly, you can use any text editor to develop your Scala code. Use whatever you are most comfortable with.</p>
+<p>You can use any text editor you want to develop your Scala code. Use whatever you are most comfortable with.</p>
+
+<p>If you want to use Eclipse, here are some instructions:</p>
 
 <h3 id='eclipse_scalaide'>Eclipse Scala-IDE</h3>
 
 <p>The Scala developers have created an official plugin for Eclipse that has a lot of nice features. This is what I use for Scala development. If you are interested in using this, read on. If you don&#8217;t want to use it, that&#8217;s fine too.</p>
 
 <ol>
-<li>Download Eclipse 3.7 (Indigo) package called &#8220;Eclipse IDE for Java Developers&#8221;: <a href='http://www.eclipse.org/downloads/packages/release/indigo/sr2'>eclipse.org/downloads/packages/release/indigo/sr2</a> (the plugin doesn&#8217;t work so well with the newest version of Eclipse). Install it.</li>
+<li>
+<p>Download Eclipse 3.7 (Indigo) package called &#8220;Eclipse IDE for Java Developers&#8221;: <a href='http://www.eclipse.org/downloads/packages/release/indigo/sr2'>eclipse.org/downloads/packages/release/indigo/sr2</a> (the plugin doesn&#8217;t work so well with the newest version of Eclipse). Install it.</p>
+</li>
 
-<li>Edit the file <code>eclipse.ini</code> in the installation directory (or in the application bundle if you are on a Mac) to increase the amount memory allocated to Eclipse. Choose an decent amount.</li>
-</ol>
+<li>
+<p>Edit the file <code>eclipse.ini</code> in the installation directory (or in the application bundle if you are on a Mac) to increase the amount memory allocated to Eclipse. Choose an decent amount.</p>
 <div class='highlight'><pre><code class='text'>-Xmx4096m
-</code></pre></div>
-<ol>
-<li>Start Eclipse</li>
+</code></pre></div></li>
 
-<li>Go to <code>Help</code> <code>-&gt;</code> <code>Install New Software...</code> and add the following site (as seen here: <a href='http://scala-ide.org/download/current.html'>scala-ide.org/download/current.html</a>). Then hit <code>Next</code> and follow the instruction to install the plugin.</li>
-</ol>
+<li>
+<p>Start Eclipse</p>
+</li>
+
+<li>
+<p>Go to <code>Help</code> <code>-&gt;</code> <code>Install New Software...</code> and add the following site (as seen here: <a href='http://scala-ide.org/download/current.html'>scala-ide.org/download/current.html</a>). Then hit <code>Next</code> and follow the instruction to install the plugin.</p>
 <div class='highlight'><pre><code class='text'>http://download.scala-ide.org/sdk/e37/scala210/stable/site
-</code></pre></div>
-<ol>
-<li>Install the SBT plugin for generating Eclipse projects. Add the following to <code>~/.sbt/plugins/plugins.sbt</code>:</li>
-</ol>
+</code></pre></div></li>
+
+<li>
+<p>Install the SBT plugin for generating Eclipse projects. Add the following to <code>~/.sbt/plugins/plugins.sbt</code>:</p>
 <div class='highlight'><pre><code class='text'>resolvers += Classpaths.typesafeResolver
-
+  
 addSbtPlugin(&quot;com.typesafe.sbteclipse&quot; % &quot;sbteclipse-plugin&quot; % &quot;2.1.2&quot;)
-</code></pre></div>
-<ol>
-<li>In your project directory, generate an Eclipse project:</li>
-</ol>
-<div class='highlight'><pre><code class='text'>$ sbt &quot;eclipse with-source=true&quot;
-</code></pre></div>
-<ol>
-<li>In Eclipse, do <code>File</code> <code>-&gt;</code> <code>Import...</code> <code>-&gt;</code> <code>Existing Project into Workspace</code> and find your project directory. Import it.</li>
+</code></pre></div></li>
 
-<li>IF YOUR PROJECT IS ON GITHUB. Right-click on the project on the left side of the window. Do <code>Team</code> <code>-&gt;</code> <code>Share Project</code> <code>-&gt;</code> <code>Git</code> and check <code>Use or create repository in parent folder of project</code> and click <code>Finish</code>.</li>
+<li>
+<p>In your project directory, generate an Eclipse project:</p>
+<div class='highlight'><pre><code class='text'>$ sbt &quot;eclipse with-source=true&quot;
+</code></pre></div></li>
+
+<li>
+<p>In Eclipse, do <code>File</code> <code>-&gt;</code> <code>Import...</code> <code>-&gt;</code> <code>Existing Project into Workspace</code> and find your project directory. Import it.</p>
+</li>
+
+<li>
+<p>IF YOUR PROJECT IS ON GITHUB. Right-click on the project on the left side of the window. Do <code>Team</code> <code>-&gt;</code> <code>Share Project</code> <code>-&gt;</code> <code>Git</code> and check <code>Use or create repository in parent folder of project</code> and click <code>Finish</code>.</p>
+</li>
 </ol>
       </div>
       <div id='footer'></div>

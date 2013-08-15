@@ -51,9 +51,10 @@
           </li>
           <li>Assignments
             <ol class="toc">
-              <li><a href='../a0programming.html'>#0 - Programming</a></li>
-              <li><a href='../a1prob.html'>#1 - Probability</a></li>
-              <li><a href='../a2classification.html'>#2 - Classification</a></li>
+              <li><a href='../assignments/a0programming.html'>#0 - Programming</a></li>
+              <li><a href='../assignments/a1prob.html'>#1 - Probability</a></li>
+              <li><a href='../assignments/a2classification.html'>#2 - Classification</a></li>
+              <li><a href='../assignments/a3ngrams.html'>#3 - N-Grams</a></li>
             </ol>
           </li>
           <li>External Links
@@ -143,10 +144,10 @@
 </code></pre></div>
 <p>But the for-each loop can be used in more complex ways, allowing succinct syntax for looping over multiple collections and filtering:</p>
 <div class='highlight'><pre><code class='scala'><span class='k'>for</span><span class='o'>(</span>
-   <span class='n'>x</span> <span class='k'>&lt;-</span> <span class='nc'>Vector</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>,</span><span class='mi'>3</span><span class='o'>,</span><span class='mi'>4</span><span class='o'>,</span><span class='mi'>5</span><span class='o'>);</span>   <span class='c1'>// outer loop over a vector</span>
-   <span class='k'>if</span> <span class='n'>x</span> <span class='o'>%</span> <span class='mi'>2</span> <span class='o'>==</span> <span class='mi'>1</span><span class='o'>;</span>            <span class='c1'>// filter out even xs</span>
-   <span class='n'>y</span> <span class='k'>&lt;-</span> <span class='nc'>Set</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>,</span><span class='mi'>3</span><span class='o'>);</span>          <span class='c1'>// inner loop over a list</span>
-   <span class='k'>if</span> <span class='n'>x</span> <span class='o'>+</span> <span class='n'>y</span> <span class='o'>==</span> <span class='mi'>6</span>             <span class='c1'>// filter out entries that don&#39;t sum to 6</span>
+   <span class='n'>x</span> <span class='k'>&lt;-</span> <span class='nc'>Vector</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>,</span><span class='mi'>3</span><span class='o'>,</span><span class='mi'>4</span><span class='o'>,</span><span class='mi'>5</span><span class='o'>);</span>  <span class='c1'>// outer loop over a vector</span>
+   <span class='k'>if</span> <span class='n'>x</span> <span class='o'>%</span> <span class='mi'>2</span> <span class='o'>==</span> <span class='mi'>1</span><span class='o'>;</span>           <span class='c1'>// filter out even xs</span>
+   <span class='n'>y</span> <span class='k'>&lt;-</span> <span class='nc'>Set</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>,</span><span class='mi'>3</span><span class='o'>);</span>         <span class='c1'>// inner loop over a list</span>
+   <span class='k'>if</span> <span class='n'>x</span> <span class='o'>+</span> <span class='n'>y</span> <span class='o'>==</span> <span class='mi'>6</span>            <span class='c1'>// filter out entries that don&#39;t sum to 6</span>
   <span class='o'>)</span> <span class='n'>println</span><span class='o'>(</span><span class='n'>s</span><span class='s'>&quot;x=$x, y=$y&quot;</span><span class='o'>)</span>
 <span class='c1'>// prints:</span>
 <span class='c1'>//   x=3, y=3</span>
@@ -167,7 +168,7 @@
 <div class='highlight'><pre><code class='scala'><span class='k'>val</span> <span class='n'>x</span> <span class='k'>=</span> <span class='o'>{</span>
   <span class='k'>val</span> <span class='n'>intermediate1</span> <span class='k'>=</span> <span class='mi'>2</span> <span class='o'>+</span> <span class='mi'>3</span>
   <span class='k'>val</span> <span class='n'>intermediate2</span> <span class='k'>=</span> <span class='mi'>4</span> <span class='o'>+</span> <span class='mi'>5</span>
-  <span class='n'>intermediate1</span> <span class='o'>*</span> <span class='n'>intermediate2</span>       <span class='c1'>// this will be &quot;returned&quot; from the block</span>
+  <span class='n'>intermediate1</span> <span class='o'>*</span> <span class='n'>intermediate2</span>  <span class='c1'>// will be &quot;returned&quot; from the block</span>
 <span class='o'>}</span>
 <span class='c1'>// x: Int = 45</span>
 </code></pre></div>
@@ -203,16 +204,16 @@
 </ul>
 
 <p>Some examples</p>
-<div class='highlight'><pre><code class='scala'><span class='k'>def</span> <span class='n'>add</span><span class='o'>(</span><span class='n'>i</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>,</span> <span class='n'>j</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span> <span class='k'>=</span> <span class='n'>i</span> <span class='o'>+</span> <span class='n'>j</span>        <span class='c1'>// no braces needed</span>
-<span class='k'>def</span> <span class='n'>add2</span><span class='o'>(</span><span class='n'>i</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)(</span><span class='n'>j</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span> <span class='k'>=</span> <span class='n'>i</span> <span class='o'>+</span> <span class='n'>j</span>       <span class='c1'>// two parameter lists</span>
-<span class='k'>def</span> <span class='n'>mystring</span><span class='o'>()</span> <span class='k'>=</span> <span class='s'>&quot;something&quot;</span>           <span class='c1'>// parentheses option in caller</span>
-<span class='k'>def</span> <span class='n'>mystring2</span> <span class='k'>=</span> <span class='s'>&quot;something else&quot;</span>       <span class='c1'>// no parentheses allowed in caller</span>
-<span class='k'>def</span> <span class='n'>doubleSum</span><span class='o'>(</span><span class='n'>i</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>,</span> <span class='n'>j</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span> <span class='k'>=</span> <span class='o'>{</span>      <span class='c1'>// braces because multiple statements</span>
+<div class='highlight'><pre><code class='scala'><span class='k'>def</span> <span class='n'>add</span><span class='o'>(</span><span class='n'>i</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>,</span> <span class='n'>j</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span> <span class='k'>=</span> <span class='n'>i</span> <span class='o'>+</span> <span class='n'>j</span>    <span class='c1'>// no braces needed</span>
+<span class='k'>def</span> <span class='n'>add2</span><span class='o'>(</span><span class='n'>i</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)(</span><span class='n'>j</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span> <span class='k'>=</span> <span class='n'>i</span> <span class='o'>+</span> <span class='n'>j</span>   <span class='c1'>// two parameter lists</span>
+<span class='k'>def</span> <span class='n'>mystring</span><span class='o'>()</span> <span class='k'>=</span> <span class='s'>&quot;something&quot;</span>       <span class='c1'>// parentheses option in caller</span>
+<span class='k'>def</span> <span class='n'>mystring2</span> <span class='k'>=</span> <span class='s'>&quot;something else&quot;</span>   <span class='c1'>// no parentheses allowed in caller</span>
+<span class='k'>def</span> <span class='n'>doubleSum</span><span class='o'>(</span><span class='n'>i</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>,</span> <span class='n'>j</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span> <span class='k'>=</span> <span class='o'>{</span>  <span class='c1'>// braces for multiple statements</span>
   <span class='k'>val</span> <span class='n'>sum</span> <span class='k'>=</span> <span class='n'>i</span> <span class='o'>+</span> <span class='n'>j</span>
-  <span class='n'>sum</span> <span class='o'>*</span> <span class='mi'>2</span>                              <span class='c1'>// &quot;return value&quot;</span>
+  <span class='n'>sum</span> <span class='o'>*</span> <span class='mi'>2</span>                          <span class='c1'>// &quot;return value&quot;</span>
 <span class='o'>}</span>
 <span class='k'>def</span> <span class='n'>ceilHalf</span><span class='o'>(</span><span class='n'>n</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span> <span class='k'>=</span> <span class='o'>{</span>               
-  <span class='k'>if</span><span class='o'>(</span><span class='n'>n</span> <span class='o'>%</span> <span class='mi'>2</span> <span class='o'>==</span> <span class='mi'>0</span><span class='o'>)</span>                       <span class='c1'>// if-else expression is the final </span>
+  <span class='k'>if</span><span class='o'>(</span><span class='n'>n</span> <span class='o'>%</span> <span class='mi'>2</span> <span class='o'>==</span> <span class='mi'>0</span><span class='o'>)</span>                   <span class='c1'>// if-else expression is the final </span>
     <span class='n'>n</span> <span class='o'>/</span> <span class='mi'>2</span>
   <span class='k'>else</span>
     <span class='o'>(</span><span class='n'>n</span> <span class='o'>+</span> <span class='mi'>1</span><span class='o'>)</span> <span class='o'>/</span> <span class='mi'>2</span>
@@ -244,11 +245,11 @@
   <span class='o'>}</span>
 <span class='o'>}</span>
 </code></pre></div><div class='highlight'><pre><code class='scala'><span class='k'>val</span> <span class='n'>a</span> <span class='k'>=</span> <span class='k'>new</span> <span class='n'>A</span><span class='o'>(</span><span class='mi'>2</span><span class='o'>,</span><span class='mi'>3</span><span class='o'>)</span>
-<span class='n'>a</span><span class='o'>.</span><span class='n'>j</span>                  <span class='c1'>// accessing a public constructor-arg field</span>
-<span class='n'>a</span><span class='o'>.</span><span class='n'>iPlus5</span>             <span class='c1'>// accessing a public field</span>
-<span class='n'>a</span><span class='o'>.</span><span class='n'>addTo</span><span class='o'>(</span><span class='mi'>6</span><span class='o'>)</span>           <span class='c1'>// calling a method with an argument</span>
-<span class='n'>a</span><span class='o'>.</span><span class='n'>sum</span>                <span class='c1'>// calling a no-arg method, parentheses not permitted</span>
-<span class='n'>a</span><span class='o'>.</span><span class='n'>doSomeStuff</span>        <span class='c1'>// calling a no-arg method, parentheses optional</span>
+<span class='n'>a</span><span class='o'>.</span><span class='n'>j</span>              <span class='c1'>// accessing a public constructor-arg field</span>
+<span class='n'>a</span><span class='o'>.</span><span class='n'>iPlus5</span>         <span class='c1'>// accessing a public field</span>
+<span class='n'>a</span><span class='o'>.</span><span class='n'>addTo</span><span class='o'>(</span><span class='mi'>6</span><span class='o'>)</span>       <span class='c1'>// calling a method with an argument</span>
+<span class='n'>a</span><span class='o'>.</span><span class='n'>sum</span>            <span class='c1'>// calling a no-arg method, parentheses not permitted</span>
+<span class='n'>a</span><span class='o'>.</span><span class='n'>doSomeStuff</span>    <span class='c1'>// calling a no-arg method, parentheses optional</span>
 </code></pre></div>
 <h3 id='inheritance'>Inheritance</h3>
 
@@ -386,6 +387,22 @@
 </code></pre></div>
 <p>Note: Remember that the syntax <code>a -&gt; b</code> is nothing more than writing the pair <code>(a,b)</code>.</p>
 
+<h3 id='iterator'>Iterator</h3>
+
+<p>An <code>Iterator[T]</code> is a lazy sequence, meaning that it only evaluates its elements once they are accessed. Additionally, iterators can only be traversed one time. This is very useful for things like conserving memory by handling one element at a time or saving time by only evaluating as many elements as you need.</p>
+
+<p>Accidentally traversing the same iterator more than once is a common source of bugs. If you want to be able to access the elements more than once, you can always call <code>.toVector</code> to load the entire thing into memory.</p>
+<div class='highlight'><pre><code class='scala'><span class='k'>val</span> <span class='n'>a</span> <span class='k'>=</span> <span class='nc'>Iterator</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>,</span><span class='mi'>3</span><span class='o'>)</span>
+<span class='k'>val</span> <span class='n'>b</span> <span class='k'>=</span> <span class='n'>a</span><span class='o'>.</span><span class='n'>map</span><span class='o'>(</span><span class='n'>x</span> <span class='k'>=&gt;</span> <span class='n'>x</span> <span class='o'>+</span> <span class='mi'>1</span><span class='o'>)</span> <span class='c1'>// stage an operation, but don&#39;t traverse yet</span>
+<span class='k'>val</span> <span class='n'>c</span> <span class='k'>=</span> <span class='n'>b</span><span class='o'>.</span><span class='n'>sum</span>             <span class='c1'>// c: Int = 9</span>
+<span class='k'>val</span> <span class='n'>d</span> <span class='k'>=</span> <span class='n'>b</span><span class='o'>.</span><span class='n'>mkString</span><span class='o'>(</span><span class='s'>&quot; &quot;</span><span class='o'>)</span>   <span class='c1'>// d: String = &quot;&quot;</span>
+
+<span class='k'>val</span> <span class='n'>e</span> <span class='k'>=</span> <span class='nc'>Iterator</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>,</span><span class='mi'>3</span><span class='o'>)</span>
+<span class='k'>val</span> <span class='n'>f</span> <span class='k'>=</span> <span class='n'>e</span><span class='o'>.</span><span class='n'>map</span><span class='o'>(</span><span class='n'>x</span> <span class='k'>=&gt;</span> <span class='n'>x</span> <span class='o'>+</span> <span class='mi'>1</span><span class='o'>)</span> <span class='c1'>// stage an operation, but don&#39;t traverse yet</span>
+<span class='k'>val</span> <span class='n'>g</span> <span class='k'>=</span> <span class='n'>f</span><span class='o'>.</span><span class='n'>toVector</span>        <span class='c1'>// g: Vector[Int] = Vector(2, 3, 4)</span>
+<span class='k'>val</span> <span class='n'>h</span> <span class='k'>=</span> <span class='n'>g</span><span class='o'>.</span><span class='n'>sum</span>             <span class='c1'>// h: Int = 9</span>
+<span class='k'>val</span> <span class='n'>i</span> <span class='k'>=</span> <span class='n'>g</span><span class='o'>.</span><span class='n'>mkString</span><span class='o'>(</span><span class='s'>&quot; &quot;</span><span class='o'>)</span>   <span class='c1'>// i: String = &quot;2 3 4&quot;</span>
+</code></pre></div>
 <h2 id='pattern_matching'>Pattern Matching</h2>
 
 <p>Pattern matching is a really awesome capability of Scala. It&#8217;s extremely useful and flexible, allowing you to write very succinct code. It can be used in a variety of situations, and many built-in Scala types already have pattern-matching behavior defined.</p>
@@ -416,7 +433,7 @@
 </code></pre></div>
 <p>Anonymous (partial) functions. More on this example later. Note the use of curly braces instead of parentheses.</p>
 <div class='highlight'><pre><code class='scala'><span class='k'>val</span> <span class='n'>a</span> <span class='k'>=</span> <span class='nc'>Vector</span><span class='o'>((</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>),</span> <span class='o'>(</span><span class='mi'>3</span><span class='o'>,</span><span class='mi'>4</span><span class='o'>),</span> <span class='o'>(</span><span class='mi'>5</span><span class='o'>,</span><span class='mi'>6</span><span class='o'>))</span>
-<span class='n'>a</span><span class='o'>.</span><span class='n'>map</span> <span class='o'>{</span> <span class='k'>case</span> <span class='o'>(</span><span class='n'>x</span><span class='o'>,</span><span class='n'>y</span><span class='o'>)</span> <span class='k'>=&gt;</span> <span class='n'>x</span> <span class='o'>+</span> <span class='n'>y</span> <span class='o'>}</span>         <span class='c1'>// res0: Vector[Int] = Vector(3, 7, 11)</span>
+<span class='n'>a</span><span class='o'>.</span><span class='n'>map</span> <span class='o'>{</span> <span class='k'>case</span> <span class='o'>(</span><span class='n'>x</span><span class='o'>,</span><span class='n'>y</span><span class='o'>)</span> <span class='k'>=&gt;</span> <span class='n'>x</span> <span class='o'>+</span> <span class='n'>y</span> <span class='o'>}</span>  <span class='c1'>// res0: Vector[Int] = Vector(3, 7, 11)</span>
 </code></pre></div>
 <p>In all of these cases, the matching function works the same way.</p>
 
@@ -439,7 +456,7 @@
 </code></pre></div>
 <p>Sequences can be matched without knowing exactly how many items there are:</p>
 <div class='highlight'><pre><code class='scala'><span class='nc'>Vector</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>,</span><span class='mi'>3</span><span class='o'>,</span><span class='mi'>4</span><span class='o'>)</span> <span class='k'>match</span> <span class='o'>{</span>
-  <span class='k'>case</span> <span class='nc'>Vector</span><span class='o'>(</span><span class='n'>x</span><span class='o'>,</span> <span class='n'>y</span><span class='o'>,</span> <span class='k'>_</span><span class='o'>*)</span> <span class='k'>=&gt;</span> <span class='s'>&quot;this will match with x=1, y=2, and ignore the rest&quot;</span>
+  <span class='k'>case</span> <span class='nc'>Vector</span><span class='o'>(</span><span class='n'>x</span><span class='o'>,</span> <span class='n'>y</span><span class='o'>,</span> <span class='k'>_</span><span class='o'>*)</span> <span class='k'>=&gt;</span> <span class='s'>&quot;matches with x=1, y=2, and ignores rest&quot;</span>
 <span class='o'>}</span>
 </code></pre></div>
 <p>Conditions can be specified with <code>if</code> clauses:</p>
@@ -456,9 +473,9 @@
 
 <p>It is also possible to match a pattern and then bind the matched portion to a variable. This is done with the <code>@</code> symbol:</p>
 <div class='highlight'><pre><code class='scala'><span class='nc'>Vector</span><span class='o'>((</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>),</span> <span class='o'>(</span><span class='mi'>3</span><span class='o'>,</span><span class='mi'>4</span><span class='o'>),</span> <span class='o'>(</span><span class='mi'>5</span><span class='o'>,</span><span class='mi'>6</span><span class='o'>))</span> <span class='k'>match</span> <span class='o'>{</span>
-  <span class='k'>case</span> <span class='n'>a</span> <span class='k'>@</span> <span class='nc'>Vector</span><span class='o'>((</span><span class='n'>x</span><span class='o'>,</span> <span class='n'>y</span><span class='o'>),</span> <span class='k'>_</span><span class='o'>*)</span> <span class='k'>=&gt;</span> <span class='s'>&quot;will bind the entire Vector to `a` if matched&quot;</span>
-  <span class='k'>case</span> <span class='nc'>Vector</span><span class='o'>(</span><span class='n'>a</span> <span class='k'>@</span> <span class='o'>(</span><span class='n'>x</span><span class='o'>,</span> <span class='n'>y</span><span class='o'>),</span> <span class='k'>_</span><span class='o'>*)</span> <span class='k'>=&gt;</span> <span class='s'>&quot;will bind the first pair to `a` if matched&quot;</span>
-  <span class='k'>case</span> <span class='nc'>Vector</span><span class='o'>((</span><span class='n'>x</span><span class='o'>,</span> <span class='n'>y</span><span class='o'>),</span> <span class='n'>a</span> <span class='k'>@</span> <span class='k'>_</span><span class='o'>*)</span> <span class='k'>=&gt;</span> <span class='s'>&quot;will bind the tail sequence to `a` if matched&quot;</span>
+  <span class='k'>case</span> <span class='n'>a</span> <span class='k'>@</span> <span class='nc'>Vector</span><span class='o'>((</span><span class='n'>x</span><span class='o'>,</span> <span class='n'>y</span><span class='o'>),</span> <span class='k'>_</span><span class='o'>*)</span> <span class='k'>=&gt;</span> <span class='s'>&quot;binds entire Vector to `a`&quot;</span>
+  <span class='k'>case</span> <span class='nc'>Vector</span><span class='o'>(</span><span class='n'>a</span> <span class='k'>@</span> <span class='o'>(</span><span class='n'>x</span><span class='o'>,</span> <span class='n'>y</span><span class='o'>),</span> <span class='k'>_</span><span class='o'>*)</span> <span class='k'>=&gt;</span> <span class='s'>&quot;binds first pair to `a`&quot;</span>
+  <span class='k'>case</span> <span class='nc'>Vector</span><span class='o'>((</span><span class='n'>x</span><span class='o'>,</span> <span class='n'>y</span><span class='o'>),</span> <span class='n'>a</span> <span class='k'>@</span> <span class='k'>_</span><span class='o'>*)</span> <span class='k'>=&gt;</span> <span class='s'>&quot;binds tail sequence to `a`&quot;</span>
 <span class='o'>}</span>
 </code></pre></div>
 <h3 id='case_classes'>Case Classes</h3>
@@ -476,9 +493,9 @@
 <div class='highlight'><pre><code class='scala'><span class='k'>object</span> <span class='nc'>Half</span> <span class='o'>{</span>
   <span class='k'>def</span> <span class='n'>unapply</span><span class='o'>(</span><span class='n'>n</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span> <span class='k'>=</span> 
     <span class='k'>if</span><span class='o'>(</span><span class='n'>n</span> <span class='o'>%</span> <span class='mi'>2</span> <span class='o'>==</span> <span class='mi'>0</span><span class='o'>)</span> 
-      <span class='nc'>Some</span><span class='o'>((</span><span class='n'>n</span><span class='o'>/</span><span class='mi'>2</span><span class='o'>,</span> <span class='n'>n</span><span class='o'>/</span><span class='mi'>2</span><span class='o'>))</span>     <span class='c1'>// indicates a match and specifies return behavior</span>
+      <span class='nc'>Some</span><span class='o'>((</span><span class='n'>n</span><span class='o'>/</span><span class='mi'>2</span><span class='o'>,</span> <span class='n'>n</span><span class='o'>/</span><span class='mi'>2</span><span class='o'>))</span> <span class='c1'>// indicates a match, specifies return behavior</span>
     <span class='k'>else</span> 
-      <span class='nc'>None</span>                 <span class='c1'>// indicates no match</span>
+      <span class='nc'>None</span>             <span class='c1'>// indicates no match</span>
 <span class='o'>}</span>
 
 <span class='nc'>Vector</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>,</span><span class='mi'>3</span><span class='o'>).</span><span class='n'>map</span> <span class='o'>{</span> 
@@ -528,14 +545,14 @@
 </code></pre></div>
 <p><strong>flatten</strong>: Flatten a collection of collections.</p>
 <div class='highlight'><pre><code class='scala'><span class='k'>val</span> <span class='n'>a</span> <span class='k'>=</span> <span class='nc'>Vector</span><span class='o'>(</span><span class='nc'>Vector</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>,</span><span class='mi'>3</span><span class='o'>),</span> <span class='nc'>Vector</span><span class='o'>(</span><span class='mi'>4</span><span class='o'>,</span><span class='mi'>5</span><span class='o'>,</span><span class='mi'>6</span><span class='o'>),</span> <span class='nc'>Vector</span><span class='o'>(</span><span class='mi'>7</span><span class='o'>,</span><span class='mi'>8</span><span class='o'>,</span><span class='mi'>9</span><span class='o'>))</span>
-<span class='n'>a</span><span class='o'>.</span><span class='n'>flatten</span>        <span class='c1'>// res1: Vector[Int] = Vector(1, 2, 3, 4, 5, 6, 7, 8, 9)</span>
+<span class='n'>a</span><span class='o'>.</span><span class='n'>flatten</span>   <span class='c1'>// res1: Vector[Int] = Vector(1, 2, 3, 4, 5, 6, 7, 8, 9)</span>
 </code></pre></div>
 <p><strong>flatMap</strong>: Map a function over the collection and flatten the result</p>
 <div class='highlight'><pre><code class='scala'><span class='nc'>Vector</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>,</span><span class='mi'>3</span><span class='o'>).</span><span class='n'>flatMap</span><span class='o'>(</span><span class='n'>n</span> <span class='k'>=&gt;</span> <span class='nc'>Vector</span><span class='o'>.</span><span class='n'>fill</span><span class='o'>(</span><span class='n'>n</span><span class='o'>)(</span><span class='n'>s</span><span class='s'>&quot;[$n]&quot;</span><span class='o'>))</span>    
-          <span class='c1'>// res2: Vector[String] = Vector([1], [2], [2], [3], [3], [3])</span>
+<span class='c1'>// res2: Vector[String] = Vector([1], [2], [2], [3], [3], [3])</span>
 </code></pre></div>
 <p><strong>foldLeft</strong>: Map a function over the collection, accumulating the results. Takes two parameters: the base value and the function.</p>
-<div class='highlight'><pre><code class='scala'><span class='nc'>Vector</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>,</span><span class='mi'>3</span><span class='o'>).</span><span class='n'>foldLeft</span><span class='o'>(</span><span class='mi'>0</span><span class='o'>)((</span><span class='n'>accum</span><span class='o'>,</span> <span class='n'>x</span><span class='o'>)</span> <span class='k'>=&gt;</span> <span class='n'>accum</span> <span class='o'>+</span> <span class='n'>x</span><span class='o'>)</span>     <span class='c1'>// res3: Int = 6</span>
+<div class='highlight'><pre><code class='scala'><span class='nc'>Vector</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>,</span><span class='mi'>3</span><span class='o'>).</span><span class='n'>foldLeft</span><span class='o'>(</span><span class='mi'>0</span><span class='o'>)((</span><span class='n'>accum</span><span class='o'>,</span> <span class='n'>x</span><span class='o'>)</span> <span class='k'>=&gt;</span> <span class='n'>accum</span> <span class='o'>+</span> <span class='n'>x</span><span class='o'>)</span>   <span class='c1'>// res3: Int = 6</span>
 </code></pre></div>
 <p><strong>filter</strong>: Remove items for which the given predicate is false</p>
 <div class='highlight'><pre><code class='scala'><span class='nc'>Vector</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>,</span><span class='mi'>3</span><span class='o'>).</span><span class='n'>filter</span><span class='o'>(</span><span class='k'>_</span> <span class='o'>%</span> <span class='mi'>2</span> <span class='o'>==</span> <span class='mi'>1</span><span class='o'>)</span>   <span class='c1'>// res4: Vector[Int] = Vector(1, 3)</span>
@@ -562,10 +579,10 @@
 <p>Scala also provides a mechanism for for-comprehensions, expressions with similar syntax that produce collections. These are signaled by the <code>yield</code> keyword:</p>
 <div class='highlight'><pre><code class='scala'><span class='k'>val</span> <span class='n'>a</span> <span class='k'>=</span> 
   <span class='k'>for</span><span class='o'>(</span>
-     <span class='n'>x</span> <span class='k'>&lt;-</span> <span class='nc'>Vector</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>,</span><span class='mi'>3</span><span class='o'>,</span><span class='mi'>4</span><span class='o'>,</span><span class='mi'>5</span><span class='o'>);</span>   <span class='c1'>// outer loop over a vector</span>
-     <span class='k'>if</span> <span class='n'>x</span> <span class='o'>%</span> <span class='mi'>2</span> <span class='o'>==</span> <span class='mi'>1</span><span class='o'>;</span>            <span class='c1'>// filter out even xs</span>
-     <span class='n'>y</span> <span class='k'>&lt;-</span> <span class='nc'>Set</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>,</span><span class='mi'>3</span><span class='o'>);</span>          <span class='c1'>// inner loop over a list</span>
-     <span class='k'>if</span> <span class='n'>x</span> <span class='o'>+</span> <span class='n'>y</span> <span class='o'>==</span> <span class='mi'>6</span>             <span class='c1'>// filter out entries that don&#39;t sum to 6</span>
+     <span class='n'>x</span> <span class='k'>&lt;-</span> <span class='nc'>Vector</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>,</span><span class='mi'>3</span><span class='o'>,</span><span class='mi'>4</span><span class='o'>,</span><span class='mi'>5</span><span class='o'>);</span> <span class='c1'>// outer loop over a vector</span>
+     <span class='k'>if</span> <span class='n'>x</span> <span class='o'>%</span> <span class='mi'>2</span> <span class='o'>==</span> <span class='mi'>1</span><span class='o'>;</span>          <span class='c1'>// filter out even xs</span>
+     <span class='n'>y</span> <span class='k'>&lt;-</span> <span class='nc'>Set</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span><span class='mi'>2</span><span class='o'>,</span><span class='mi'>3</span><span class='o'>);</span>        <span class='c1'>// inner loop over a list</span>
+     <span class='k'>if</span> <span class='n'>x</span> <span class='o'>+</span> <span class='n'>y</span> <span class='o'>==</span> <span class='mi'>6</span>           <span class='c1'>// filter out entries that don&#39;t sum to 6</span>
     <span class='o'>)</span> <span class='k'>yield</span> <span class='n'>x</span> <span class='o'>*</span> <span class='n'>y</span>
 <span class='c1'>// a: scala.collection.immutable.Vector[Int] = Vector(9, 5)</span>
 </code></pre></div>
