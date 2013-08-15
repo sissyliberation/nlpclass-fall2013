@@ -9,14 +9,13 @@ root: "../"
 This page explains how to set up your environment for using Scala.
 
 
-## Downloading and "Installing" Scala
+## Download and Install Scala
 
 Scala has both a compiler (`scalac`) and an interactive environment called the REPL ("read-evaluate-print loop") (`scala`).
 
 1. Go here: [scala-lang.org/downloads](http://www.scala-lang.org/downloads)
 2. Download the current stable release (2.10.2 as of this writing).  
-3. Extract it somewhere in your home directory.
-4. Add the `bin` directory to your path, or at least add `bin/scala`.
+3. Install it according to the instructions.
 
 Now you should be able to run `scala` from the command line to get into the REPL.
 {% highlight text %}
@@ -37,59 +36,49 @@ res0: Int = 7
 You will probably never call the compiler (`scalac`) directly.  See below.
 
 
-## Downloading and "Installing" SBT
+## Download and Install SBT
 
 SBT is a build tool, dependency manager, and more that makes a lot of tasks very easy.  You should use it.
 
-1. Download the most current package from [here](http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html#installing-sbt) (the TGZ package probably).
-2. Extract it somewhere in your home directory.
-3. Create a script file called `sbt` that contains the following.  (Adjust the `Xmx` value as appropriate for the amount of memory your computer has.)  
-{% highlight text %}
-java -Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=384M -jar extracted-sbt-dir/sbt-launch.jar "$@"
-{% endhighlight %}
-4. Add this `sbt` file to your path.  Make it executable (`chmod u+x sbt`).
+Download and install most current package from [here](http://www.scala-sbt.org/release/docs/Getting-Started/Setup.html#installing-sbt) (the TGZ package probably).  
 
 
 ## Creating a Scala project
 
 ### Create the project structure
 
-1. Create a directory for your project (`mkdir project-name`) and `cd` into it.
+1. `cd` into the directory that should contain your project.
+
 2. Create a `build.sbt` file:
-{% highlight text %}
+    {% highlight text %}
 import com.typesafe.sbt.SbtStartScript
-
+    
 name := "<project-name>"
-
+    
 version := "0.0.1"
-
+    
 organization := "<something>"
-
+    
 scalaVersion := "2.10.2"
-
+    
 libraryDependencies ++= Seq(
    "com.typesafe" % "scalalogging-log4j_2.10" % "1.0.1",
    "org.apache.logging.log4j" % "log4j-core" % "2.0-beta3",
    "junit" % "junit" % "4.10" % "test",
    "com.novocode" % "junit-interface" % "0.8" % "test->default"
   )
-
+    
 seq(SbtStartScript.startScriptForClassesSettings: _*)
-
+    
 SbtStartScript.stage in Compile := Unit
+    
+scalacOptions ++= Seq("-deprecation"){% endhighlight %}
 
-scalacOptions ++= Seq("-deprecation")
-{% endhighlight %}
-3. Create a `project/build.properties`
-{% highlight text %}
-sbt.version=0.12.+
-{% endhighlight %}
-4. Create a `project/build.sbt`
-{% highlight text %}
-resolvers += Classpaths.typesafeResolver
+3. Create a `project/build.properties`:
+    {% highlight text %}sbt.version=0.12.+{% endhighlight %}
 
-addSbtPlugin("com.typesafe.sbt" % "sbt-start-script" % "0.7.0")
-{% endhighlight %}
+4. Create a `project/build.sbt`:
+    {% highlight text %}addSbtPlugin("com.typesafe.sbt" % "sbt-start-script" % "0.9.0"){% endhighlight %}
 
 
 ### Add some code
@@ -197,8 +186,9 @@ $ sbt test
 
 ## IDEs
 
-Clearly, you can use any text editor to develop your Scala code.  Use whatever you are most comfortable with.
+You can use any text editor you want to develop your Scala code.  Use whatever you are most comfortable with.
 
+If you want to use Eclipse, here are some instructions:
 
 ### Eclipse Scala-IDE
 
@@ -206,24 +196,18 @@ The Scala developers have created an official plugin for Eclipse that has a lot 
 
 1. Download Eclipse 3.7 (Indigo) package called "Eclipse IDE for Java Developers": [eclipse.org/downloads/packages/release/indigo/sr2](http://www.eclipse.org/downloads/packages/release/indigo/sr2) (the plugin doesn't work so well with the newest version of Eclipse).  Install it.
 2. Edit the file `eclipse.ini` in the installation directory (or in the application bundle if you are on a Mac) to increase the amount memory allocated to Eclipse.  Choose an decent amount.
-{% highlight text %}
--Xmx4096m
-{% endhighlight %}
+    {% highlight text %}-Xmx4096m{% endhighlight %}
 3. Start Eclipse
 4. Go to `Help` `->` `Install New Software...` and add the following site (as seen here: [scala-ide.org/download/current.html](http://scala-ide.org/download/current.html)).  Then hit `Next` and follow the instruction to install the plugin.
-{% highlight text %}
-http://download.scala-ide.org/sdk/e37/scala210/stable/site
-{% endhighlight %}
+    {% highlight text %}http://download.scala-ide.org/sdk/e37/scala210/stable/site{% endhighlight %}
 5. Install the SBT plugin for generating Eclipse projects. Add the following to `~/.sbt/plugins/plugins.sbt`:
-{% highlight text %}
+    {% highlight text %}
 resolvers += Classpaths.typesafeResolver
-
-addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.1.2")
-{% endhighlight %}
+     
+addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "2.1.2"){% endhighlight %}
 6. In your project directory, generate an Eclipse project:
-{% highlight text %}
-$ sbt "eclipse with-source=true"
-{% endhighlight %}
+    {% highlight text %}
+$ sbt "eclipse with-source=true"{% endhighlight %}
 7. In Eclipse, do `File` `->` `Import...` `->` `Existing Project into Workspace` and find your project directory.  Import it.
 8. IF YOUR PROJECT IS ON GITHUB.  Right-click on the project on the left side of the window.  Do `Team` `->` `Share Project` `->` `Git` and check `Use or create repository in parent folder of project` and click `Finish`.
 

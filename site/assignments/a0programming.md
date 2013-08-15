@@ -29,13 +29,14 @@ You may discuss programming assignments with your classmates.  And google is an 
 
 ## Part 1: Getting set up
 
-Follow the instructions on the [Scala Environment Setup]({{ page.root }}scala/setup.html) and [Assignment Requirements]({{ page.root }}assignments.html) pages.  At a minimum, you'll need to:
+Follow the instructions on the [Assignment Requirements]({{ page.root }}assignments.html) and [Scala Environment Setup]({{ page.root }}scala/setup.html) pages.  At a minimum, you'll need to:
 
 * Download and install Scala
 * Download and install SBT
 * Create a Github Account and register as a student
-* Fork the class repository
-* Create an Scala project with SBT
+* Create a ***PRIVATE*** GitHub repository for your code and clone it to your computer
+* Add me (GitHub username `dhgarrette`) as a "collaborator"
+* Create an Scala project in your repository with `nlpclass-fall2013` as a dependency
 
 
 ## Part 2: Reading from files
