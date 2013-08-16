@@ -40,9 +40,9 @@ Follow the instructions on the [Assignment Requirements]({{ page.root }}assignme
 * Add me (GitHub username `dhgarrette`) as a "collaborator"
 * Create a Scala project in (the root of) your repository with `nlpclass-fall2013` as a dependency
 
-All of your code will be located in a package called `nlp`.  The `nlp` folder should be located at:
+All of your code will be located in a package called `nlp.a0`.  The `a0` folder should be in an `nlp` folder.  So you should have this:
 
-    nlpclass-fall2013-<lastname>-<firstname>/src/main/scala/nlp
+    nlpclass-fall2013-<lastname>-<firstname>/src/main/scala/nlp/a0
 
 For an example of this setup, see the program [`Example`](https://github.com/utcompling/nlpclass-fall2013/blob/master/src/main/scala/nlpclass/Example.scala), which is set up in a similar way (though with a different package name).  It can be run as:
 
@@ -65,10 +65,10 @@ Write an application that does the following:
 * Prints the number of *distinct* words in the book.
 * Prints each of the top 10 most frequent words along with its count and its percentage of the total.
 
-The application should be in an `object` called `WordCount` in a package called `nlp`.  I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
+The application should be in an `object` called `WordCount` in a package called `nlp.a0`.  I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
 
     $ cd nlpclass-fall2013-<lastname>-<firstname>
-    $ sbt "run-main nlp.WordCount /Users/dhg/texts/alice.txt"
+    $ sbt "run-main nlp.a0.WordCount /Users/dhg/texts/alice.txt"
     Total number of words: 29353
     Number of distinct words: 3203
 	Top 10 words:
@@ -95,7 +95,7 @@ Here, you will extend your program to allow for word counting that ignore stopwo
 
 I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
 
-    $ sbt "run-main nlp.WordCount alice.txt --stopwords english.stop"
+    $ sbt "run-main nlp.a0.WordCount alice.txt --stopwords english.stop"
     Total number of words: 29353
     Number of distinct words: 3203
     Top 10 words:
@@ -121,7 +121,7 @@ Your output should be obviously be sorted by frequency frequency, but for freque
 
 I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
 
-    $ sbt "run-main nlp.WordFreqFreq /Users/dhg/texts/alice.txt"
+    $ sbt "run-main nlp.a0.WordFreqFreq /Users/dhg/texts/alice.txt"
 	Top 10 most frequent frequencies:
 	1331 words appear 1 time
 	467 words appear 2 times
@@ -173,7 +173,7 @@ trait NGramCountingToImplement {
 Your task is to implement this trait.  You should create a file that looks like this:
 
 {% highlight scala %}
-package nlp
+package nlp.a0
 
 import nlpclass.NGramCountingToImplement
 
@@ -193,13 +193,13 @@ I'm going to test your class like this:
 {% highlight scala %}
 scala> sbt console
 scala> val aliceText = ...
-scala> new nlp.NGramCounting(3).countNGrams(aliceText)(Vector("the", "white", "rabbit"))
+scala> new nlp.a0.NGramCounting(3).countNGrams(aliceText)(Vector("the", "white", "rabbit"))
 res0: Int = 21
 {% endhighlight %}
 
 Now write a program called `CountTrigrams` that prints the top 10 most frequent trigrams along with their counts. I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
 
-    $ sbt "run-main nlp.CountTrigrams /Users/dhg/texts/alice.txt"
+    $ sbt "run-main nlp.a0.CountTrigrams /Users/dhg/texts/alice.txt"
 	project gutenberg tm            57
 	the mock turtle                 53
 	i don t                         31
