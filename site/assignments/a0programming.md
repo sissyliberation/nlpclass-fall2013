@@ -83,6 +83,7 @@ The application should be in an `object` called `WordCount` in a package called 
 	you            481     1.58
 	said           462     1.52
 
+
 ## Part 3: Removing stopwords
 
 Stopwords are extremely frequent non-content words such as determiners, pronouns, and prepositions.  You'll notice that the top 10 words in the book are all stopwords.  Because they are so frequent, stopwords don't generally tell us much about the content of a document.  
@@ -197,7 +198,7 @@ scala> new nlp.a0.NGramCounting(3).countNGrams(aliceText)(Vector("the", "white",
 res0: Int = 21
 {% endhighlight %}
 
-Now write a program called `CountTrigrams` that prints the top 10 most frequent trigrams along with their counts. I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
+Now write a program called `CountTrigrams` that prints the top 10 most frequent trigrams along with their counts I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
 
     $ sbt "run-main nlp.a0.CountTrigrams /Users/dhg/texts/alice.txt"
 	project gutenberg tm            57
@@ -212,3 +213,110 @@ Now write a program called `CountTrigrams` that prints the top 10 most frequent 
 	said the mock                   19
 
 Just for fun: of the 25,774 distinct trigrams, 23,294 (90.4%) appear only once, and more than 99.9% appear 12 times or fewer!
+
+
+## Part 6: Reading a data file
+
+During this class, there are times when we will need to read data files that appear in particular formats.  Thus, as a final exercise, we will write code to read one such file (that will be used in a future assignment).  
+
+The data will be in the form of files like this:
+
+	Outlook=Sunny,Temperature=Hot,Humidity=High,Wind=Weak,No
+	Outlook=Sunny,Temperature=Hot,Humidity=High,Wind=Strong,No
+	Outlook=Overcast,Temperature=Hot,Humidity=High,Wind=Weak,Yes
+	Outlook=Rain,Temperature=Mild,Humidity=High,Wind=Weak,Yes
+	Outlook=Rain,Temperature=Cool,Humidity=Normal,Wind=Weak,Yes
+	Outlook=Rain,Temperature=Cool,Humidity=Normal,Wind=Strong,No
+	Outlook=Overcast,Temperature=Cool,Humidity=Normal,Wind=Strong,Yes
+	Outlook=Sunny,Temperature=Mild,Humidity=High,Wind=Weak,No
+	Outlook=Sunny,Temperature=Cool,Humidity=Normal,Wind=Weak,Yes
+	Outlook=Rain,Temperature=Mild,Humidity=Normal,Wind=Weak,Yes
+	Outlook=Sunny,Temperature=Mild,Humidity=Normal,Wind=Strong,Yes
+	Outlook=Overcast,Temperature=Mild,Humidity=High,Wind=Strong,Yes
+	Outlook=Overcast,Temperature=Hot,Humidity=Normal,Wind=Weak,Yes
+	Outlook=Rain,Temperature=Mild,Humidity=High,Wind=Strong,No
+
+Each line of the file represents a training instance for a classification task.  Lines consist of a series of comma-separated fields.  Each field (except the last) is in the format `FEATURE=VALUE`.  The last field is a label for the instance.
+
+Your job is to write a program called `CountFeatures` that takes a file path and prints a list of feature values and their counts, broken down by label, with everything sorted alphabetically.  **Critically**, your program must be flexible enough to handle files with **any features** and **any labels**, as long as it conforms to the same format of comma-separated `FEATURE=VALUE` pairs follwed by a label.  You can assume that no feature, value, or label will ever contain either a comma or an equals sign.
+
+Given that the above data is found in a file called `data1.txt`, I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
+
+    $ sbt "run-main nlp.a0.CountFeatures /Users/dhg/texts/data1.txt"
+	No              5
+	    Humidity
+	        High            4
+	        Normal          1
+	    Outlook
+	        Rain            2
+	        Sunny           3
+	    Temperature
+	        Cool            1
+	        Hot             2
+	        Mild            2
+	    Wind
+	        Strong          3
+	        Weak            2
+	Yes             9
+	    Humidity
+	        High            3
+	        Normal          6
+	    Outlook
+	        Overcast        4
+	        Rain            3
+	        Sunny           2
+	    Temperature
+	        Cool            3
+	        Hot             2
+	        Mild            4
+	    Wind
+	        Strong          3
+	        Weak            6
+
+If I run it with a file `data2.txt` that contains:
+
+	word=the,word=movie,word=was,word=the,word=worst,neg=worst,-
+	word=i,word=loved,word=this,word=movie,pos=loved,+
+	word=the,word=best=,word=actor,word=was,word=bad,pos=best,neg=bad,-
+	word=hated,word=this,word=terrible,word=movie,neg=terrible,neg=hated,-
+	word=had,word=a,word=chase,word=and,word=a,word=fight,neutral
+
+Then I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
+
+    $ sbt "run-main nlp.a0.CountFeatures /Users/dhg/texts/data2.txt"
+	+               1
+	    pos
+	        loved           1
+	    word
+	        i               1
+	        loved           1
+	        movie           1
+	        this            1
+	-               3
+	    neg
+	        bad             1
+	        hated           1
+	        terrible        1
+	        worst           1
+	    pos
+	        best            1
+	    word
+	        actor           1
+	        bad             1
+	        best            1
+	        hated           1
+	        movie           2
+	        terrible        1
+	        the             3
+	        this            1
+	        was             2
+	        worst           1
+	neutral         1
+	    word
+	        a               2
+	        and             1
+	        chase           1
+	        fight           1
+	        had             1
+
+

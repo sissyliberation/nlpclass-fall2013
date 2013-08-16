@@ -67,7 +67,7 @@ Semi-colons can also be used to write several statements on a single line, but t
 {% highlight scala %}
 val x = 4
 val y = "stuff"
-val z = s"You can say that $x is ${1+3} and $y"
+val z = f"You can say $x is inverse of ${1.0 / x}%.2f and $y"
 {% endhighlight %}
 
 See [the docs](http://docs.scala-lang.org/overviews/core/string-interpolation.html) for more.

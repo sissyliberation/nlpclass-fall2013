@@ -13,6 +13,7 @@ I've written up some notes on Scala that might be useful
 
 [My Scala Utilities Library]({{ page.root}}scala/scala-util.html)
 
+
 ## Links
 
 [Scala](http://www.scala-lang.org): Homepage  
@@ -20,6 +21,9 @@ I've written up some notes on Scala that might be useful
 
 [Scala on Stack Overflow](http://stackoverflow.com/tags/scala/info): A great Scala community and a weath of Scala programming knowledge in question-and-answer format.
 
+[Java to Scala cheat sheet](http://techblog.realestate.com.au/java-to-scala-cheatsheet/)  
+[Option cheat sheet](http://blog.tmorris.net/posts/scalaoption-cheat-sheet/)  
+[Syntax cheat sheet](http://brenocon.com/scalacheat/)
 
 
 ## Jason Baldridge's Notes
