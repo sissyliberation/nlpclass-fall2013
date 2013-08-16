@@ -2,7 +2,7 @@ import com.typesafe.sbt.SbtStartScript
 
 name := "nlpclass-fall2013"
 
-organization := "utcompling"
+organization := "com.utcompling"
 
 version := "0001"
 
@@ -15,6 +15,7 @@ resolvers ++= Seq(
 
 libraryDependencies ++= Seq(
    "dhg" % "scala-util_2.10" % "1.0.0-SNAPSHOT" changing(),
+   "edu.stanford.nlp" % "stanford-corenlp" % "3.2.0",
    "com.typesafe" % "scalalogging-log4j_2.10" % "1.0.1",
    "org.apache.logging.log4j" % "log4j-core" % "2.0-beta3",
    "junit" % "junit" % "4.10" % "test",

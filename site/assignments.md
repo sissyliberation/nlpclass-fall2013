@@ -30,7 +30,7 @@ resolvers ++= Seq(
   "dhg snapshot repo" at "http://www.cs.utexas.edu/~dhg/maven-repository/snapshots"
 )
     
-libraryDependencies += "utcompling" % "nlpclass-fall2013_2.10" % "0001" changing(){% endhighlight %}
+libraryDependencies += "com.utcompling" % "nlpclass-fall2013_2.10" % "0001" changing(){% endhighlight %}
 
     This creates a dependency from your project to the course project code, which exists online.  I will use this project to provide code to you that your code can access.
 
