@@ -36,10 +36,8 @@ Let’s start with a simple example problem from Tom Mitchell’s book Machine L
 
 Table 3.2 on page 59 of Mitchell’s book contains information for fourteen days; this data is encoded in the file classify/data/tennis/train. There is another related file called test in the same directory. As you might expect, you will learn model parameters using train and test the resulting model on the examples in test.
 
-Each row in the data files corresponds to a single classification instance. For example, here is the training set.
+Each row in the data files corresponds to a single classification instance. For example, here is the training set:
 
-    classify/data/tennis/train
-    
     Outlook=Sunny,Temperature=Hot,Humidity=High,Wind=Weak,No
     Outlook=Sunny,Temperature=Hot,Humidity=High,Wind=Strong,No    
     Outlook=Overcast,Temperature=Hot,Humidity=High,Wind=Weak,Yes
@@ -71,7 +69,13 @@ So, we want to find out whether:
 
 Another way of stating this is that for each instance (with values for *o*, *t*, *h*, and *w*), we seek to find the label *x* with maximum probability:
 
-
+`\[
+    \begin{align}
+    \hat{x} 
+      &= \stackrel{\arg\!\max}{\tiny{x\hspace{-1mm}\in\hspace{-1mm}\text{yes},\text{no}}} P(x \mid o,t,h,w) \\
+      &= \stackrel{\arg\!\max}{\tiny{x\hspace{-1mm}\in\hspace{-1mm}\text{yes},\text{no}}} P(x)~P(o \mid x)~P(t \mid x)~P(h \mid x)~P(w \mid x)
+    \end{align}
+\]`
 
 **Part (a) [4 pts].** Written answer. Show explicitly how the last line above is derived from the first line using Bayes rule, the chain rule, independence assumptions, and from the fact we are finding the argmax.
 
@@ -82,27 +86,57 @@ So, if we have a new instance that we wish to classify, like:
 
 what we seek is:
 
+`\[
+    \begin{align}
+    \hat{x} 
+      &= \stackrel{\arg\!\max}{\tiny{x\hspace{-1mm}\in\hspace{-1mm}\text{yes},\text{no}}} P(x \mid \text{sunny}, \text{cool}, \text{high}, \text{strong})\\
+      &= \stackrel{\arg\!\max}{\tiny{x\hspace{-1mm}\in\hspace{-1mm}\text{yes},\text{no}}} P(x)~P(\text{sunny} \mid x)~P(\text{cool} \mid x)~P(\text{high} \mid x)~P(\text{strong} \mid x)
+    \end{align}
+\]`
 
 
 This simply means we need to compute the two values:
 
-
+`\[
+    \begin{align}    
+      & P(\text{yes})~P(\text{sunny} \mid \text{yes})~P(\text{cool} \mid \text{yes})~P(\text{high} \mid \text{yes})~P(\text{strong} \mid \text{yes}) \\
+      & P(\text{no})~P(\text{sunny} \mid \text{no})~P(\text{cool} \mid \text{no})~P(\text{high} \mid \text{no})~P(\text{strong} \mid \text{no})
+    \end{align}
+\]`
 
 And pick the label that produced the higher value. 
 
 Terms like P(yes) and P(sunny|no) are just parameters that we can estimate from a corpus, like the training corpus above. We'll start by doing maximum likelihood estimation, which means that the values assigned to the parameters are those which maximize the probability of the training corpus. We'll return to what this means precisely later in the course; for now, it just means that you do exactly what you'd think: count the number of times (frequency) each possibility happened and divide it by the number of times it could have happened. Here are some examples:
 
+`\[
+    P(\text{yes}) 
+      = \frac{freq(\text{yes})}{\sum_x freq(D=x)} 
+      = \frac{freq(\text{yes})}{freq(\text{yes}) + freq(\text{no})} 
+      = \frac{9}{9 + 5} = 0.643
+\]`
 
+`\[
+    \begin{align}
+    P(\text{sunny} \mid \text{yes}) 
+      &= \frac{freq(\text{yes},\text{sunny})}{\sum_x freq(\text{yes},O=x)} \\
+      &= \frac{freq(\text{yes},\text{sunny})}{freq(\text{yes},\text{sunny}) + freq(\text{yes},\text{rain}) + freq(\text{yes},\text{overcast})} \\
+      &= \frac{2}{2 + 3 + 4} = 0.222
+    \end{align}
+\]`
 
+`\[
+    \begin{align}
+    P(\text{sunny} \mid \text{no}) 
+      &= \frac{freq(\text{no},\text{sunny})}{\sum_x freq(\text{no},O=x)} \\
+      &= \frac{freq(\text{no},\text{sunny})}{freq(\text{no},\text{sunny}) + freq(\text{no},\text{rain}) + freq(\text{no},\text{overcast})} \\
+      &= \frac{2}{3 + 2 + 0} = 0.6
+    \end{align}
+\]`
 
-
-
-
-Easy! Note: you might have noticed that freq(yes, sunny) + freq(yes, rain) + freq(yes, overcast) = freq(yes). This is true for this example because each attribute only occurs exactly once per instance. Later on, with sentiment analysis, we'll need the extra flexibility of being able to see the same attribute multiple times per instance, such as multiple words.
+Easy! *Note:* you might have noticed that *freq*(**yes**, **sunny**) + *freq*(**yes**, **rain**) + *freq*(**yes**, **overcast**) = *freq*(**yes**). This is true for this example because each attribute only occurs exactly once per instance. Later on, with sentiment analysis, we'll need the extra flexibility of being able to see the same attribute multiple times per instance, such as multiple words.
 
 The data includes a test set for the tennis task as well, provided in full here:
 
-    classify/data/tennis/test
     Outlook=Sunny,Temperature=Cool,Humidity=High,Wind=Strong,No
     Outlook=Overcast,Temperature=Cool,Humidity=Normal,Wind=Weak,Yes
     Outlook=Sunny,Temperature=Hot,Humidity=Normal,Wind=Weak,Yes
@@ -121,7 +155,7 @@ Like the training set, this provides a list of instances, and for each instance,
 
 **Part (b) [2 pts].** Written answer. Using the training set to determine the relevant parameters, what is the most probable label for:
 
-Outlook=Sunny,Temperature=Hot,Humidity=Normal,Wind=Weak
+    Outlook=Sunny,Temperature=Hot,Humidity=Normal,Wind=Weak
 
 Make sure to show your work, including the values you obtained for each label. Does it match the label given for the third instance in the test set above?
 
