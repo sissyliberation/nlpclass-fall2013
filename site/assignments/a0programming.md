@@ -238,85 +238,100 @@ The data will be in the form of files like this:
 
 Each line of the file represents a training instance for a classification task.  Lines consist of a series of comma-separated fields.  Each field (except the last) is in the format `FEATURE=VALUE`.  The last field is a label for the instance.
 
-Your job is to write a program called `CountFeatures` that takes a file path and prints a list of feature values and their counts, broken down by label, with everything sorted alphabetically.  **Critically**, your program must be flexible enough to handle files with **any features** and **any labels**, as long as it conforms to the same format of comma-separated `FEATURE=VALUE` pairs follwed by a label.  You can assume that no feature, value, or label will ever contain either a comma or an equals sign.
-
-Given that the above data is found in a file called `data1.txt`, I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
+Your job is to write a program called `CountFeatures` that takes a file path and prints a list, for each feature, of feature values and their counts, broken down by label, with everything sorted alphabetically. If the above data was found in a file called `data1.txt`, I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
 
     $ sbt "run-main nlp.a0.CountFeatures /Users/dhg/texts/data1.txt"
-	No              5
-	    Humidity
+	No      5
+	Yes     9
+    
+	Humidity
+	    No
 	        High            4
 	        Normal          1
-	    Outlook
-	        Rain            2
-	        Sunny           3
-	    Temperature
-	        Cool            1
-	        Hot             2
-	        Mild            2
-	    Wind
-	        Strong          3
-	        Weak            2
-	Yes             9
-	    Humidity
+	    Yes
 	        High            3
 	        Normal          6
-	    Outlook
+	Outlook
+	    No
+	        Rain            2
+	        Sunny           3
+	    Yes
 	        Overcast        4
 	        Rain            3
 	        Sunny           2
-	    Temperature
+	Temperature
+	    No
+	        Cool            1
+	        Hot             2
+	        Mild            2
+	    Yes
 	        Cool            3
 	        Hot             2
 	        Mild            4
-	    Wind
+	Wind
+	    No
+	        Strong          3
+	        Weak            2
+	    Yes
 	        Strong          3
 	        Weak            6
 
+**Critically**, your program must be flexible enough to handle files with **any features** and **any labels**, as long as it conforms to the same format of comma-separated `FEATURE=VALUE` pairs follwed by a label.  You can assume that no feature, value, or label will ever contain either a comma or an equals sign.
+
 If I run it with a file `data2.txt` that contains:
 
-	word=the,word=movie,word=was,word=the,word=worst,neg=worst,-
-	word=i,word=loved,word=this,word=movie,pos=loved,+
-	word=the,word=best=,word=actor,word=was,word=bad,pos=best,neg=bad,-
-	word=hated,word=this,word=terrible,word=movie,neg=terrible,neg=hated,-
-	word=had,word=a,word=chase,word=and,word=a,word=fight,neutral
+	word=loved,word=film,word=loved,word=actor,pos=loved,pos=loved,positive
+	word=film,word=bad,word=plot,word=worst,neg=bad,neg=worst,negative
+	word=worst,word=film,word=dumb,word=film,neg=worst,neg=dumb,negative
+	word=car,word=chase,word=fight,word=scene,word=film,neutral
+	word=great,word=plot,word=best,word=film,pos=great,pos=best,positive
+	word=best,word=actor,word=bad,word=plot,pos=best,neg=bad,negative
+	word=hated,word=terrible,word=film,neg=hated,neg=terrible,negative
 
 Then I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
 
     $ sbt "run-main nlp.a0.CountFeatures /Users/dhg/texts/data2.txt"
-	+               1
-	    pos
-	        loved           1
-	    word
-	        i               1
-	        loved           1
-	        movie           1
-	        this            1
-	-               3
-	    neg
-	        bad             1
+	negative 4
+	neutral 1
+	positive 2
+
+	neg
+	    negative
+	        bad             2
+	        dumb            1
 	        hated           1
 	        terrible        1
-	        worst           1
-	    pos
+	        worst           2
+	pos
+	    negative
 	        best            1
-	    word
+	    positive
+	        best            1
+	        great           1
+	        loved           2
+	word
+	    negative
 	        actor           1
-	        bad             1
+	        bad             2
 	        best            1
+	        dumb            1
+	        film            4
 	        hated           1
-	        movie           2
+	        plot            2
 	        terrible        1
-	        the             3
-	        this            1
-	        was             2
-	        worst           1
-	neutral         1
-	    word
-	        a               2
-	        and             1
+	        worst           2
+	    neutral
+	        car             1
 	        chase           1
 	        fight           1
-	        had             1
+	        film            1
+	        scene           1
+	    positive
+	        actor           1
+	        best            1
+	        film            2
+	        great           1
+	        loved           2
+	        plot            1
 
 
