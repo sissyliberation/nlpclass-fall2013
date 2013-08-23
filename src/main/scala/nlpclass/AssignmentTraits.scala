@@ -12,3 +12,24 @@ trait NGramCountingToImplement {
   def countNGrams(ngrams: Vector[String]): Map[Vector[String], Int]
 
 }
+
+/**
+ * For Assignment 1 - Part 5:
+ */
+trait ProbabilityDistributionToImplement {
+  def apply(x: String): Double
+}
+
+/**
+ * For Assignment 1 - Part 5:
+ */
+trait ConditionalProbabilityDistributionToImplement {
+  def apply(x: String, given: String): Double
+}
+
+/**
+ * For Assignment 1 - Part 5:
+ */
+trait FeatureProbabilityDistributionsFactoryToImplement {
+  def fromFile(filename:String): (ProbabilityDistributionToImplement, Map[String,ConditionalProbabilityDistributionToImplement])
+}

@@ -224,3 +224,21 @@ as well as the "chain rule" and problems (1.1), (1.2), and (1.11).
 
 *Note:* Be glad I didn't ask you to prove the correct operation of the pencil sharpener!
 
+
+
+## Problem 5: XX points
+
+This problem builds on the work done in [Assingment 0, Problem 6](assignment0programming.html).  For that problem we read a file containing features and labels and computed both label counts and feature counts.  In this problem we will write code that computes probability distributions.  
+
+For this task, you will implement two classes
+1. `nlp.a1.ProbabilityDistribution` that extends `nlpclass.ProbabilityDistributionToImplement`
+2. `nlp.a1.ConditionalProbabilityDistribution` that extends `nlpclass.ConditionalProbabilityDistributionToImplement`
+3. {% highlight scala %}nlp.a1.ProbabilityDistribution{% endhighlight %} that extends {% highlight scala %}nlpclass.ProbabilityDistributionToImplement{% endhighlight %}
+
+
+
+
+
+
+
+
