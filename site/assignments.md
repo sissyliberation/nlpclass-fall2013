@@ -19,7 +19,7 @@ Your code should be hosted in a *private* GitHub repository.  Follow these instr
 3. Create a new repository for your classwork called 
     {% highlight text %}nlpclass-fall2013-<lastname>-<firstname>{% endhighlight %}
     by clicking on "New Repository" on the GitHub website.  Be sure to select ***PRIVATE*** repository.
-4. Add me as a "collaborator".  Do this from the GitHub webpage for your repository: `Settings` `->` `Collaborators` `->` `Add a friend` and enter my username: `dhgarrette`.
+4. Add me as a "collaborator".  Do this from the GitHub webpage for your repository: `Settings` `->` `Collaborators` `->` `Add a friend` and enter my username: `dhgarrette`.  Do the same for Lewis's username: `lewfish`.
 5. Clone your repositiory.
     {% highlight text %}$ git clone git@github.com:USERNAME/REPOSITORY-NAME.git{% endhighlight %}
 6. Follow the instructions on the [Scala Environment Setup]({{ page.root }}scala/setup.html) page to create a scala project in your repository directory.
@@ -43,4 +43,9 @@ The code for your assignments will be "turned in" via your GitHub repo.  You sho
 
 For each assignment, I will give you instructions on what to call certain classes, but the rest of the structure of your up to you.  You will, however, have to document the files used in a README for each assignment to make grading easier.
 
-The way that you will "turn in" you code is simply to check it into GitHub and "push" it so that it is visible to me.
+The way that you will "turn in" you code is:
+1. Check your code in to GitHub and "push" it so that it is visible to us.
+2. Email me and Lewis to tell us that your code is ready to grade.  Each assignment will have specific text for you to use as the subject of your email.  It will be of the form:  
+  `nlpclass-fall2013 assignment <assignment number>`
+
+We will grade based on the latest commit of your code up to the deadline unless you specifically tell us to grade a different commit.

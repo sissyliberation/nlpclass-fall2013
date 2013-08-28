@@ -30,7 +30,7 @@ As a matter of notation, remember that the **conditional probability**&nbsp; `\(
 
     You may use any and all set manipulations you like.  Remember that `\( p(A) = 0 \)` does not imply that `\( A = \emptyset \)` (why not?), and similarly, that `\( p(B) = p(C) \)` does not imply that `\( B = C \)` (even if `\( B \subseteq C \)`).
 
-2. Use the above fact to prove that conditional probabilities `\( p(X \mid Z) \)`, just like ordinary probabilities, always fall in the range `\( [0,1]] \)`.
+2. Use the above fact to prove that conditional probabilities `\( p(X \mid Z) \)`, just like ordinary probabilities, always fall in the range `\( [0,1] \)`.
 
 3. Prove from the axioms that `\( p(\emptyset) = 0 \)`.
 

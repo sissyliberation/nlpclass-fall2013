@@ -3,60 +3,103 @@ layout: default
 title: Schedule
 ---
 
-## Week 1 -- Aug 29
+## Week 1
+
+###Thursday, Aug 29
 
 Topics
 
 * Course Introduction
+* Introduction to Scala
+
+Materials
+
+* JM 1
+* [Scala Environment Setup](http://utcompling.github.io/nlpclass-fall2013/scala/setup.html)
+* [Scala Basics](http://utcompling.github.io/nlpclass-fall2013/scala/basics.html)
+
+<span style="color: red">Assignments</span>
+
+* [Assignment 0: Programming in Scala]({{ page.root }}assignments/a0programming.html), Assigned
+
+
+
+## Week 2
+
+###Tuesday, Sept 3
+
+Topics
+
+* Scala Questions Day
+
+Materials
+
+* Your own questions!
+
+
+###Thursday, Sept 5
+
+Topics
+
 * Probability
 
 Materials
 
-* Course introduction slides
-* JM 1
 * [Probability overview slides](http://nlp-s11.utcompling.com/schedule/dickinson-prob-review.pdf?attredirects=0&d=1) (by Markus Dickinson)
 * [Univariate Probability](http://idiom.ucsd.edu/~rlevy/textbook/pmsl_2.pdf), chapter from Roger Levy's draft book [Probabilistic Models in the Study of Language](http://idiom.ucsd.edu/~rlevy/textbook/text.html).
 * [Probability Theory Review](http://www.stanford.edu/class/cs229/section/cs229-prob.pdf) from Andrew Ng's [Machine Learning course](http://www.stanford.edu/class/cs229/)
 * [Probability exercises for in class](http://jones.ling.indiana.edu/~mdickinson/09/645/slides/02-prob/inclass1.pdf).
 
+<span style="color: red">Assignments</span>
 
-## Week 2 -- Sept 3 & 5
-
-Topics 
-
-* Introduction to Scala
-
-Materials
-
-* [Scala Environment Setup](http://utcompling.github.io/nlpclass-fall2013/scala/setup.html)
-* [Scala Basics](http://utcompling.github.io/nlpclass-fall2013/scala/basics.html)
+* [Assignment 0: Programming in Scala]({{ page.root }}assignments/a0programming.html), **Due (by noon!)**
+* [Assignment 1: Probability]({{ page.root }}assignments/a1prob.html), Assigned
 
 
-## Week 3 -- Sept 10 & 12
+
+## Week 3
+
+###Tuesday, Sept 10
 
 Topics
 
 * Text classification
+* Naive Bayes
 
 Materials
 
 * [Document classification slides](http://lnc-s11.utcompling.com/schedule/LNC-DocClassify.pdf) (for background on sentiment analysis -- they are primarily for my other class -and include lots of more basic content)
 
-
-## Week 4 -- Sept 17 & 19
+###Thursday, Sept 12
 
 Topics
 
-* Text classification
+* Naive Bayes Rationale
+* Precision and Recall
 
 Materials
 
+<span style="color: red">Assignments</span>
 
-## Week 5 -- Sept 24 & 26
+* [Assignment 1: Probability]({{ page.root }}assignments/a1prob.html), **Due (Programming submitted by noon, written by 2pm)**
+* [Assignment 2: Text Classification]({{ page.root }}assignments/a2classification.html), Assigned
+
+
+## Week 4
+
+###Tuesday, Sept 17
 
 Topics
 
-* N-gram language models
+* Smoothing for Naive Bayes
+
+
+###Thursday, Sept 19
+
+Topics
+
+* Language Modeling
+* N-Gram Language Models
 
 Materials
 
@@ -65,8 +108,31 @@ Materials
 * [Language modeling slides](http://nlp-s11.utcompling.com/schedule/NLP-LanguageModels.pdf?attredirects=0)
 * [Language modeling slides](http://www.cs.utexas.edu/~mooney/cs388/slides/ngrams.ppt) (by Ray Mooney)
 
+## Week 5
 
-## Week 6 -- Oct 1 & 3
+###Tuesday, Sept 24
+
+<span style="color: red">Assignments</span>
+
+* [Assignment 2: Text Classification]({{ page.root }}assignments/a2classification.html), **Due (Programming submitted by noon, written by 2pm)**
+
+
+###Thursday, Sept 26
+
+Topics
+
+* 
+
+Materials
+
+* 
+
+
+## Week 6
+
+###Tuesday, Oct 1
+
+###Thursday, Oct 3
 
 Topics
 
@@ -78,7 +144,11 @@ Materials
 * JM 5: 123-163
 * [POS tagging and HMM slides](http://www.cs.utexas.edu/~mooney/cs388/slides/pos-tagging.ppt) (by Ray Mooney)
 
-## Week 7 -- Oct 8 & 10
+## Week 7
+
+###Tuesday, Oct 8
+
+###Thursday, Oct 10
 
 Topics
 
@@ -89,7 +159,11 @@ Materials
 * JM 6: 173-192
 
 
-## Week 8 -- Oct 15 & 17
+## Week 8
+
+###Tuesday, Oct 15
+
+###Thursday, Oct 17
 
 Topics
 
@@ -101,7 +175,12 @@ Materials
 
 * [An Interactive Spreadsheet for Teaching the Forward-Backward Algorithm](http://www.aclweb.org/anthology-new/W/W02/W02-0102.pdf) (by Jason Eisner)
 
-## Week 9 -- Oct 22 & 24
+
+## Week 9
+
+###Tuesday, Oct 22
+
+###Thursday, Oct 24
 
 Topics
 
@@ -113,7 +192,11 @@ Materials
 * JM 6: 193-207
 
 
-## Week 10 -- Oct 29 & 31
+## Week 10
+
+###Tuesday, Oct 29
+
+###Thursday, Oct 31
 
 Topics
 
@@ -126,7 +209,11 @@ Materials
 * [Information extraction slides](http://nlp-s11.utcompling.com/schedule/martin_ie.ppt) (by Jim Martin, slightly remixed)
 
 
-## Week 11 -- Nov 5 & 7
+## Week 11
+
+###Tuesday, Nov 5
+
+###Thursday, Nov 7
 
 Topics
 
@@ -141,7 +228,11 @@ Materials
 * JM 12. (Note: this chapter discusses context-free grammars---we'll be covering many of the same topics using categorial grammar.)
 
 
-## Week 12 -- Nov 12 & 14
+## Week 12
+
+###Tuesday, Nov 12
+
+###Thursday, Nov 14
 
 Topics
 
@@ -153,7 +244,11 @@ Materials
 * JM 17: 545-572
 
 
-## Week 13 -- Nov 19 & 21
+## Week 13
+
+###Tuesday, Nov 19
+
+###Thursday, Nov 21
 
 Topics
 
@@ -168,7 +263,9 @@ Materials
 * JM 14: 459-467
 
 
-## Week 14 -- Nov 26
+## Week 14
+
+###Tuesday, Nov 26
 
 Topics
 
@@ -181,7 +278,11 @@ Materials
 * David Blei's topic modeling talk: [video](http://video.google.com/videoplay?docid=3077213787166426672) and [slides](http://www.cs.princeton.edu/~blei/modeling-science.pdf).
 
 
-## Week 15 -- Dec 3 & 5
+## Week 15
+
+###Tuesday, Dec 3
+
+###Thursday, Dec 5
 
 Topics
 

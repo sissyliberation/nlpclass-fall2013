@@ -4,7 +4,7 @@ title: Assignment 0 - Programming in Scala
 root: "../"
 ---
 
-**Due: Thursday, September 5, 2pm**
+**Due: Thursday, September 5, noon**
 
 This course will require you to complete several non-trivial programming assignments.  As such, to be successful in this class you must be comfortable programming.  The primary purpose of this assignment is for you to ensure that you have at least a minimum level programming competence.  
 
@@ -37,10 +37,10 @@ Follow the instructions on the [Assignment Requirements]({{ page.root }}assignme
 * Create a ***PRIVATE*** GitHub repository for your code with the name
     {% highlight text %}nlpclass-fall2013-<lastname>-<firstname>{% endhighlight %}
     and clone it to your computer
-* Add me (GitHub username `dhgarrette`) as a "collaborator"
+* Add me (GitHub username `dhgarrette`) and Lewis (GitHub username `lewfish`) each as a "collaborator"
 * Create a Scala project in (the root of) your repository with `nlpclass-fall2013` as a dependency
 
-All of your code will be located in a package called `nlp.a0`.  The `a0` folder should be in an `nlp` folder.  So you should have this:
+All of your code for this assignment will be located in a package called `nlp.a0`.  This means that there should be a folder called `a0` contained in a folder called `nlp`.  So you should have this:
 
     nlpclass-fall2013-<lastname>-<firstname>/src/main/scala/nlp/a0
 
@@ -86,7 +86,7 @@ The application should be in an `object` called `WordCount` in a package called 
 
 ## Part 3: Removing stopwords
 
-Stopwords are extremely frequent non-content words such as determiners, pronouns, and prepositions.  You'll notice that the top 10 words in the book are all stopwords.  Because they are so frequent, stopwords don't generally tell us much about the content of a document.  
+*Stopwords* are extremely frequent non-content words such as determiners, pronouns, and prepositions.  You'll notice that the top 10 words in the book are all stopwords.  Because they are so frequent, stopwords don't generally tell us much about the content of a document because they are generally the same across all documents. 
 
 Here, you will extend your program to allow for word counting that ignore stopwords.  Update your program to:
 
@@ -163,10 +163,10 @@ In the `nlpclass-fall2013` jar that your project should have as a dependency, th
 trait NGramCountingToImplement {
 
   /**
-   * Given a vector of words, return a mapping from ngrams 
+   * Given a vector of tokens, return a mapping from ngrams 
    * to their counts.
    */
-  def countNGrams(ngrams: Vector[String]): Map[Vector[String], Int]
+  def countNGrams(tokens: Vector[String]): Map[Vector[String], Int]
 
 }
 {% endhighlight %}
@@ -180,7 +180,7 @@ import nlpclass.NGramCountingToImplement
 
 class NGramCounting(n: Int) extends NGramCountingToImplement {
 
-  def countNGrams(ngrams: Vector[String]): Map[Vector[String], Int] = {
+  def countNGrams(tokens: Vector[String]): Map[Vector[String], Int] = {
      ???  // Your code here
   }
 
@@ -194,7 +194,8 @@ I'm going to test your class like this:
 {% highlight scala %}
 scala> sbt console
 scala> val aliceText = ...
-scala> new nlp.a0.NGramCounting(3).countNGrams(aliceText)(Vector("the", "white", "rabbit"))
+scala> val counts = new nlp.a0.NGramCounting(3).countNGrams(aliceText)
+scala> counts(Vector("the", "white", "rabbit"))
 res0: Int = 21
 {% endhighlight %}
 

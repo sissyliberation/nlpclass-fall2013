@@ -19,6 +19,11 @@ title: Syllabus
 **office:** TBD  
 **email:** dhg@cs.utexas.edu  
 
+**TA:** [Lewis Fishgold](http://www.cs.utexas.edu/~lewfish/)  
+**office hours:** TBD  
+**office:** TBD  
+**email:** lewfish@cs.utexas.edu  
+
 
 ## Prerequisites
 
@@ -35,7 +40,7 @@ The official course text book:
 
 **NOTE:** The first edition of Jurafsky and Martin is not appropriate – the second edition is a major update, and you'll need to have that one, not the first.
 
-Selected readings from this text will be suggested, along with other readings made available for download or copying.
+Selected readings from this text will be suggested, and are indicated in the schedule with "JM".  Additional readings will made available for download.
 
 Manning and Schuetze will be useful as an extra resource:
 
@@ -46,9 +51,9 @@ Manning and Schuetze will be useful as an extra resource:
 
 There will be one mid-term exam and one final exam. The midterm will consist of the material covered in the first half of the class, and the final will consist of material from the entire course.
 
-Assignments will be updated on the assignments page. A tentative schedule for the entire semester is posted on the schedule page. Readings and exercises may change up one week in advance of their due dates. Programming assignments must be completed in Scala.
+Assignments will be updated on this website. A tentative schedule for the entire semester is posted on the [schedule]({{ root.page }}schedule.html) page. Readings and exercises may change up one week in advance of their due dates. 
 
-Attendance is not required. However, given that homeworks and the exams address the material covered in class, good attendance is essential for doing well in this class.
+Programming assignments must be completed in Scala.
 
 
 ## Philosophy and Goal
@@ -103,7 +108,7 @@ With respect to content, the goal of this course is to give the student an appre
 
 ## Course Requirements
 
-* Assignments (60%): A series of six assessed, equally-weighted assignments will be given out during the semester. Most of these assignments will have a programming component---these must be completed using the Scala programming language.
+* Assignments (60%): A series of assignments will be given out during the semester. Most of these assignments will have a programming component---these must be completed using the Scala programming language.
 * Mid-term Exam (15%): There will be a mid-term exam over the material covered during the first half of the semester.
 * Final Exam (25%): There will be a final exam covering all course material.
 
@@ -124,17 +129,21 @@ The course will use plus-minus grading, using the following scale:
 Attendance is not required, and it is not used as part of determining the grade.
 
 
-## Extension Policy
+## Deadline Policy
 
-Homework must be turned in by the date and time specified in order to receive full credit. Penalty-free extensions will be considered on a case-by-case basis and only if the student asks for the extension before the deadline. In most cases they will not be granted.
+Homework must be turned in by the date and time specified in order to receive full credit.  
 
-Credit will be deducted for lateness: 10% for every 24-hour period past the deadline. For example, an assignment due at 11am on Tuesday will have 10% deducted if it is turned in late but before 11am on Wednesday. It will have 20% deducted if it is turned in by 11am Thursday, etc.
+Written assignments will always be due **by the time the lecture starts** on the due date.  This means that you should absolutely not be late to class.  Any assignments turned in even a minute after the start of the lecture will be considered a day late, and will be subject to penalization as such.  
+
+Programming assignments that are submitted electronically will always be due **two hours before the start of class** on the due date.  If you submit your assignment even 1 hour and 59 minutes before the start of class, it will be considered a day late.  This is to discourage you from working on the assignment right up until the start of class, and then walking in late to the lecture.
+
+Credit will be deducted for lateness: 10% for every 24-hour period past the deadline. For example, an assignment due at 2pm on Tuesday will have 10% deducted if it is turned in late but before 2pm on Wednesday. It will have 20% deducted if it is turned in by 2pm Thursday, etc.
 
 Late submissions will not be accepted if they are more than 5 days past the deadline. No points will be received in this case.
 
 Programming takes time.  You are highly encouraged to start working on assignments as soon as they are announced to make sure you have enough time to complete them.
 
-The greater the advance notice of a need for an extension, the greater the likelihood of leniency.
+Penalty-free extensions will be considered on a case-by-case basis and only if the student asks for the extension before the deadline. In most cases they will not be granted.  The greater the advance notice of a need for an extension, the greater the likelihood of leniency.
 
 
 ## Academic Dishonesty Policy
