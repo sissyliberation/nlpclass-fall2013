@@ -16,20 +16,22 @@ trait NGramCountingToImplement {
 /**
  * For Assignment 1 - Part 5:
  */
-trait ProbabilityDistributionToImplement {
-  def apply(x: String): Double
+trait ProbabilityDistributionToImplement[B] {
+  def apply(x: B): Double
+  def generate: B
 }
 
 /**
  * For Assignment 1 - Part 5:
  */
-trait ConditionalProbabilityDistributionToImplement {
-  def apply(x: String, given: String): Double
+trait ConditionalProbabilityDistributionToImplement[A, B] {
+  def apply(x: B, given: A): Double
+  def generate(given: A): B
 }
 
 /**
  * For Assignment 1 - Part 5:
  */
 trait FeatureProbabilityDistributionsFactoryToImplement {
-  def fromFile(filename:String): (ProbabilityDistributionToImplement, Map[String,ConditionalProbabilityDistributionToImplement])
+  def fromFile(filename: String): (ProbabilityDistributionToImplement[String], Map[String, ConditionalProbabilityDistributionToImplement[String, String]])
 }
