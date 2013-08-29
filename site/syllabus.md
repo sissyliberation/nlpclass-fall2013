@@ -15,14 +15,19 @@ title: Syllabus
 
 ## Instructor Contact Information
 [Dan Garrette](http://www.cs.utexas.edu/~dhg/)  
-**office hours:** TBD  
-**office:** TBD  
+**office hours:** Tues/Wed 9:30-10:30  
+**office:** GDC 3.504A  
 **email:** dhg@cs.utexas.edu  
 
 **TA:** [Lewis Fishgold](http://www.cs.utexas.edu/~lewfish/)  
-**office hours:** TBD  
-**office:** TBD  
+**office hours:** Mon 2-3 and Wed 3-4  
+**office:** 1.302  
 **email:** lewfish@cs.utexas.edu  
+
+
+## Course Mailing List
+
+[https://piazza.com/class/hkx0ew8f159110](https://piazza.com/class/hkx0ew8f159110)
 
 
 ## Prerequisites
@@ -49,9 +54,9 @@ Manning and Schuetze will be useful as an extra resource:
 
 ## Exams and Assignments
 
-There will be one mid-term exam and one final exam. The midterm will consist of the material covered in the first half of the class, and the final will consist of material from the entire course.
+There will be one mid-term exam and one final exam. The midterm will consist of the material covered in the first half of the class, and the final will consist of material primarily from the second half.
 
-Assignments will be updated on this website. A tentative schedule for the entire semester is posted on the [schedule]({{ root.page }}schedule.html) page. Readings and exercises may change up one week in advance of their due dates. 
+Assignments will be updated on this website. A *tentative* schedule for the entire semester is posted on the [schedule]({{ root.page }}schedule.html) page. The planned schedule, readings, and assignments will change as the course progresses.  Assignments will be visible on this website ahead of when they are assigned, but they will be updated and refined up to the date that they are officially assigned.
 
 Programming assignments must be completed in Scala.
 
@@ -77,7 +82,7 @@ Natural Language Processing (NLP) is concerned with automatically processing hum
 
 The field of computational linguistics has experienced significant growth in the last ten years. In addition to the hard work of researchers in the field in general, some of the most important factors behind this include the use of statistical techniques, the availability of large (sometimes annotated) corpora (including the web itself), and the availability of relatively cheap and powerful computers. Together, these factors have played a major part in making computational linguistics very relevant in applied settings.
 
-This course provides a broad introduction to NLP with a particular emphasis on core algorithms, data structures, and machine learning for NLP. Techniques we will study include
+This course provides a broad introduction to NLP with a particular emphasis on core algorithms, data structures, and machine learning for NLP. Techniques we will study include:
 
 * using corpora
 * n-gram language models
@@ -87,8 +92,7 @@ This course provides a broad introduction to NLP with a particular emphasis on c
 * probabilistic classifiers
 * experimental methodology in NLP
 
-
-Applications discussed in the course will include
+Applications discussed in the course will include:
 
 * sentiment analysis
 * part-of-speech tagging
@@ -101,32 +105,16 @@ With respect to content, the goal of this course is to give the student an appre
 * identify and discuss the characteristics of different NLP techniques
 * identify and discuss the characteristics of different machine learning techniques used in NLP
 * implement a naive Bayes classifier
-* implement the forward-backward algorithm for part-of-speech tagging
+* implement a hidden Markov model for part-of-speech tagging
 * understand what constitutes a probabilistic language model and understand the difference in assumptions between different types of such models (e.g. bag-of-words, n-gram, HMM, topic model)
 * create features for probabilistic classifiers to model novel NLP tasks
 
 
 ## Course Requirements
 
-* Assignments (60%): A series of assignments will be given out during the semester. Most of these assignments will have a programming component---these must be completed using the Scala programming language.
+* Assignments (70%): A series of assignments will be given out during the semester. Most of these assignments will have a programming component---these must be completed using the Scala programming language.
 * Mid-term Exam (15%): There will be a mid-term exam over the material covered during the first half of the semester.
-* Final Exam (25%): There will be a final exam covering all course material.
-
-The course will use plus-minus grading, using the following scale:
-
-  A     ≥ 93.3%  
-  A-    ≥ 90.0%  
-  B+  ≥ 86.6%  
-  B     ≥ 83.3%  
-  B-    ≥ 80.0%  
-  C+  ≥ 76.6%  
-  C     ≥ 73.3%  
-  C-    ≥ 70.0%  
-  D+  ≥ 66.6%  
-  D     ≥ 63.3%  
-  D-    ≥ 60.0%  
-
-Attendance is not required, and it is not used as part of determining the grade.
+* Final Exam (15%): There will be a final exam covering all course material.
 
 
 ## Deadline Policy

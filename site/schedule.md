@@ -10,7 +10,7 @@ title: Schedule
 Topics
 
 * Course Introduction
-* Introduction to Scala
+* Introduction to Scala (1/3)
 
 Materials
 
@@ -30,14 +30,24 @@ Materials
 
 Topics
 
-* Scala Questions Day
+* Scala (2/3)
+
+
+###Thursday, Sept 5
+
+Topics
+
+* Scala Questions Day (3/3)
+
 
 Materials
 
 * Your own questions!
 
 
-###Thursday, Sept 5
+## Week 3
+
+###Tuesday, Sept 10
 
 Topics
 
@@ -55,34 +65,16 @@ Materials
 * [Assignment 0: Programming in Scala]({{ page.root }}assignments/a0programming.html), **Due (by noon!)**
 * [Assignment 1: Probability]({{ page.root }}assignments/a1prob.html), Assigned
 
-
-
-## Week 3
-
-###Tuesday, Sept 10
-
-Topics
-
-* Text classification
-* Naive Bayes
-
-Materials
-
-* [Document classification slides](http://lnc-s11.utcompling.com/schedule/LNC-DocClassify.pdf) (for background on sentiment analysis -- they are primarily for my other class -and include lots of more basic content)
-
 ###Thursday, Sept 12
 
 Topics
 
-* Naive Bayes Rationale
-* Precision and Recall
+* Text classification (1/3)
+* Naive Bayes
 
 Materials
 
-<span style="color: red">Assignments</span>
-
-* [Assignment 1: Probability]({{ page.root }}assignments/a1prob.html), **Due (Programming submitted by noon, written by 2pm)**
-* [Assignment 2: Text Classification]({{ page.root }}assignments/a2classification.html), Assigned
+* [Document classification slides](http://lnc-s11.utcompling.com/schedule/LNC-DocClassify.pdf)
 
 
 ## Week 4
@@ -91,15 +83,31 @@ Materials
 
 Topics
 
-* Smoothing for Naive Bayes
+* Naive Bayes Rationale (2/3)
+* Precision and Recall
 
 
 ###Thursday, Sept 19
 
 Topics
 
+* Smoothing for Naive Bayes (3/3)
+* Add-Lambda Smoothing
+
+<span style="color: red">Assignments</span>
+
+* [Assignment 1: Probability]({{ page.root }}assignments/a1prob.html), **Due (programming submitted by noon, written by 2pm)**
+* [Assignment 2: Text Classification]({{ page.root }}assignments/a2classification.html), Assigned
+
+
+## Week 5
+
+###Tuesday, Sept 24
+
+Topics
+
 * Language Modeling
-* N-Gram Language Models
+* N-Gram Language Models (1/4)
 
 Materials
 
@@ -108,51 +116,58 @@ Materials
 * [Language modeling slides](http://nlp-s11.utcompling.com/schedule/NLP-LanguageModels.pdf?attredirects=0)
 * [Language modeling slides](http://www.cs.utexas.edu/~mooney/cs388/slides/ngrams.ppt) (by Ray Mooney)
 
-## Week 5
-
-###Tuesday, Sept 24
-
-<span style="color: red">Assignments</span>
-
-* [Assignment 2: Text Classification]({{ page.root }}assignments/a2classification.html), **Due (Programming submitted by noon, written by 2pm)**
-
 
 ###Thursday, Sept 26
 
 Topics
 
-* 
+* N-Gram Language Models (2/4)
 
-Materials
-
-* 
 
 
 ## Week 6
 
 ###Tuesday, Oct 1
 
+Topics
+
+* N-Gram Language Models (3/4)
+* Smoothing, Backoff, Interpolation
+
+
 ###Thursday, Oct 3
 
 Topics
 
-* Part-of-speech tagging
-* Hidden Markov Models
+* N-Gram Language Models (4/4)
+* Perplexity
+
+<span style="color: red">Assignments</span>
+
+* [Assignment 2: Text Classification]({{ page.root }}assignments/a2classification.html), **Due (programming submitted by noon, written by 2pm)**
+* [Assignment 3: N-Gram Language Models]({{ page.root }}assignments/a3ngrams.html), Assigned
+
+
+## Week 7
+
+###Tuesday, Oct 8
+
+Topics
+
+* Part-of-Speech Tagging
+* Hidden Markov Models (1/4)
 
 Materials
 
 * JM 5: 123-163
 * [POS tagging and HMM slides](http://www.cs.utexas.edu/~mooney/cs388/slides/pos-tagging.ppt) (by Ray Mooney)
 
-## Week 7
-
-###Tuesday, Oct 8
 
 ###Thursday, Oct 10
 
 Topics
 
-* Hidden Markov Models
+* Hidden Markov Models (2/4)
 
 Materials
 
@@ -163,104 +178,167 @@ Materials
 
 ###Tuesday, Oct 15
 
-###Thursday, Oct 17
-
 Topics
 
-* Hidden Markov Models
-* Mid-term exam review
-* Mid-term exam
+* Hidden Markov Models (3/4)
 
 Materials
 
 * [An Interactive Spreadsheet for Teaching the Forward-Backward Algorithm](http://www.aclweb.org/anthology-new/W/W02/W02-0102.pdf) (by Jason Eisner)
 
 
+###Thursday, Oct 17
+
+Topics
+
+* Hidden Markov Models (4/4)
+* Low-Resource POS-Tagger Learning
+
+Materials
+
+* [Learning a Part-of-Speech Tagger from Two Hours of Annotation](http://www.cs.utexas.edu/~dhg/papers/garrette_baldridge_naacl2013.pdf)
+
+<span style="color: red">Assignments</span>
+
+* [Assignment 3: N-Gram Language Models]({{ page.root }}assignments/a3ngrams.html), **Due (programming submitted by noon, written by 2pm)**
+* [Assignment 4: HMMs]({{ page.root }}assignments/a4.html), Assigned
+
+
 ## Week 9
 
 ###Tuesday, Oct 22
+
+<span style="color: red">Mid-Term Exam</span>
+
 
 ###Thursday, Oct 24
 
 Topics
 
 * Discriminative models
-* Maximum entropy Markov models
+* Maximum entropy Markov models (1/4)
 
 Materials
 
 * JM 6: 193-207
 
 
+
 ## Week 10
 
 ###Tuesday, Oct 29
+
+Topics
+
+* Maximum entropy Markov models (2/4)
+
 
 ###Thursday, Oct 31
 
 Topics
 
-* Maximum entropy markov models
-* Information extraction
+* Maximum entropy Markov models (3/4)
 
 Materials
 
 * JM 6: 207-212
-* [Information extraction slides](http://nlp-s11.utcompling.com/schedule/martin_ie.ppt) (by Jim Martin, slightly remixed)
+
 
 
 ## Week 11
 
 ###Tuesday, Nov 5
 
+Topics
+
+* Maximum entropy Markov models (4/4)
+* Information extraction
+
+Materials
+
+* JM 22: 725-743
+* [Information extraction slides](http://nlp-s11.utcompling.com/schedule/martin_ie.ppt) (by Jim Martin, slightly remixed)
+
+<span style="color: red">Assignments</span>
+
+* [Assignment 4: HMMs]({{ page.root }}assignments/a4.html), **Due (programming submitted by noon, written by 2pm)**
+* [Assignment 5: Sentiment]({{ page.root }}assignments/a5.html), Assigned
+
+
 ###Thursday, Nov 7
 
 Topics
 
-* Information extraction
-* Grammar
+* Grammar 
+* Parsing (1/4)
 
 Materials
 
-* JM: 22: 725-743
-* [Categorial Grammar](http://comp.ling.utexas.edu/jbaldrid/papers/baldridge_cg_handbook_syntax.pdf) (draft article by Jason Baldridge for the Handbook of Syntax)
-* Additional background reading: [Combinatory Categorial Grammar](http://comp.ling.utexas.edu/jbaldrid/papers/SteedmanBaldridgeNTSyntax.pdf) (draft article by Mark Steedman and Jason Baldridge)
-* JM 12. (Note: this chapter discusses context-free grammars---we'll be covering many of the same topics using categorial grammar.)
+* JM 12.
+* JM 13. 427-443
 
 
 ## Week 12
 
 ###Tuesday, Nov 12
 
+Topics
+
+* Statistical Parsing (2/4)
+
+Materials
+
+* JM 14: 459-467
+
+
 ###Thursday, Nov 14
 
 Topics
 
-* Grammar
-* Meaning representations
+* Parsing (3/4)
 
 Materials
 
-* JM 17: 545-572
 
 
 ## Week 13
 
 ###Tuesday, Nov 19
 
+Topics
+
+* Parsing (4/4)
+* Dependency Parsing?
+* Semantic Role Labeling?
+
+Materials
+
+* JM 17: 545-572
+
+<span style="color: red">Assignments</span>
+
+* [Assignment 5: Sentiment]({{ page.root }}assignments/a5.html), **Due (programming submitted by noon, written by 2pm)**
+* [Assignment 6: Parsing]({{ page.root }}assignments/a6.html), Assigned
+
+
+
+
 ###Thursday, Nov 21
 
 Topics
 
-* Computational semantics
-* Parsing
-* Statistical parsing
+* Parsing (5/4)
+* Combinatory Categorial Grammar?
 
 Materials
 
-* JM 18: 583-591
-* JM 13. 427-443 (Again, we'll be discussing this with respect to categorial grammar.)
-* JM 14: 459-467
+
+
+<span style="color: red">Assignments</span>
+
+* [Assignment 5: Sentiment]({{ page.root }}assignments/a5.html), **Due (programming submitted by noon, written by 2pm)**
+* [Assignment 6: Parsing]({{ page.root }}assignments/a6.html), Assigned
+
 
 
 ## Week 14
@@ -269,8 +347,28 @@ Materials
 
 Topics
 
-* Statistical parsing
-* Topic models
+* Representing Meaning
+* Logical Semantics
+
+Materials
+
+* JM 18: 583-591
+
+
+###Thursday, Nov 28
+
+No Class - Thanksgiving
+
+
+
+## Week 15
+
+###Tuesday, Dec 3
+
+Topics
+
+* Distributional Semantics (Vector-Space Models)
+* Topic Models
 
 Materials
 
@@ -278,20 +376,16 @@ Materials
 * David Blei's topic modeling talk: [video](http://video.google.com/videoplay?docid=3077213787166426672) and [slides](http://www.cs.princeton.edu/~blei/modeling-science.pdf).
 
 
-## Week 15
-
-###Tuesday, Dec 3
-
 ###Thursday, Dec 5
 
-Topics
+<span style="color: red">Final Exam</span>
 
-* Geolocation
-* Final exam review
+<br/>
 
-Materials
+<br/>
 
-* JM 20: 658-667
-* JM 23: 767-772
-* [Simple supervised document geolocation with geodesic grids](http://www.jasonbaldridge.com/papers/wing-baldridge-acl2011.pdf) (Wing and Baldridge 2011)
+<span style="color: red">Assignments</span>
+
+* [Assignment 6: Parsing]({{ page.root }}assignments/a6.html), **Due (programming submitted by noon, written by 2pm)**
+
 
