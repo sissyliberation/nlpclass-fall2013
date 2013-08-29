@@ -15,17 +15,20 @@ title: Syllabus
 
 ## Instructor Contact Information
 [Dan Garrette](http://www.cs.utexas.edu/~dhg/)  
-**office hours:** Tues/Wed 9:30-10:30  
+**office hours:** Tues/Wed 9:30-10:30, or by appointment  
+**office hours location:** GDC 1.302  
 **office:** GDC 3.504A  
 **email:** dhg@cs.utexas.edu  
 
 **TA:** [Lewis Fishgold](http://www.cs.utexas.edu/~lewfish/)  
-**office hours:** Mon 2-3 and Wed 3-4  
-**office:** 1.302  
+**office hours:** Mon/Thurs 4:30-5:30  
+**office hours location:** 1.302  
 **email:** lewfish@cs.utexas.edu  
 
 
 ## Course Mailing List
+
+Please register for the course mailing list:
 
 [https://piazza.com/class/hkx0ew8f159110](https://piazza.com/class/hkx0ew8f159110)
 
@@ -35,15 +38,20 @@ title: Syllabus
 Proficiency in at least one programming language. Students should have taken LIN 350 (Words in a Haystack: Methods and Tools for Working with Corpora, Introduction to Computational Linguistics), or CS 310 and CS 315, or obtain consent from the instructor.
 
 
-## Syllabus and Text
+## Syllabus 
 
-This page serves as the syllabus for this course.
+This website serves as the syllabus for this course.  
+
+A *tentative* schedule for the entire semester is posted on the [schedule]({{ root.page }}schedule.html) page. The planned schedule, readings, and assignments will be refined and updated as the course progresses.
+
+
+##Text
 
 The official course text book:
 
-* Dan Jurafsky and James H. Martin. [Speech and language processing: An Introduction to Natural Language Processing, Computational Linguistics, and Speech Recognition, Second Edition](http://www.cs.colorado.edu/~martin/slp2.html), Upper Saddle River, NJ: Prentice-Hall, 2008.
+* Daniel Jurafsky and James H. Martin. [Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics, and Speech Recognition, Second Edition](http://www.cs.colorado.edu/~martin/slp2.html), Upper Saddle River, NJ: Prentice-Hall, 2008.
 
-**NOTE:** The first edition of Jurafsky and Martin is not appropriate – the second edition is a major update, and you'll need to have that one, not the first.
+**NOTE:** The first edition of Jurafsky and Martin is *not appropriate* – the second edition is a major update, and you'll need to have that one, not the first.
 
 Selected readings from this text will be suggested, and are indicated in the schedule with "JM".  Additional readings will made available for download.
 
@@ -54,9 +62,9 @@ Manning and Schuetze will be useful as an extra resource:
 
 ## Exams and Assignments
 
-There will be one mid-term exam and one final exam. The midterm will consist of the material covered in the first half of the class, and the final will consist of material primarily from the second half.
+There will be one midterm exam and one final exam. The midterm will consist of the material covered in the first half of the class, and the final will consist of material primarily from the second half.
 
-Assignments will be updated on this website. A *tentative* schedule for the entire semester is posted on the [schedule]({{ root.page }}schedule.html) page. The planned schedule, readings, and assignments will change as the course progresses.  Assignments will be visible on this website ahead of when they are assigned, but they will be updated and refined up to the date that they are officially assigned.
+Assignments will be updated on this website.  Assignments may be visible on this website ahead of when they are assigned, but they are all subject to change up to the date that they are officially assigned.  
 
 Programming assignments must be completed in Scala.
 
@@ -103,7 +111,7 @@ Applications discussed in the course will include:
 With respect to content, the goal of this course is to give the student an appreciation for the broad research topics currently being pursued in the field of computational linguistics. By the end of the course, the student should be able to
 
 * identify and discuss the characteristics of different NLP techniques
-* identify and discuss the characteristics of different machine learning techniques used in NLP
+* identify and discuss the characteristics of machine learning techniques used in NLP
 * implement a naive Bayes classifier
 * implement a hidden Markov model for part-of-speech tagging
 * understand what constitutes a probabilistic language model and understand the difference in assumptions between different types of such models (e.g. bag-of-words, n-gram, HMM, topic model)
@@ -113,7 +121,7 @@ With respect to content, the goal of this course is to give the student an appre
 ## Course Requirements
 
 * Assignments (70%): A series of assignments will be given out during the semester. Most of these assignments will have a programming component---these must be completed using the Scala programming language.
-* Mid-term Exam (15%): There will be a mid-term exam over the material covered during the first half of the semester.
+* Midterm Exam (15%): There will be a midterm exam over the material covered during the first half of the semester.
 * Final Exam (15%): There will be a final exam covering all course material.
 
 

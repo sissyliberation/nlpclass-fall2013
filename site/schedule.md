@@ -252,7 +252,7 @@ Materials
 Topics
 
 * Maximum entropy Markov models (4/4)
-* Information extraction
+* Information extraction (NER, Relation Extraction, Coref?)
 
 Materials
 
@@ -315,13 +315,6 @@ Materials
 
 * JM 17: 545-572
 
-<span style="color: red">Assignments</span>
-
-* [Assignment 5: Sentiment]({{ page.root }}assignments/a5.html), **Due (programming submitted by noon, written by 2pm)**
-* [Assignment 6: Parsing]({{ page.root }}assignments/a6.html), Assigned
-
-
-
 
 ###Thursday, Nov 21
 
@@ -331,7 +324,6 @@ Topics
 * Combinatory Categorial Grammar?
 
 Materials
-
 
 
 <span style="color: red">Assignments</span>
@@ -349,6 +341,7 @@ Topics
 
 * Representing Meaning
 * Logical Semantics
+* Entailment
 
 Materials
 
@@ -369,6 +362,7 @@ Topics
 
 * Distributional Semantics (Vector-Space Models)
 * Topic Models
+* Other stuff (coref)?
 
 Materials
 

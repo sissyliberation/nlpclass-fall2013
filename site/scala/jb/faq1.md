@@ -1,6 +1,6 @@
 ---
 layout: default
-title: First Steps in Scala
+title: Questions from Students 1
 root: "../../"
 ---
 
