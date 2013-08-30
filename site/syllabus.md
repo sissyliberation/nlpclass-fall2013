@@ -22,7 +22,7 @@ title: Syllabus
 
 **TA:** [Lewis Fishgold](http://www.cs.utexas.edu/~lewfish/)  
 **office hours:** Mon/Thurs 4:30-5:30  
-**office hours location:** 1.302  
+**office hours location:** GDC 1.302  
 **email:** lewfish@cs.utexas.edu  
 
 

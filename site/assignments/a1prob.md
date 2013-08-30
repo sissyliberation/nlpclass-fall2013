@@ -228,11 +228,19 @@ as well as the "chain rule" and problems (1.1), (1.2), and (1.11).
 
 ## Problem 5: XX points
 
-This problem builds on the work done in [Assingment 0, Problem 6](assignment0programming.html).  For that problem we read a file containing features and labels and computed both label counts and feature counts.  In this problem we will write code that computes probability distributions.  
+This problem builds on the work done in [Assingment 0, Problem 6](a0programming.html).  For that problem we read a file containing features and labels and computed both label counts and feature counts.  In this problem we will write code that computes probability distributions.  
 
-For this task, you will implement two classes
+For this task, you will implement two classes that that will represent a probability distribution and a conditional probability distribution:
+
 1. `nlp.a1.ProbabilityDistribution` that extends `nlpclass.ProbabilityDistributionToImplement`
+
 2. `nlp.a1.ConditionalProbabilityDistribution` that extends `nlpclass.ConditionalProbabilityDistributionToImplement`
+
+This will allow us to interact with the probability distributions is a simple way.
+
+
+
+
 3. {% highlight scala %}nlp.a1.ProbabilityDistribution{% endhighlight %} that extends {% highlight scala %}nlpclass.ProbabilityDistributionToImplement{% endhighlight %}
 
 

@@ -32,6 +32,6 @@ trait ConditionalProbabilityDistributionToImplement[A, B] {
 /**
  * For Assignment 1 - Part 5:
  */
-trait FeatureProbabilityDistributionsFactoryToImplement {
+trait FeatureFileAsDistributionsToImplement {
   def fromFile(filename: String): (ProbabilityDistributionToImplement[String], Map[String, ConditionalProbabilityDistributionToImplement[String, String]])
 }

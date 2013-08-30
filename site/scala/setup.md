@@ -20,7 +20,7 @@ Scala has both a compiler (`scalac`) and an interactive environment called the R
 Now you should be able to run `scala` from the command line to get into the REPL.
 {% highlight text %}
 $ scala
-Welcome to Scala version 2.10.1 (Java HotSpot(TM) 64-Bit Server VM, Java 1.6.0_43).
+Welcome to Scala version 2.10.2 (Java HotSpot(TM) 64-Bit Server VM, Java 1.6.0_43).
 Type in expressions to have them evaluated.
 Type :help for more information.
 
@@ -47,9 +47,10 @@ Download and install most current package from [here](http://www.scala-sbt.org/r
 
 ### Create the project structure
 
-1. `cd` into the directory that should contain your project.
+1. Create a directory for your project.  For example: 
+    {% highlight text %} mkdir project-name{% endhighlight %}
 
-2. Create a `build.sbt` file:
+2. Create a file `project-name/build.sbt` that contains these exact contents:
     {% highlight text %}
 import com.typesafe.sbt.SbtStartScript
     
@@ -74,10 +75,10 @@ SbtStartScript.stage in Compile := Unit
     
 scalacOptions ++= Seq("-deprecation"){% endhighlight %}
 
-3. Create a `project/build.properties`:
+3. Create a file `project-name/project/build.properties` that contains these exact contents:
     {% highlight text %}sbt.version=0.12.+{% endhighlight %}
 
-4. Create a `project/build.sbt`:
+4. Create a file `project-name/project/build.sbt` that contains these exact contents:
     {% highlight text %}addSbtPlugin("com.typesafe.sbt" % "sbt-start-script" % "0.9.0"){% endhighlight %}
 
 
@@ -104,7 +105,7 @@ In your own code, you will create your own package structure and use it in place
 
 ### Interacting with your code
 
-There are several ways interact with your code.
+There are several ways interact with your code using SBT.  All of the examples below assume that you are in your project root directory (the directory that we called `project-name` above).
 
 You can compile it (which will only re-compile modified portions of code):
 {% highlight text %}
@@ -125,7 +126,7 @@ You can interact with your code from the REPL.  Instead of just running `scala`,
 {% highlight text %}
 $ sbt console
 [...]
-Welcome to Scala version 2.10.1 (Java HotSpot(TM) 64-Bit Server VM, Java 1.6.0_43).
+Welcome to Scala version 2.10.2 (Java HotSpot(TM) 64-Bit Server VM, Java 1.6.0_43).
 Type in expressions to have them evaluated.
 Type :help for more information.
 
@@ -182,6 +183,58 @@ $ sbt test
 [info] Passed: : Total 1, Failed 0, Errors 0, Passed 1, Skipped 0
 [success] Total time: 0 s, completed [...]
 {% endhighlight %}
+
+
+## Pre-Configured Download
+
+As an example, I have built a tar file of the above files as an example.  You can download it here: [newproject.tgz](newproject.tgz)
+
+If you unpack this file, you should see this:
+
+    $ tar zxvf newproject.tgz
+    x newproject/
+    x newproject/build.sbt
+    x newproject/project/
+    x newproject/src/
+    x newproject/src/main/
+    x newproject/src/main/scala/
+    x newproject/src/main/scala/mypkg/
+    x newproject/src/main/scala/mypkg/First.scala
+    x newproject/project/build.properties
+    x newproject/project/build.sbt
+
+The directory structure is as follows:
+
+    newproject/
+        build.sbt
+        project/
+            build.sbt
+            build.properties
+        src/
+            main/
+                scala/
+                    mypkg/
+                        First.scala
+
+From the root of the project (the `newproject` directory), you should be able to run all the sbt commands:
+
+    $ cd newproject
+    $ sbt "run-main mypkg.First"
+    [info] Loading global plugins from /Users/dhg/.sbt/plugins
+    [info] Loading project definition from /Users/dhg/newproject/project
+    [info] Updating {file:/Users/dhg/newproject/project/}default-178c5b...
+    [info] Resolving org.scala-sbt#precompiled-2_10_1;0.12.4 ...
+    [info] Done updating.
+    [info] Set current project to <project-name> (in build file:/Users/dhg/newproject/)
+    [info] Updating {file:/Users/dhg/newproject/}default-bd5345...
+    [info] Resolving org.scala-tools.testing#test-interface;0.5 ...
+    [info] Done updating.
+    [info] Compiling 1 Scala source to /Users/dhg/newproject/target/scala-2.10/classes...
+    [info] Running mypkg.First
+    Running the First application.
+    [success] Total time: 2 s, completed Aug 30, 2013 4:10:50 PM
+
+When you run an SBT command for the first time, you will see that it downloads all the dependencies that are used by the project.  It will keep these files in `~/.ivy2` so that it will not have to download them again.
 
 
 ## IDEs
