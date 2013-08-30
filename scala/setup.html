@@ -71,7 +71,7 @@
       </div>
       <div id='content'>
         <h1>Scala Environment Setup</h1>
-        <ol class="toc"><li><a href="#overview">Overview</a></li><li><a href="#download_and_install_scala">Download and Install Scala</a></li><li><a href="#download_and_install_sbt">Download and Install SBT</a></li><li><a href="#creating_a_scala_project">Creating a Scala project</a></li><li><a href="#ides">IDEs</a></li></ol>
+        <ol class="toc"><li><a href="#overview">Overview</a></li><li><a href="#download_and_install_scala">Download and Install Scala</a></li><li><a href="#download_and_install_sbt">Download and Install SBT</a></li><li><a href="#creating_a_scala_project">Creating a Scala project</a></li><li><a href="#preconfigured_download">Pre-Configured Download</a></li><li><a href="#ides">IDEs</a></li></ol>
         <h2 id='overview'>Overview</h2>
 
 <p>This page explains how to set up your environment for using Scala.</p>
@@ -90,7 +90,7 @@
 
 <p>Now you should be able to run <code>scala</code> from the command line to get into the REPL.</p>
 <div class='highlight'><pre><code class='text'>$ scala
-Welcome to Scala version 2.10.1 (Java HotSpot(TM) 64-Bit Server VM, Java 1.6.0_43).
+Welcome to Scala version 2.10.2 (Java HotSpot(TM) 64-Bit Server VM, Java 1.6.0_43).
 Type in expressions to have them evaluated.
 Type :help for more information.
 
@@ -114,11 +114,12 @@ res0: Int = 7
 
 <ol>
 <li>
-<p><code>cd</code> into the directory that should contain your project.</p>
-</li>
+<p>Create a directory for your project. For example:</p>
+<div class='highlight'><pre><code class='text'> mkdir project-name
+</code></pre></div></li>
 
 <li>
-<p>Create a <code>build.sbt</code> file:</p>
+<p>Create a file <code>project-name/build.sbt</code> that contains these exact contents:</p>
 <div class='highlight'><pre><code class='text'>import com.typesafe.sbt.SbtStartScript
  
 name := &quot;&lt;project-name&gt;&quot;
@@ -144,12 +145,12 @@ scalacOptions ++= Seq(&quot;-deprecation&quot;)
 </code></pre></div></li>
 
 <li>
-<p>Create a <code>project/build.properties</code>:</p>
+<p>Create a file <code>project-name/project/build.properties</code> that contains these exact contents:</p>
 <div class='highlight'><pre><code class='text'>sbt.version=0.12.+
 </code></pre></div></li>
 
 <li>
-<p>Create a <code>project/build.sbt</code>:</p>
+<p>Create a file <code>project-name/project/build.sbt</code> that contains these exact contents:</p>
 <div class='highlight'><pre><code class='text'>addSbtPlugin(&quot;com.typesafe.sbt&quot; % &quot;sbt-start-script&quot; % &quot;0.9.0&quot;)
 </code></pre></div></li>
 </ol>
@@ -173,7 +174,7 @@ scalacOptions ++= Seq(&quot;-deprecation&quot;)
 
 <h3 id='interacting_with_your_code'>Interacting with your code</h3>
 
-<p>There are several ways interact with your code.</p>
+<p>There are several ways interact with your code using SBT. All of the examples below assume that you are in your project root directory (the directory that we called <code>project-name</code> above).</p>
 
 <p>You can compile it (which will only re-compile modified portions of code):</p>
 <div class='highlight'><pre><code class='text'>$ sbt compile
@@ -189,7 +190,7 @@ Running the First application.
 <p>You can interact with your code from the REPL. Instead of just running <code>scala</code>, you&#8217;ll need to start the REPL via SBT so that your code is (re-compiled and) loaded:</p>
 <div class='highlight'><pre><code class='text'>$ sbt console
 [...]
-Welcome to Scala version 2.10.1 (Java HotSpot(TM) 64-Bit Server VM, Java 1.6.0_43).
+Welcome to Scala version 2.10.2 (Java HotSpot(TM) 64-Bit Server VM, Java 1.6.0_43).
 Type in expressions to have them evaluated.
 Type :help for more information.
 
@@ -236,6 +237,57 @@ Running the First application.
 [info] Passed: : Total 1, Failed 0, Errors 0, Passed 1, Skipped 0
 [success] Total time: 0 s, completed [...]
 </code></pre></div>
+<h2 id='preconfigured_download'>Pre-Configured Download</h2>
+
+<p>As an example, I have built a tar file of the above files as an example. You can download it here: <a href='newproject.tgz'>newproject.tgz</a></p>
+
+<p>If you unpack this file, you should see this:</p>
+
+<pre><code>$ tar zxvf newproject.tgz
+x newproject/
+x newproject/build.sbt
+x newproject/project/
+x newproject/src/
+x newproject/src/main/
+x newproject/src/main/scala/
+x newproject/src/main/scala/mypkg/
+x newproject/src/main/scala/mypkg/First.scala
+x newproject/project/build.properties
+x newproject/project/build.sbt</code></pre>
+
+<p>The directory structure is as follows:</p>
+
+<pre><code>newproject/
+    build.sbt
+    project/
+        build.sbt
+        build.properties
+    src/
+        main/
+            scala/
+                mypkg/
+                    First.scala</code></pre>
+
+<p>From the root of the project (the <code>newproject</code> directory), you should be able to run all the sbt commands:</p>
+
+<pre><code>$ cd newproject
+$ sbt &quot;run-main mypkg.First&quot;
+[info] Loading global plugins from /Users/dhg/.sbt/plugins
+[info] Loading project definition from /Users/dhg/newproject/project
+[info] Updating {file:/Users/dhg/newproject/project/}default-178c5b...
+[info] Resolving org.scala-sbt#precompiled-2_10_1;0.12.4 ...
+[info] Done updating.
+[info] Set current project to &lt;project-name&gt; (in build file:/Users/dhg/newproject/)
+[info] Updating {file:/Users/dhg/newproject/}default-bd5345...
+[info] Resolving org.scala-tools.testing#test-interface;0.5 ...
+[info] Done updating.
+[info] Compiling 1 Scala source to /Users/dhg/newproject/target/scala-2.10/classes...
+[info] Running mypkg.First
+Running the First application.
+[success] Total time: 2 s, completed Aug 30, 2013 4:10:50 PM</code></pre>
+
+<p>When you run an SBT command for the first time, you will see that it downloads all the dependencies that are used by the project. It will keep these files in <code>~/.ivy2</code> so that it will not have to download them again.</p>
+
 <h2 id='ides'>IDEs</h2>
 
 <p>You can use any text editor you want to develop your Scala code. Use whatever you are most comfortable with.</p>
