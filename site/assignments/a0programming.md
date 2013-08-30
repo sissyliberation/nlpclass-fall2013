@@ -4,7 +4,7 @@ title: Assignment 0 - Programming in Scala
 root: "../"
 ---
 
-**Due: Thursday, September 5, noon**
+**Due: Tuesday, September 10, noon**
 
 This course will require you to complete several non-trivial programming assignments.  As such, to be successful in this class you must be comfortable programming.  The primary purpose of this assignment is for you to ensure that you have at least a minimum level programming competence.  
 
@@ -21,6 +21,8 @@ In the root of your repository, create a file called `Assignment0_README.md` tha
 * A short overview of what you've done
 * A list of files relevant to this assignment
 * Any commands needed to demonstrate your programs
+
+Send an email by noon on the due date to both me (dhg@cs.utexas.edu) and Lewis (lewfish@cs.utexas.edu) when your code is checked in, pushed, and ready for grading.
 
 You are highly encouraged to make your code as modular as possible, to facilitate reuse.  Functions like reading a file, cleaning it up, and counting things are going to be used all the time in this course.  Having easy-to-call functions for these operations in your code will serve you well.
 

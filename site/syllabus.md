@@ -10,7 +10,7 @@ title: Syllabus
 **Semester:** Fall 2013  
   
 **Time:** Tues/Thurs 2:00-3:30  
-**Room:** WEL 3.402  
+**Room:** ENS 145 &nbsp; <span style="color: red">UPDATED</span>    
 
 
 ## Instructor Contact Information
@@ -30,7 +30,7 @@ title: Syllabus
 
 Please register for the course mailing list:
 
-[https://piazza.com/class/hkx0ew8f159110](https://piazza.com/class/hkx0ew8f159110)
+[https://piazza.com/utexas/fall2013/cs388](https://piazza.com/utexas/fall2013/cs388)
 
 
 ## Prerequisites

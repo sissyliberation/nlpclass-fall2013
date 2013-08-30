@@ -21,6 +21,8 @@ I've written up some notes on Scala that might be useful
 
 [Scala on Stack Overflow](http://stackoverflow.com/tags/scala/info): A great Scala community and a weath of Scala programming knowledge in question-and-answer format.
 
+[Coursera course](https://www.coursera.org/course/progfun): A course on Scala programming taught by the inventor of the language.
+
 [Java to Scala cheat sheet](http://techblog.realestate.com.au/java-to-scala-cheatsheet/)  
 [Option cheat sheet](http://blog.tmorris.net/posts/scalaoption-cheat-sheet/)  
 [Syntax cheat sheet](http://brenocon.com/scalacheat/)
