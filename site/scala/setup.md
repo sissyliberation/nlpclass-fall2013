@@ -8,6 +8,8 @@ root: "../"
 
 This page explains how to set up your environment for using Scala.
 
+* . <span style="color: red">NEW</span>&nbsp; I made a [video](http://www.youtube.com/watch?v=A61PI9jzcIc) showing how to set things up.  (The quality of the original video is fine, but when I uploaded it to youtube, it became terrible.  If you know how to correct this, let me know.)
+
 
 ## Download and Install Scala
 
