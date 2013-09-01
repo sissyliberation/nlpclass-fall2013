@@ -71,8 +71,8 @@ The application should be in an `object` called `WordCount` in a package called 
 
     $ cd nlpclass-fall2013-<lastname>-<firstname>
     $ sbt "run-main nlp.a0.WordCount /Users/dhg/texts/alice.txt"
-    Total number of words: 29353
-    Number of distinct words: 3203
+	Total number of words: 30419
+	Number of distinct words: 3007
 	Top 10 words:
 	the            1818    5.98
 	and            940     3.09
@@ -99,8 +99,8 @@ Here, you will extend your program to allow for word counting that ignore stopwo
 I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
 
     $ sbt "run-main nlp.a0.WordCount alice.txt --stopwords english.stop"
-    Total number of words: 29353
-    Number of distinct words: 3203
+	Total number of words: 30419
+	Number of distinct words: 3007
     Top 10 words:
 	alice          403     1.32
 	gutenberg      93      0.31
@@ -146,7 +146,7 @@ I should be able to run your program with something like this, and get this exac
 
 *Note:* your output needs to be grammatical.
 
-So 42% of the words in the book appear only once (1331 out of 3203).
+So 44% of the words in the book appear only once (1331 out of 3007).
 
 I plotted a graph of the frequency distribution:
 
