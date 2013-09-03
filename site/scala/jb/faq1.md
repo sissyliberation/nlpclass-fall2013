@@ -284,7 +284,7 @@ scala> val mixedup = List(1, None, 9, None, 25)
 mixedup: List[Any] = List(1, None, 9, None, 25)
 {% endhighlight %}
 
-So, you should have your function return an `Option` which means returning `Some` or `None. Then `flatMap` will work happily.
+So, you should have your function return an `Option` which means returning `Some` or `None`. Then `flatMap` will work happily.
 
 One way of think of `Option` is that they are like `List` with zero or one element, as can be noted by the parallels in the following snippet.
 
