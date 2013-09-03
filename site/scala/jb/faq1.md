@@ -13,7 +13,7 @@ I start with some of the more basic questions, and the questions and/or answers 
 
 ## Basic Questions
 
-**Q. Concerning addressing parts of variables: To address individual parts of lists, the numbering of the items is (List 0,1,2 etc.) That is, the first element is called “0″. It seems to be the same for Arrays and Maps, but not for Tuples- to get the first element of a Tuple, I need to use Tuple._1. Why is that?***
+**Q. Concerning addressing parts of variables: To address individual parts of lists, the numbering of the items is (List 0,1,2 etc.) That is, the first element is called “0″. It seems to be the same for Arrays and Maps, but not for Tuples- to get the first element of a Tuple, I need to use Tuple._1. Why is that?**
 
 The most important thing to remember here is that tuples are *not* sequences, and, thus, do not need to have the same conventions.  Tuples have used a 1-based index in other languages like Haskell, and it seems that Scala has adopted the same convention/tradition. See:
 

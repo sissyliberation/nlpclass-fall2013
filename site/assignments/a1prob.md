@@ -228,25 +228,42 @@ as well as the "chain rule" and problems (1.1), (1.2), and (1.11).
 
 ## Problem 5: XX points
 
-This problem builds on the work done in [Assingment 0, Problem 6](a0programming.html).  For that problem we read a file containing features and labels and computed both label counts and feature counts.  In this problem we will write code that computes probability distributions.  
+This problem builds on the work done in [Assingment 0, Part 6](a0programming.html#part_6_reading_a_data_file).  For that problem we read a file containing features and labels and computed both label counts and feature counts.  In this problem we will write code that computes probability distributions.  
 
 For this task, you will implement two classes that that will represent a probability distribution and a conditional probability distribution:
 
-1. `nlp.a1.ProbabilityDistribution` that extends `nlpclass.ProbabilityDistributionToImplement`
+1. A class that represents a probability distribution: {% highlight scala %}nlp.a1.ProbabilityDistribution{% endhighlight %} that extends {% highlight scala %}nlpclass.ProbabilityDistributionToImplement{% endhighlight %}
 
-2. `nlp.a1.ConditionalProbabilityDistribution` that extends `nlpclass.ConditionalProbabilityDistributionToImplement`
+
+2. A class that represents a conditional probability distribution: {% highlight scala %}nlp.a1.ConditionalProbabilityDistribution{% endhighlight %} that extends {% highlight scala %}nlpclass.ConditionalProbabilityDistributionToImplement{% endhighlight %}
 
 This will allow us to interact with the probability distributions is a simple way.
 
+In order to make it easy for me to test your code, you will also need to implement an `object` for building these representations from a feature file:
 
+{% highlight scala %}nlp.a1.FeatureFileAsDistributions{% endhighlight %} that extends {% highlight scala %}nlpclass.FeatureFileAsDistributionsToImplement{% endhighlight %}
 
+This `object` will require a method `fromFile(filename: String)` to be implemented that reads a file of features and labels (as was done for [Assingment 0, Part 6](a0programming.html#part_6_reading_a_data_file)) and produce two things:
 
-3. {% highlight scala %}nlp.a1.ProbabilityDistribution{% endhighlight %} that extends {% highlight scala %}nlpclass.ProbabilityDistributionToImplement{% endhighlight %}
+1. A probability distribution over labels
+2. A `Map` from features to conditional probability distribution over feature values given labels.
 
+So, given a file `data2.txt`:
 
+    word=loved,word=film,word=loved,word=actor,pos=loved,pos=loved,positive
+    word=film,word=bad,word=plot,word=worst,neg=bad,neg=worst,negative
+    word=worst,word=film,word=dumb,word=film,neg=worst,neg=dumb,negative
+    word=car,word=chase,word=fight,word=scene,word=film,neutral
+    word=great,word=plot,word=best,word=film,pos=great,pos=best,positive
+    word=best,word=actor,word=bad,word=plot,pos=best,neg=bad,negative
+    word=hated,word=terrible,word=film,neg=hated,neg=terrible,negative
 
+I should be able to do:
 
+The [source code](https://github.com/utcompling/nlpclass-fall2013/blob/master/src/main/scala/nlpclass/AssignmentTraits.scala#L16) shows the interface code.
 
+import nlp.a1.FeatureFileAsDistributions
+val (pLabel, pFeatureValueGivenLabelByFeature) = FeatureFileAsDistributions.fromFile("data2.txt")
 
 
 
