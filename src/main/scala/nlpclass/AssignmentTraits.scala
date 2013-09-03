@@ -1,5 +1,9 @@
 package nlpclass
 
+////////////////////////////////
+// Assignment 0
+////////////////////////////////
+
 /**
  * For Assignment 0 - Part 5: Counting n-grams
  */
@@ -12,6 +16,10 @@ trait NGramCountingToImplement {
   def countNGrams(ngrams: Vector[String]): Map[Vector[String], Int]
 
 }
+
+////////////////////////////////
+// Assignment 1
+////////////////////////////////
 
 /**
  * For Assignment 1 - Part 5:
@@ -33,5 +41,23 @@ trait ConditionalProbabilityDistributionToImplement[A, B] {
  * For Assignment 1 - Part 5:
  */
 trait FeatureFileAsDistributionsToImplement {
-  def fromFile(filename: String): (ProbabilityDistributionToImplement[String], Map[String, ConditionalProbabilityDistributionToImplement[String, String]])
+  def fromFile(filename: String): (Set[String], ProbabilityDistributionToImplement[String], Map[String, ConditionalProbabilityDistributionToImplement[String, String]])
+}
+
+////////////////////////////////
+// Assignment 2
+////////////////////////////////
+
+/**
+ * For Assignment 2 - Part 2:
+ */
+trait NaiveBayesModelToImplement[Label, Feature, Value] {
+  def predict(features: Vector[(Feature, Value)]): Label
+}
+
+/**
+ * For Assignment 2 - Part 2:
+ */
+trait NaiveBayesTrainerToImplement[Label, Feature, Value] {
+  def train(instances: Vector[(Label, Vector[(Feature, Value)])]): NaiveBayesModelToImplement[Label, Feature, Value]
 }
