@@ -105,7 +105,7 @@ Beavers can make three cries, which they use to communicate. `bwa` and `bwee` us
 <table class="simple" style="width: 60%;">
     <tr>
         <td><i>p</i>( <i>cry</i> | <i>situation</i> )</td>
-        <td>Preditor!</td>
+        <td>Predator!</td>
         <td>Timber!</td>
         <td>I need help!</td>
     </tr>
@@ -137,7 +137,7 @@ this, in the form `\( \sum_{variable} p(\cdots) = 1 \)`
     <table class="simple" style="width: 80%;">
         <tr>
             <td><i>p</i>( <i>cry</i> | <i>situation</i> )</td>
-            <td>Preditor!</td>
+            <td>Predator!</td>
             <td>Timber!</td>
             <td>I need help!</td>
             <td>TOTAL</td>
