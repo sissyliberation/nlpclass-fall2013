@@ -94,7 +94,11 @@
 <li>Any commands needed to demonstrate your programs</li>
 </ul>
 
-<p>Send an email by noon on the due date to both me (dhg@cs.utexas.edu) and Lewis (lewfish@cs.utexas.edu) when your code is checked in, pushed, and ready for grading.</p>
+<p>Send an email by noon on the due date to both me (dhg@cs.utexas.edu) and Lewis (lewfish@cs.utexas.edu) when your code is checked in, pushed, and ready for grading. The <strong>subject</strong> of your email should be:</p>
+
+<blockquote>
+<p>nlpclass-fall2013 a0 completed lastname firstname</p>
+</blockquote>
 
 <p>You are highly encouraged to make your code as modular as possible, to facilitate reuse. Functions like reading a file, cleaning it up, and counting things are going to be used all the time in this course. Having easy-to-call functions for these operations in your code will serve you well.</p>
 
@@ -119,7 +123,7 @@
 
 <li>
 <p>Create a <strong><em>PRIVATE</em></strong> GitHub repository for your code with the name</p>
-<div class='highlight'><pre><code class='text'>nlpclass-fall2013-&lt;lastname&gt;-&lt;firstname&gt;
+<div class='highlight'><pre><code class='text'>nlpclass-fall2013-lastname-firstname
 </code></pre></div>
 <p>and clone it to your computer</p>
 </li>
@@ -135,11 +139,11 @@
 
 <p>All of your code for this assignment will be located in a package called <code>nlp.a0</code>. This means that there should be a folder called <code>a0</code> contained in a folder called <code>nlp</code>. So you should have this:</p>
 
-<pre><code>nlpclass-fall2013-&lt;lastname&gt;-&lt;firstname&gt;/src/main/scala/nlp/a0</code></pre>
+<pre><code>nlpclass-fall2013-lastname-firstname/src/main/scala/nlp/a0</code></pre>
 
 <p>For an example of this setup, see the program <a href='https://github.com/utcompling/nlpclass-fall2013/blob/master/src/main/scala/nlpclass/Example.scala'><code>Example</code></a>, which is set up in a similar way (though with a different package name). It can be run as:</p>
 
-<pre><code>$ cd nlpclass-fall2013-&lt;lastname&gt;-&lt;firstname&gt;
+<pre><code>$ cd nlpclass-fall2013-lastname-firstname
 $ sbt &quot;run-main nlpclass.Example&quot;
 [...]
 This is an example Scala program.
@@ -165,7 +169,7 @@ This is an example Scala program.
 
 <p>The application should be in an <code>object</code> called <code>WordCount</code> in a package called <code>nlp.a0</code>. I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):</p>
 
-<pre><code>$ cd nlpclass-fall2013-&lt;lastname&gt;-&lt;firstname&gt;
+<pre><code>$ cd nlpclass-fall2013-lastname-firstname
 $ sbt &quot;run-main nlp.a0.WordCount /Users/dhg/texts/alice.txt&quot;
 Total number of words: 30419
 Number of distinct words: 3007
@@ -247,7 +251,7 @@ Bottom 5 most frequent frequencies:
 <p>So 44% of the words in the book appear only once (1331 out of 3007).</p>
 
 <p>I plotted a graph of the frequency distribution:</p>
-<a href='../images/aliceFreqDist.png'><img alt='Word Frequency Distribution' border='0' src='../images/aliceFreqDist.png' style='border:none;max-width:100%;' /></a>
+<a href='../images/aliceFreqDist.png'><img src='../images/aliceFreqDist.png' border='0' style='border:none;max-width:100%;' alt='Word Frequency Distribution' /></a>
 <h2 id='part_5_counting_ngrams'>Part 5: Counting n-grams</h2>
 
 <p>An <strong>n-gram</strong> is a sequence of <em>n</em> words. We will be talking a lot more about n-grams later in this course, but for now we&#8217;re just going to count them.</p>

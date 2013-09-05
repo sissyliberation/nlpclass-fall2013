@@ -208,7 +208,7 @@
 <table style='width: 60%;' class='simple'>
     <tr>
         <td><i>p</i>( <i>cry</i> | <i>situation</i> )</td>
-        <td>Preditor!</td>
+        <td>Predator!</td>
         <td>Timber!</td>
         <td>I need help!</td>
     </tr>
@@ -241,7 +241,7 @@
 <table style='width: 80%;' class='simple'>
      <tr>
          <td><i>p</i>( <i>cry</i> | <i>situation</i> )</td>
-         <td>Preditor!</td>
+         <td>Predator!</td>
          <td>Timber!</td>
          <td>I need help!</td>
          <td>TOTAL</td>
@@ -295,7 +295,7 @@
 
 <h2 id='problem_4_7_points'>Problem 4: 7 points</h2>
 
-<p><img alt='Rube Goldbergs pencil sharpener' src='../images/rube_goldberg_pencil_sharpener.jpg' /></p>
+<p><img src='../images/rube_goldberg_pencil_sharpener.jpg' alt='Rube Goldbergs pencil sharpener' /></p>
 
 <p>Rube Goldberg gets his think-tank working and evolves the simplified pencil-sharpener. Open window (A) and y kite (B). String (C) lifts small door (D) allowing moths (E) to escape and eat red flannel shirt (F). As weight of shirt becomes less, shoe (G) steps on switch (H) which heats electric iron (I) and burns hole in pants (J). Smoke (K) enters hole in tree (L), smoking out opossum (M) which jumps into basket (N), pulling rope (O) and lifting cage (P), allowing woodpecker (Q) to chew wood from pencil (R), exposing lead. Emergency knife (S) is always handy in case opossum or the woodpecker gets sick and can&#8217;t work.</p>
 
@@ -315,25 +315,55 @@
 
 <h2 id='problem_5_xx_points'>Problem 5: XX points</h2>
 
-<p>This problem builds on the work done in <a href='a0programming.html'>Assingment 0, Problem 6</a>. For that problem we read a file containing features and labels and computed both label counts and feature counts. In this problem we will write code that computes probability distributions.</p>
+<p>This problem builds on the work done in <a href='a0programming.html#part_6_reading_a_data_file'>Assingment 0, Part 6</a>. For that problem we read a file containing features and labels and computed both label counts and feature counts. In this problem we will write code that computes probability distributions.</p>
 
 <p>For this task, you will implement two classes that that will represent a probability distribution and a conditional probability distribution:</p>
 
 <ol>
 <li>
-<p><code>nlp.a1.ProbabilityDistribution</code> that extends <code>nlpclass.ProbabilityDistributionToImplement</code></p>
+<p>A class that represents a probability distribution: <div class='highlight'><pre><code class='scala'><span class='n'>nlp</span><span class='o'>.</span><span class='n'>a1</span><span class='o'>.</span><span class='nc'>ProbabilityDistribution</span>
+</code></pre></div> that extends <div class='highlight'><pre><code class='scala'><span class='n'>nlpclass</span><span class='o'>.</span><span class='nc'>ProbabilityDistributionToImplement</span>
+</code></pre></div></p>
 </li>
 
 <li>
-<p><code>nlp.a1.ConditionalProbabilityDistribution</code> that extends <code>nlpclass.ConditionalProbabilityDistributionToImplement</code></p>
+<p>A class that represents a conditional probability distribution: <div class='highlight'><pre><code class='scala'><span class='n'>nlp</span><span class='o'>.</span><span class='n'>a1</span><span class='o'>.</span><span class='nc'>ConditionalProbabilityDistribution</span>
+</code></pre></div> that extends <div class='highlight'><pre><code class='scala'><span class='n'>nlpclass</span><span class='o'>.</span><span class='nc'>ConditionalProbabilityDistributionToImplement</span>
+</code></pre></div></p>
 </li>
 </ol>
 
 <p>This will allow us to interact with the probability distributions is a simple way.</p>
 
-<p>3. <div class='highlight'><pre><code class='scala'><span class='n'>nlp</span><span class='o'>.</span><span class='n'>a1</span><span class='o'>.</span><span class='nc'>ProbabilityDistribution</span>
-</code></pre></div> that extends <div class='highlight'><pre><code class='scala'><span class='n'>nlpclass</span><span class='o'>.</span><span class='nc'>ProbabilityDistributionToImplement</span>
+<p>In order to make it easy for me to test your code, you will also need to implement an <code>object</code> for building these representations from a feature file:</p>
+<div class='highlight'><pre><code class='scala'><span class='n'>nlp</span><span class='o'>.</span><span class='n'>a1</span><span class='o'>.</span><span class='nc'>FeatureFileAsDistributions</span>
+</code></pre></div>
+<p>that extends <div class='highlight'><pre><code class='scala'><span class='n'>nlpclass</span><span class='o'>.</span><span class='nc'>FeatureFileAsDistributionsToImplement</span>
 </code></pre></div></p>
+
+<p>This <code>object</code> will require a method <code>fromFile(filename: String)</code> to be implemented that reads a file of features and labels (as was done for <a href='a0programming.html#part_6_reading_a_data_file'>Assingment 0, Part 6</a>) and produce two things:</p>
+
+<ol>
+<li>A probability distribution over labels</li>
+
+<li>A <code>Map</code> from features to conditional probability distribution over feature values given labels.</li>
+</ol>
+
+<p>So, given a file <code>data2.txt</code>:</p>
+
+<pre><code>word=loved,word=film,word=loved,word=actor,pos=loved,pos=loved,positive
+word=film,word=bad,word=plot,word=worst,neg=bad,neg=worst,negative
+word=worst,word=film,word=dumb,word=film,neg=worst,neg=dumb,negative
+word=car,word=chase,word=fight,word=scene,word=film,neutral
+word=great,word=plot,word=best,word=film,pos=great,pos=best,positive
+word=best,word=actor,word=bad,word=plot,pos=best,neg=bad,negative
+word=hated,word=terrible,word=film,neg=hated,neg=terrible,negative</code></pre>
+
+<p>I should be able to do:</p>
+
+<p>The <a href='https://github.com/utcompling/nlpclass-fall2013/blob/master/src/main/scala/nlpclass/AssignmentTraits.scala#L16'>source code</a> shows the interface code.</p>
+
+<p>import nlp.a1.FeatureFileAsDistributions val (pLabel, pFeatureValueGivenLabelByFeature) = FeatureFileAsDistributions.fromFile(&#8220;data2.txt&#8221;)</p>
       </div>
       <div id='footer'></div>
     </div>

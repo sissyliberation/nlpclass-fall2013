@@ -80,7 +80,7 @@
 
 <h2 id='basic_questions'>Basic Questions</h2>
 
-<p><strong>Q. Concerning addressing parts of variables: To address individual parts of lists, the numbering of the items is (List 0,1,2 etc.) That is, the first element is called “0″. It seems to be the same for Arrays and Maps, but not for Tuples- to get the first element of a Tuple, I need to use Tuple._1. Why is that?</strong>*</p>
+<p><strong>Q. Concerning addressing parts of variables: To address individual parts of lists, the numbering of the items is (List 0,1,2 etc.) That is, the first element is called “0″. It seems to be the same for Arrays and Maps, but not for Tuples- to get the first element of a Tuple, I need to use Tuple._1. Why is that?</strong></p>
 
 <p>The most important thing to remember here is that tuples are <em>not</em> sequences, and, thus, do not need to have the same conventions. Tuples have used a 1-based index in other languages like Haskell, and it seems that Scala has adopted the same convention/tradition. See:</p>
 
@@ -286,7 +286,7 @@
 <div class='highlight'><pre><code class='scala'><span class='n'>scala</span><span class='o'>&gt;</span> <span class='k'>val</span> <span class='n'>mixedup</span> <span class='k'>=</span> <span class='nc'>List</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span> <span class='nc'>None</span><span class='o'>,</span> <span class='mi'>9</span><span class='o'>,</span> <span class='nc'>None</span><span class='o'>,</span> <span class='mi'>25</span><span class='o'>)</span>
 <span class='n'>mixedup</span><span class='k'>:</span> <span class='kt'>List</span><span class='o'>[</span><span class='kt'>Any</span><span class='o'>]</span> <span class='k'>=</span> <span class='nc'>List</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span> <span class='nc'>None</span><span class='o'>,</span> <span class='mi'>9</span><span class='o'>,</span> <span class='nc'>None</span><span class='o'>,</span> <span class='mi'>25</span><span class='o'>)</span>
 </code></pre></div>
-<p>So, you should have your function return an <code>Option</code> which means returning <code>Some</code> or <code>None. Then </code>flatMap<code> will work happily.</code></p>
+<p>So, you should have your function return an <code>Option</code> which means returning <code>Some</code> or <code>None</code>. Then <code>flatMap</code> will work happily.</p>
 
 <p>One way of think of <code>Option</code> is that they are like <code>List</code> with zero or one element, as can be noted by the parallels in the following snippet.</p>
 <div class='highlight'><pre><code class='scala'><span class='n'>scala</span><span class='o'>&gt;</span> <span class='k'>val</span> <span class='n'>foo</span> <span class='k'>=</span> <span class='nc'>List</span><span class='o'>(</span><span class='nc'>List</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>),</span> <span class='nc'>Nil</span><span class='o'>,</span> <span class='nc'>List</span><span class='o'>(</span><span class='mi'>3</span><span class='o'>),</span> <span class='nc'>List</span><span class='o'>(</span><span class='mi'>6</span><span class='o'>),</span> <span class='nc'>Nil</span><span class='o'>)</span>

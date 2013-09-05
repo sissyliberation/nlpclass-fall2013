@@ -91,7 +91,7 @@
 
 <li>
 <p>Create a new repository for your classwork called</p>
-<div class='highlight'><pre><code class='text'>nlpclass-fall2013-&lt;lastname&gt;-&lt;firstname&gt;
+<div class='highlight'><pre><code class='text'>nlpclass-fall2013-lastname-firstname
 </code></pre></div>
 <p>by clicking on &#8220;New Repository&#8221; on the GitHub website. Be sure to select <strong><em>PRIVATE</em></strong> repository.</p>
 </li>
@@ -120,6 +120,8 @@ libraryDependencies += &quot;com.utcompling&quot; % &quot;nlpclass-fall2013_2.10
 </code></pre></div>
 <p>This creates a dependency from your project to the course project code, which exists online. I will use this project to provide code to you that your code can access.</p>
 
+<p>If you use Eclipse, then you will need to re-run <code>sbt &quot;eclipse with-source=true&quot;</code> and refresh the project from within Eclipse before you will see the changes.</p>
+
 <p>Whenever I update this dependency, I will push a new version online with a new version number. The first version number is <code>0001</code>, and I will tell you each time I increment it. When I do, you will have to correspondingly update the number in this file.</p>
 </li>
 </ol>
@@ -135,8 +137,12 @@ libraryDependencies += &quot;com.utcompling&quot; % &quot;nlpclass-fall2013_2.10
 <ol>
 <li>Check your code in to GitHub and &#8220;push&#8221; it so that it is visible to us.</li>
 
-<li>Email me and Lewis to tell us that your code is ready to grade. Each assignment will have specific text for you to use as the subject of your email. It will be of the form:<br /><code>nlpclass-fall2013 assignment &lt;assignment number&gt;</code></li>
+<li>Email both me (dhg@cs.utexas.edu) and Lewis (lewfish@cs.utexas.edu) to tell us that your code is ready to grade. Each assignment will have specific text for you to use as the subject of your email. It will be in this form (where <em>a0</em> is for assignment 0 and <em>a1</em> would be for assignment 1, etc):</li>
 </ol>
+
+<blockquote>
+<p>nlpclass-fall2013 a0 completed lastname firstname</p>
+</blockquote>
 
 <p>We will grade based on the latest commit of your code up to the deadline unless you specifically tell us to grade a different commit.</p>
       </div>
