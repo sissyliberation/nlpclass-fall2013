@@ -22,7 +22,9 @@ In the root of your repository, create a file called `Assignment0_README.md` tha
 * A list of files relevant to this assignment
 * Any commands needed to demonstrate your programs
 
-Send an email by noon on the due date to both me (dhg@cs.utexas.edu) and Lewis (lewfish@cs.utexas.edu) when your code is checked in, pushed, and ready for grading.
+Send an email by noon on the due date to both me (dhg@cs.utexas.edu) and Lewis (lewfish@cs.utexas.edu) when your code is checked in, pushed, and ready for grading.  The **subject** of your email should be:
+
+> nlpclass-fall2013 a0 completed lastname firstname
 
 You are highly encouraged to make your code as modular as possible, to facilitate reuse.  Functions like reading a file, cleaning it up, and counting things are going to be used all the time in this course.  Having easy-to-call functions for these operations in your code will serve you well.
 
@@ -37,18 +39,18 @@ Follow the instructions on the [Assignment Requirements]({{ page.root }}assignme
 * Download and install SBT
 * Create a Github Account and register as a student
 * Create a ***PRIVATE*** GitHub repository for your code with the name
-    {% highlight text %}nlpclass-fall2013-<lastname>-<firstname>{% endhighlight %}
+    {% highlight text %}nlpclass-fall2013-lastname-firstname{% endhighlight %}
     and clone it to your computer
 * Add me (GitHub username `dhgarrette`) and Lewis (GitHub username `lewfish`) each as a "collaborator"
 * Create a Scala project in (the root of) your repository with `nlpclass-fall2013` as a dependency
 
 All of your code for this assignment will be located in a package called `nlp.a0`.  This means that there should be a folder called `a0` contained in a folder called `nlp`.  So you should have this:
 
-    nlpclass-fall2013-<lastname>-<firstname>/src/main/scala/nlp/a0
+    nlpclass-fall2013-lastname-firstname/src/main/scala/nlp/a0
 
 For an example of this setup, see the program [`Example`](https://github.com/utcompling/nlpclass-fall2013/blob/master/src/main/scala/nlpclass/Example.scala), which is set up in a similar way (though with a different package name).  It can be run as:
 
-    $ cd nlpclass-fall2013-<lastname>-<firstname>
+    $ cd nlpclass-fall2013-lastname-firstname
     $ sbt "run-main nlpclass.Example"
     [...]
     This is an example Scala program.
@@ -69,7 +71,7 @@ Write an application that does the following:
 
 The application should be in an `object` called `WordCount` in a package called `nlp.a0`.  I should be able to run your program with something like this, and get this exact output (excluding sbt garbage):
 
-    $ cd nlpclass-fall2013-<lastname>-<firstname>
+    $ cd nlpclass-fall2013-lastname-firstname
     $ sbt "run-main nlp.a0.WordCount /Users/dhg/texts/alice.txt"
 	Total number of words: 30419
 	Number of distinct words: 3007

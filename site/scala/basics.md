@@ -601,14 +601,14 @@ One of the most important characteristics of functional programming is that func
 To facilitate these kinds of uses, Scala has nice syntax for defining anonymous functions.  In Scala, the symbol `=>` is used to write lambda functions:
 
 {% highlight scala %}
-val add1a = (x: Int) => x + 1                 // arg type declared
-val add1b: (Int => Int) = x => x + 1          // function's type declared
-add1a(2)                                      // res0: Int = 3
-add1b(2)                                      // res1: Int = 3
+val add1a = (x: Int) => x + 1              // arg type declared
+val add1b: (Int => Int) = x => x + 1       // function's type declared
+add1a(2)                                   // res0: Int = 3
+add1b(2)                                   // res1: Int = 3
 
-def addSome(f: (Int => Int), i: Int) = f(i)   // first arg is a function
-addSome(x => x + 1, 2)                        // res2: Int = 3
-addSome(add1a, 2)                             // res3: Int = 3
+def addSome(f: (Int => Int), i: Int) = f(i) // first arg is a function
+addSome(x => x + 1, 2)                      // res2: Int = 3
+addSome(add1a, 2)                           // res3: Int = 3
 {% endhighlight %}
 
 Scala also provides the ability to write an underscore (`_`) as short-hand for `x => x` (kind of).
@@ -630,7 +630,8 @@ The [Scala API](http://www.scala-lang.org/api/current/index.html#scala.collectio
 **map**: Take a function as an argument and apply it to every element in the collection.
 
 {% highlight scala %}
-Vector(1,2,3).map(_ + 2)     // res0: Vector[Int] = Vector(3, 4, 5)
+Vector(1,2,3).map(x => x + 2)  // same as...
+Vector(1,2,3).map(_ + 2)       // res0: Vector[Int] = Vector(3, 4, 5)
 {% endhighlight %}
 
 **flatten**: Flatten a collection of collections.
@@ -656,6 +657,7 @@ Vector(1,2,3).foldLeft(0)((accum, x) => accum + x)   // res3: Int = 6
 **filter**: Remove items for which the given predicate is false
 
 {% highlight scala %}
+Vector(1,2,3).filter(x => x % 2 == 1)   // same as...
 Vector(1,2,3).filter(_ % 2 == 1)   // res4: Vector[Int] = Vector(1, 3)
 {% endhighlight %}
 
@@ -705,6 +707,29 @@ val a =
         .map(y => x * y))
 // a: scala.collection.immutable.Vector[Int] = Vector(9, 5)
 {% endhighlight %}
+
+
+### Parallelization
+
+The many of the higher-order functions on Scala's collections can trivially be run in parallel, and because they are immutable, they are implicitly thread-safe.
+
+Collections are converted to their parallel versions with the method `.par`.  Parallel collections can be converted back using `.seq`.  For example: 
+
+{% highlight scala %}
+val a = Vector(1,2,3,4)     // create a vector
+val b = a.par               // make the vector parallel
+val c = b.map(x => x + 1)   // functions executed on different cores
+val d = c.seq               // back to a normal vector
+{% endhighlight %}
+
+Parallelization has additional overhead, but with very large collections and many cores, it will likely be much faster than sequential execution.
+
+Note that not all operations are parallelizable.  For example, `foldLeft` cannot be parallelized because it must be run left-to-right.  If you want to fold in a parallelizable way, you must use `fold` and give it a function that can be run out of order:
+
+{% highlight scala %}
+val a = Vector(1,2,3,4).par.fold(0)((x,y) => x + y)
+{% endhighlight %}
+
 
 
 ## Use Option not null
