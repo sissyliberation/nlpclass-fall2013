@@ -1,0 +1,371 @@
+<html>
+  <head>
+    <meta content='text/html;charset=UTF-8' http-equiv='Content-Type'/>
+    <title>NLP &mdash; Assignment 1 - Probability</title>
+    <style type='text/css'>
+      @import '../css/default.css';
+      @import '../css/syntax.css';
+    </style>
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta content='Natural Language Processing Class' name='subject'/>
+    <!--<link href='images/favicon.png' rel='shortcut icon'>-->
+
+    <!-- MathJax Section -->
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+      MathJax.Hub.Config({
+        tex2jax: {
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+      });
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+
+  </head>
+  <body>
+    <div id='wrap'>
+      <div id='header'>
+        <img height="100" alt='NLP Class' src='../images/utexas.png'/>
+        <div class='tagline'>Natural Language Processing: Fall 2013</div>
+      </div>
+      <div id='pages'>
+        <ol class='toc'>
+          <li>NLP Class
+            <ol class="toc">
+              <li><a href='../index.html'>Home</a></li>
+              <li><a href='../syllabus.html'>Syllabus</a></li>
+              <li><a href='../schedule.html'>Schedule</a></li>
+              <li><a href='../notes'>Notes</a></li>
+              <li><a href='../assignments.html'>Assignment Requirements</a></li>
+              <li><a href='../links.html'>Links</a></li>
+            </ol>
+          </li>
+          <li>Useful Information
+            <ol class="toc">
+              <li><a href='../scala'>Scala</a></li>
+            </ol>
+          </li>
+          <li>Assignments
+            <ol class="toc">
+              <li><a href='../assignments/a0programming.html'>#0 - Programming</a></li>
+              <li><a href='../assignments/a1prob.html'>#1 - Probability</a></li>
+              <li><a href='../assignments/a2classification.html'>#2 - Classification</a></li>
+              <li><a href='../assignments/a3ngrams.html'>#3 - N-Grams</a></li>
+              <li><a href='../assignments/a4hmm.html'>#4 - HMMs</a></li>
+              <li><a href='../assignments/a5sentiment.html'>#5 - Sentiment</a></li>
+              <li><a href='../assignments/a6parsing.html'>#6 - Parsing</a></li>
+            </ol>
+          </li>
+          <li>External Links
+            <ol class="toc">
+              <li><a href='http://www.utcompling.com'>UTCL Main site</a></li>
+              <li><a href='https://courses.utexas.edu/webapps/portal/frameset.jsp?tab_tab_group_id=_11_1&url=%2Fwebapps%2Fblackboard%2Fexecute%2Flauncher%3Ftype%3DCourse%26id%3D_159651_1%26url%3D'>Blackboard</a></li>
+            </ol>
+          </li>
+        </ol>
+      </div>
+      <div id='content'>
+        <h1>Assignment 1 - Probability</h1>
+        <ol class="toc"><li><a href="#problem_1_33_points">Problem 1: 33 points</a></li><li><a href="#problem_2_15_points">Problem 2: 15 points</a></li><li><a href="#problem_3_15_points">Problem 3: 15 points</a></li><li><a href="#problem_4_7_points">Problem 4: 7 points</a></li><li><a href="#problem_5_xx_points">Problem 5: XX points</a></li></ol>
+        <p><strong>Due: Monday, February 7, 12pm</strong></p>
+
+<p>This assignment is based on problems 1-5 of <a href='http://www.cs.jhu.edu/~jason/'>Jason Eisner</a>&#8217;s <a href='https://18d120ec-a-e22e9223-s-sites.googlegroups.com/a/utcompling.com/nlp-s11/assignments/homework-1/eisner_lm_homework.pdf?attachauth=ANoY7crnvOj8DTMuEPniMbpaM6TsNW7G1t807GXUnn8-rZO14f7G_L8KTzU4c0c5E5rhcL0WVmS_yyfTN5B045b9SyrXABL8vTbH9ydSWRFcO8PbwlgbDqSbmYKa6VQk4evqMOfM12ArQ9VzhWd-SeHA6xkhiMFxULD7bAUkY5_bb3yIMj10NSm5lnUo_xIpoJy9kv8v6C2lh3sztweVkqhRJy0XfT0rCNbU8lJfp5RayzYAx0yLMDKeLfTrVQBYRoEnBaFwzr_P&amp;attredirects=0'>language modeling homework</a> plus a small programming problem (problem 6). Many thanks to Jason E. for making this and other materials for teaching NLP available!</p>
+
+<ul>
+<li>Answers to problems 1-4 should be hand-written or printed and handed in before class.</li>
+</ul>
+
+<p>You are welcome to consult books that cover probability theory, such as DeGroot and Schervish or the appendices of <a href='http://www.amazon.com/Introduction-Algorithms-Thomas-H-Cormen/dp/0262032937'>Cormen et al</a>, as well as the slides on probability from Dickinson, Eisner and Martin. Also, usage of Wikipedia in conjunction with the course readings, notes and assignments is acceptable (especially if you learn something from it). For this assignment, it may be helpful to consult the following: <a href='http://en.wikipedia.org/wiki/Algebra_of_sets'>Algebra of sets</a> (especially if you&#8217;re rusty on set theory) and <a href='http://en.wikipedia.org/wiki/Bayes%27_theorem'>Bayes&#8217; theorem</a> which is not extensively discussed in Jurafsy &amp; Martin.</p>
+
+<p>There are 70 points total in this assignment. Point values for each problem/sub-problem are given below.</p>
+
+<h2 id='problem_1_33_points'>Problem 1: 33 points</h2>
+
+<p>(3 points per subproblem)</p>
+
+<p>These short problems will help you get the hang of manipulating probabilities. Let <code>\( \mathcal{E} \neq \emptyset \)</code> denote the event space (it&#8217;s just a set, also known as the sample space), and <code>\( p \)</code> be a function that assigns a real number in <code>\( [0,1] \)</code> to any subset of <code>\( \mathcal{E} \)</code>. This number is called the probability of the subset.</p>
+
+<p>You are told that <code>\( p \)</code> satisfies the following two axioms:&#160; <code>\( p(\mathcal{E})=1 \)</code>.&#160;&#160; <code>\( p(X \cup Y) = p(X) + p(Y) \)</code> provided that <code>\( X \cap Y = \emptyset \)</code>.</p>
+
+<p>As a matter of notation, remember that the <strong>conditional probability</strong>&#160; <code>\( p(X \mid Y) \stackrel{\tiny{\mbox{def}}}{=} \frac{p(X \cap Z)}{p(Z)} \)</code>. For example, singing in the rain is one of my favorite rainy-day activities: so my ratio <code>\( p(\text{singing} \mid \text{rainy}) = \frac{p(\text{singing}~AND~\text{rainy})}{p(\text{rainy})} \)</code> is high. Here the predicate &#8220;singing&#8221; picks out the set of singing events in <code>\( \mathcal{E} \)</code>, &#8220;rainy&#8221; picks out the set of rainy events, and the conjoined predicate &#8220;singing AND rainy&#8221; picks out the interesction of these two sets&#8212;that is, all the vents that are both singing AND rainy.</p>
+
+<ol>
+<li>
+<p>Prove from the axioms that if <code>\( Y \subseteq Z \)</code>, then <code>\( p(Y) \leq p(Z) \)</code>.</p>
+
+<p>You may use any and all set manipulations you like. Remember that <code>\( p(A) = 0 \)</code> does not imply that <code>\( A = \emptyset \)</code> (why not?), and similarly, that <code>\( p(B) = p(C) \)</code> does not imply that <code>\( B = C \)</code> (even if <code>\( B \subseteq C \)</code>).</p>
+</li>
+
+<li>
+<p>Use the above fact to prove that conditional probabilities <code>\( p(X \mid Z) \)</code>, just like ordinary probabilities, always fall in the range <code>\( [0,1] \)</code>.</p>
+</li>
+
+<li>
+<p>Prove from the axioms that <code>\( p(\emptyset) = 0 \)</code>.</p>
+</li>
+
+<li>
+<p>Let <code>\( \bar{X} \)</code> denote <code>\( \mathcal{E} - X \)</code>. Prove from the axioms that <code>\( p(X) = 1-p(\bar{X}) \)</code>. For example, <code>\( p(\text{singing}) = 1 - p(\text{NOT singing}) \)</code>.</p>
+</li>
+
+<li>
+<p>Prove from the axioms that <code>\( p(\text{singing AND rainy} \mid \text{rainy}) = p(\text{singing} \mid \text{rainy}) \)</code>.</p>
+</li>
+
+<li>
+<p>Prove from the axioms that <code>\( p(X \mid Y) = 1 - p(\bar{X} \mid Y) \)</code>. For example, <code>\( p(\text{singing} \mid \text{rainy}) = 1 - p(\text{NOT singing} \mid \text{rainy}) \)</code>. This is a generalization of (1.4).</p>
+</li>
+
+<li>
+<p>Simplify: <code>\( (p(X \mid Y) \cdot p(Y) + p(X \mid \bar{Y}) \cdot p(\bar{Y})) \cdot p(\bar{Z} \mid X) / p(\bar{Z}) \)</code></p>
+</li>
+
+<li>
+<p>Under what conditions is it true that <code>\( p(\text{singing OR rainy} = p(\text{singing}) + p(\text{rainy}) \)</code>?</p>
+</li>
+
+<li>
+<p>Under what conditions is it true that <code>\( p(\text{singing AND rainy} = p(\text{singing}) \cdot p(\text{rainy}) \)</code>?</p>
+</li>
+
+<li>
+<p>Suppose you know that <code>\( p(X \mid Y) = 0 \)</code>. Prove that <code>\( p(X \mid Y,Z) = 0 \)</code>.</p>
+</li>
+
+<li>
+<p>Suppose you know that <code>\( p(W \mid Y) = 1 \)</code>. Prove that <code>\( p(W \mid Y,Z) = 1 \)</code>.</p>
+</li>
+</ol>
+
+<h2 id='problem_2_15_points'>Problem 2: 15 points</h2>
+
+<p>All cars are either red or blue. The witness claimed the car that hit the pedestrian was blue. Witnesses are bleieved to be about 80% reliable in reporting car color (regardless of the actual car color). But only 10% of all cars are blue.</p>
+
+<ol>
+<li>
+<p>(1 point) Write an equation relating the following quantities and perhaps other quantities.</p>
+
+<p><code>\[
+     \begin{align}
+     &amp; p(true = \text{blue})  \\
+     &amp; p(true = \text{blue} \mid claimed = \text{blue})  \\
+     &amp; p(claimed = \text{blue} \mid true = \text{blue})  
+     \end{align}
+ \]</code></p>
+
+<p>Reminder: Here, <em>claimed</em> and <em>true</em> are <em>random variables</em>, which means that they are functions over some outcome space. For example, the probability that <em>claimed</em> = blue really means the probability of getting an outcome <em>x</em> such that <em>claimed</em>(x) = blue. We are implicitly assumping that the space of outcomes <em>x</em> is something like the set of witnessed car accidents.</p>
+</li>
+
+<li>
+<p>(1 point) Match the three probabilites above with the following terms: <em>prior probablity</em>, <em>likelihood of the evidence</em>, <em>posterior probability</em>.</p>
+</li>
+
+<li>
+<p>(4 points) Give the values of all three probabilities. (Hint: Use Bayes&#8217; Theorem.) Which probability should the judge care about?</p>
+</li>
+
+<li>
+<p>(4 points) Let&#8217;s suppose the numbers 80% and 10% are specific to Baltimore. So in the previous problem, you were implicitly using the following more general version of Bayes&#8217; Theorem:</p>
+
+<p><code>\[
+ p(A \mid B,Y) = \frac{
+     p(B \mid A,Y) \cdot p(A \mid Y)
+ }{
+     p(B \mid Y)
+ }
+ \]</code></p>
+
+<p>where <em>Y</em> is <em>city</em> = Baltimore. Just as (1.6) generalized (1.4), by adding a &#8220;background&#8221; condition <em>Y</em>, this version generalizes Bayes&#8217; Theorem. Carefully prove it.</p>
+</li>
+
+<li>
+<p>(4 points) Now prove the more detailed version</p>
+
+<p><code>\[
+ p(A \mid B,Y) = \frac{
+     p(B \mid A,Y) \cdot p(A \mid Y)
+ }{
+     p(B \mid A,Y) \cdot p(A \mid Y) + p(B \mid \bar{A},Y) \cdot p(\bar{A} \mid Y)
+ }
+ \]</code></p>
+</li>
+
+<li>
+<p>(1 point) Write out the equation given in question (2.5) with <em>A</em>, <em>B</em>, and <em>Y</em> replaced by specific propositions from the red-and-blue car problem. For example, <em>Y</em> is &#8221;<em>city</em> = Baltimore&#8221; (or just &#8220;Baltimore&#8221; for short). Now replace the probabilities with actual numbers from the problem, such as 0.8.</p>
+
+<p>Yeah, it&#8217;s a mickeymouse problem, but I promise that writing out a real case of this important formula won&#8217;t kill you, and may even be good for you (like, on an exam).</p>
+</li>
+</ol>
+
+<h2 id='problem_3_15_points'>Problem 3: 15 points</h2>
+
+<p>Beavers can make three cries, which they use to communicate. <code>bwa</code> and <code>bwee</code> usually mean something like &#8220;come&#8221; and &#8220;go&#8221; respectively, and are used during dam maintenance. <code>kiki</code> means &#8220;watch out!&#8221; The following <strong>conditional probability table</strong> shows the probability of the various cries in different situations.</p>
+<table style='width: 60%;' class='simple'>
+    <tr>
+        <td><i>p</i>( <i>cry</i> | <i>situation</i> )</td>
+        <td>Predator!</td>
+        <td>Timber!</td>
+        <td>I need help!</td>
+    </tr>
+    <tr>
+        <td style='text-align: right'><i>bwa</i></td>
+        <td>0</td>
+        <td>0.1</td>
+        <td>0.8</td>
+    </tr>
+    <tr>
+        <td style='text-align: right'><i>bwee</i></td>
+        <td>0</td>
+        <td>0.6</td>
+        <td>0.1</td>
+    </tr>
+    <tr>
+        <td style='text-align: right'><i>kiki</i></td>
+        <td>1.0</td>
+        <td>0.3</td>
+        <td>0.1</td>
+    </tr>
+</table>
+<ol>
+<li>
+<p>(1 point) Notice that each column of the above table sums to 1. Write an equation stating this, in the form <code>\( \sum_{variable} p(\cdots) = 1 \)</code></p>
+</li>
+
+<li>
+<p>(4 point) A certain colony of beavers has already cut down all the trees around their dam. As there are no more to chew, <em>p(timber)</em> = 0. Getting rid of the trees has also reduced <em>p(predator)</em> to 0.2. These facts are shown in the following <strong>joint probability table</strong>. Fill in the rest of the table, using the previous table and the laws of probability. (Note that the meaning of each table is given in its top left cell.)</p>
+<table style='width: 80%;' class='simple'>
+     <tr>
+         <td><i>p</i>( <i>cry</i> | <i>situation</i> )</td>
+         <td>Predator!</td>
+         <td>Timber!</td>
+         <td>I need help!</td>
+         <td>TOTAL</td>
+     </tr>
+     <tr>
+         <td style='text-align: right'><i>bwa</i></td>
+         <td />
+         <td />
+         <td />
+         <td />
+     </tr>
+     <tr>
+         <td style='text-align: right'><i>bwee</i></td>
+         <td />
+         <td />
+         <td />
+         <td />
+     </tr>
+     <tr>
+         <td style='text-align: right'><i>kiki</i></td>
+         <td />
+         <td />
+         <td />
+         <td />
+     </tr>
+     <tr>
+         <td style='text-align: '>TOTAL</td>
+         <td>0.2</td>
+         <td>0</td>
+         <td />
+         <td />
+     </tr>
+ </table></li>
+
+<li>
+<p>(10 point, 2 pts per subproblem) A beaver in this colony cries <code>kiki</code>. Given this cry, other beavers try to figure out the probability that there is a predator</p>
+
+<p>i. This probability is written as: <em>p</em>(_________)<br /> ii. It can be rewritten without the | symbol as: _________<br /> iii. Using the above tables, its value is: _________<br /> iv. Alternatively, Bayes&#8217; Theorem allows you to express this probability as: <code>\[ \frac{
+         p(\_\_\_\_) \cdot p(\_\_\_\_)
+     }{
+         p(\_\_\_\_) \cdot p(\_\_\_\_) + p(\_\_\_\_) \cdot p(\_\_\_\_) + p(\_\_\_\_) \cdot p(\_\_\_\_)
+     }
+ \]</code><br /> v. Using the above tables, the value of this is:<br /> <code>\[ \frac{
+         p(\_\_\_\_) \cdot p(\_\_\_\_)
+     }{
+         p(\_\_\_\_) \cdot p(\_\_\_\_) + p(\_\_\_\_) \cdot p(\_\_\_\_) + p(\_\_\_\_) \cdot p(\_\_\_\_)
+     }
+ \]</code><br /> This should give the same result as in part iii., and it should be clear that they are really the same computation&#8212;by constructing table (b) and doing part iii., you were <em>implicitly</em> using Bayes&#8217; Theorem. (I told you it was a trivial theorem!)</p>
+</li>
+</ol>
+
+<h2 id='problem_4_7_points'>Problem 4: 7 points</h2>
+
+<p><img src='../images/rube_goldberg_pencil_sharpener.jpg' alt='Rube Goldbergs pencil sharpener' /></p>
+
+<p>Rube Goldberg gets his think-tank working and evolves the simplified pencil-sharpener. Open window (A) and y kite (B). String (C) lifts small door (D) allowing moths (E) to escape and eat red flannel shirt (F). As weight of shirt becomes less, shoe (G) steps on switch (H) which heats electric iron (I) and burns hole in pants (J). Smoke (K) enters hole in tree (L), smoking out opossum (M) which jumps into basket (N), pulling rope (O) and lifting cage (P), allowing woodpecker (Q) to chew wood from pencil (R), exposing lead. Emergency knife (S) is always handy in case opossum or the woodpecker gets sick and can&#8217;t work.</p>
+
+<p>1. <code>\( p(\neg \text{shoe} \mid \neg \text{nail}) = 1 \)</code>&#160;&#160; <em>For want of a nail the shoe was lost</em>,<br />2. <code>\( p(\neg \text{horse} \mid \neg \text{shoe}) = 1 \)</code>&#160;&#160; <em>For want of a shoe the horse was lost</em>,<br />3. <code>\( p(\neg \text{race} \mid \neg \text{horse}) = 1 \)</code>&#160;&#160; <em>For want of a horse the race was lost</em>,<br />4. <code>\( p(\neg \text{fortune} \mid \neg \text{race}) = 1 \)</code>&#160;&#160; <em>For want of a race the fortune was lost</em>,</p>
+<hr />
+<p>5. <code>\( p(\neg \text{fortune} \mid \neg \text{nail}) = 1 \)</code> And all for the want of a horseshoe nail.</p>
+
+<p>Show carefully that (e) follows from (a)&#8211;(d). Hint: Consider <code>\[
+    p(\neg \text{fortune}, \neg \text{race}, \neg \text{horse}, \neg \text{shoe} \mid \neg \text{nail}),
+\]</code> as well as the &#8220;chain rule&#8221; and problems (1.1), (1.2), and (1.11).</p>
+
+<p><em>Note:</em> The <code>\( \neg \)</code> symbol denotes the boolean operator NOT.</p>
+
+<p><em>Note:</em> This problem is supposed to convince you that logic is just a special case of probability theory.</p>
+
+<p><em>Note:</em> Be glad I didn&#8217;t ask you to prove the correct operation of the pencil sharpener!</p>
+
+<h2 id='problem_5_xx_points'>Problem 5: XX points</h2>
+
+<p>This problem builds on the work done in <a href='a0programming.html#part_6_reading_a_data_file'>Assingment 0, Part 6</a>. For that problem we read a file containing features and labels and computed both label counts and feature counts. In this problem we will write code that computes probability distributions.</p>
+
+<p>For this task, you will implement two classes that that will represent a probability distribution and a conditional probability distribution:</p>
+
+<ol>
+<li>
+<p>A class that represents a probability distribution: <div class='highlight'><pre><code class='scala'><span class='n'>nlp</span><span class='o'>.</span><span class='n'>a1</span><span class='o'>.</span><span class='nc'>ProbabilityDistribution</span>
+</code></pre></div> that extends <div class='highlight'><pre><code class='scala'><span class='n'>nlpclass</span><span class='o'>.</span><span class='nc'>ProbabilityDistributionToImplement</span>
+</code></pre></div></p>
+</li>
+
+<li>
+<p>A class that represents a conditional probability distribution: <div class='highlight'><pre><code class='scala'><span class='n'>nlp</span><span class='o'>.</span><span class='n'>a1</span><span class='o'>.</span><span class='nc'>ConditionalProbabilityDistribution</span>
+</code></pre></div> that extends <div class='highlight'><pre><code class='scala'><span class='n'>nlpclass</span><span class='o'>.</span><span class='nc'>ConditionalProbabilityDistributionToImplement</span>
+</code></pre></div></p>
+</li>
+</ol>
+
+<p>This will allow us to interact with the probability distributions is a simple way.</p>
+
+<p>In order to make it easy for me to test your code, you will also need to implement an <code>object</code> for building these representations from a feature file:</p>
+<div class='highlight'><pre><code class='scala'><span class='n'>nlp</span><span class='o'>.</span><span class='n'>a1</span><span class='o'>.</span><span class='nc'>FeatureFileAsDistributions</span>
+</code></pre></div>
+<p>that extends <div class='highlight'><pre><code class='scala'><span class='n'>nlpclass</span><span class='o'>.</span><span class='nc'>FeatureFileAsDistributionsToImplement</span>
+</code></pre></div></p>
+
+<p>This <code>object</code> will require a method <code>fromFile(filename: String)</code> to be implemented that reads a file of features and labels (as was done for <a href='a0programming.html#part_6_reading_a_data_file'>Assingment 0, Part 6</a>) and produce two things:</p>
+
+<ol>
+<li>A probability distribution over labels</li>
+
+<li>A <code>Map</code> from features to conditional probability distribution over feature values given labels.</li>
+</ol>
+
+<p>So, given a file <code>data2.txt</code>:</p>
+
+<pre><code>word=loved,word=film,word=loved,word=actor,pos=loved,pos=loved,positive
+word=film,word=bad,word=plot,word=worst,neg=bad,neg=worst,negative
+word=worst,word=film,word=dumb,word=film,neg=worst,neg=dumb,negative
+word=car,word=chase,word=fight,word=scene,word=film,neutral
+word=great,word=plot,word=best,word=film,pos=great,pos=best,positive
+word=best,word=actor,word=bad,word=plot,pos=best,neg=bad,negative
+word=hated,word=terrible,word=film,neg=hated,neg=terrible,negative</code></pre>
+
+<p>I should be able to do:</p>
+
+<p>The <a href='https://github.com/utcompling/nlpclass-fall2013/blob/master/src/main/scala/nlpclass/AssignmentTraits.scala#L16'>source code</a> shows the interface code.</p>
+
+<p>import nlp.a1.FeatureFileAsDistributions val (pLabel, pFeatureValueGivenLabelByFeature) = FeatureFileAsDistributions.fromFile(&#8220;data2.txt&#8221;)</p>
+      </div>
+      <div id='footer'></div>
+    </div>
+  </body>
+</html>

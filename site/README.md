@@ -9,7 +9,7 @@ THEN, in the repository root:
 
     git checkout master
     cd site
-    jekyll
+    jekyll build
     cd ..
     git checkout gh-pages
     cp -rf site/_site/* .
