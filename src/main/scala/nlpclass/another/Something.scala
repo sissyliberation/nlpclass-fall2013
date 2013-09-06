@@ -16,8 +16,31 @@ object Something {
     println(f"reading $filename")
 
     val lines = File(filename).readLines.toVector
-    lines.take(10).foreach(line => println(line))
+    val first10 = lines.take(10)
+    first10.foreach(line => println(line))
 
+    Vector(1, 2, 3)
+
+    val m = Map("dog" -> 2)
+
+    val x: Option[Int] =
+      m.get("dog")
+        .map(x => x + 1)
+        .map(x => x + 3)
+
+    def f(i: Int) = {
+      if (i % 2 == 0)
+        i + 3
+      else
+        None
+    }
+
+    
+    val y = f(3)
+    
+    
+    
+    
   }
 
 }
