@@ -444,7 +444,14 @@
 <h3 id='matching_regular_expressions'>Matching Regular Expressions</h3>
 
 <p>You can match directly with regular expressions:</p>
-<div class='highlight'><pre><code class='scala'><span class='k'>val</span> <span class='nc'>SomeRE</span> <span class='k'>=</span> <span class='s'>&quot;&quot;&quot;(\d+), (\w+) more (\w+).*&quot;&quot;&quot;</span><span class='o'>.</span><span class='n'>r</span>
+<div class='highlight'><pre><code class='scala'><span class='k'>val</span> <span class='nc'>SomeRE</span> <span class='k'>=</span> <span class='s'>&quot;&quot;&quot;a+b+&quot;&quot;&quot;</span><span class='o'>.</span><span class='n'>r</span>
+<span class='s'>&quot;aaabb&quot;</span> <span class='k'>match</span> <span class='o'>{</span>
+  <span class='k'>case</span> <span class='nc'>SomeRE</span><span class='o'>()</span> <span class='k'>=&gt;</span> <span class='s'>&quot;match found!&quot;</span>
+<span class='o'>}</span>
+<span class='c1'>// match found!</span>
+</code></pre></div>
+<p>Additionally, by using parentheses, you can indicate groups in the pattern that are to be captured, and then have the pattern matcher assign those captured groups to variables:</p>
+<div class='highlight'><pre><code class='scala'><span class='k'>val</span> <span class='nc'>SomeRE</span> <span class='k'>=</span> <span class='s'>&quot;&quot;&quot;(\d+), (\S+) \S+ (\S+).*&quot;&quot;&quot;</span><span class='o'>.</span><span class='n'>r</span>
 <span class='s'>&quot;12, two more words plus some other stuff&quot;</span> <span class='k'>match</span> <span class='o'>{</span>
   <span class='k'>case</span> <span class='nc'>SomeRE</span><span class='o'>(</span><span class='n'>a</span><span class='o'>,</span> <span class='n'>b</span><span class='o'>,</span> <span class='n'>c</span><span class='o'>)</span> <span class='k'>=&gt;</span> <span class='n'>f</span><span class='s'>&quot;matches with a=$a b=$b c=$c&quot;</span>
 <span class='o'>}</span>
