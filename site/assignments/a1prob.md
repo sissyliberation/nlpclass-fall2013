@@ -262,8 +262,10 @@ I should be able to do:
 
 The [source code](https://github.com/utcompling/nlpclass-fall2013/blob/master/src/main/scala/nlpclass/AssignmentTraits.scala#L16) shows the interface code.
 
+{% highlight scala %}
 import nlp.a1.FeatureFileAsDistributions
-val (pLabel, pFeatureValueGivenLabelByFeature) = FeatureFileAsDistributions.fromFile("data2.txt")
+val (labels, pLabel, pFeatureValueGivenLabelByFeature) = FeatureFileAsDistributions.fromFile("data2.txt") 
+{% endhighlight %}
 
 
 
