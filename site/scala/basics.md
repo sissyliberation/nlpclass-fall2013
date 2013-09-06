@@ -492,7 +492,17 @@ In all of these cases, the matching function works the same way.
 You can match directly with regular expressions:
 
 {% highlight scala %}
-val SomeRE = """(\d+), (\w+) more (\w+).*""".r
+val SomeRE = """a+b+""".r
+"aaabb" match {
+  case SomeRE() => "match found!"
+}
+// match found!
+{% endhighlight %}
+
+Additionally, by using parentheses, you can indicate groups in the pattern that are to be captured, and then have the pattern matcher assign those captured groups to variables:
+
+{% highlight scala %}
+val SomeRE = """(\d+), (\S+) \S+ (\S+).*""".r
 "12, two more words plus some other stuff" match {
   case SomeRE(a, b, c) => f"matches with a=$a b=$b c=$c"
 }
