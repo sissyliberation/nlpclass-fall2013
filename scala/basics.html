@@ -441,6 +441,15 @@
 </code></pre></div>
 <p>In all of these cases, the matching function works the same way.</p>
 
+<h3 id='matching_regular_expressions'>Matching Regular Expressions</h3>
+
+<p>You can match directly with regular expressions:</p>
+<div class='highlight'><pre><code class='scala'><span class='k'>val</span> <span class='nc'>SomeRE</span> <span class='k'>=</span> <span class='s'>&quot;&quot;&quot;(\d+), (\w+) more (\w+).*&quot;&quot;&quot;</span><span class='o'>.</span><span class='n'>r</span>
+<span class='s'>&quot;12, two more words plus some other stuff&quot;</span> <span class='k'>match</span> <span class='o'>{</span>
+  <span class='k'>case</span> <span class='nc'>SomeRE</span><span class='o'>(</span><span class='n'>a</span><span class='o'>,</span> <span class='n'>b</span><span class='o'>,</span> <span class='n'>c</span><span class='o'>)</span> <span class='k'>=&gt;</span> <span class='n'>f</span><span class='s'>&quot;matches with a=$a b=$b c=$c&quot;</span>
+<span class='o'>}</span>
+<span class='c1'>// matches with a=12 b=two c=words</span>
+</code></pre></div>
 <h3 id='constants_wildcards_sequences_conditions_and_recursive_matching'>Constants, Wildcards, Sequences, Conditions, and Recursive Matching</h3>
 
 <p>Pattern matching is very flexible and allows not just for matching flat collections of variables.</p>
