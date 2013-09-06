@@ -487,6 +487,19 @@ a.map { case (x,y) => x + y }  // res0: Vector[Int] = Vector(3, 7, 11)
 In all of these cases, the matching function works the same way.
 
 
+### Matching Regular Expressions
+
+You can match directly with regular expressions:
+
+{% highlight scala %}
+val SomeRE = """(\d+), (\w+) more (\w+).*""".r
+"12, two more words plus some other stuff" match {
+  case SomeRE(a, b, c) => f"matches with a=$a b=$b c=$c"
+}
+// matches with a=12 b=two c=words
+{% endhighlight %}
+ 
+
 ### Constants, Wildcards, Sequences, Conditions, and Recursive Matching
 
 Pattern matching is very flexible and allows not just for matching flat collections of variables.
